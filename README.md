@@ -1,1 +1,1 @@
-realtime chatapp
+realtime GPT
