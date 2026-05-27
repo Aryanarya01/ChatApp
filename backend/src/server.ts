@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import { createServer } from "node:http";
 import { Server } from "socket.io";
 import app from "./app.js";
+import connectDb from "./config/db.js";
 dotenv.config();
 
 const port = process.env.PORT || 9090;
@@ -26,6 +27,7 @@ io.on("connection",(socket)=>{
 
 
 const startDb = async () => {
+    connectDb()
   app.listen(port, () => {
     console.log(`App is listining to port ${port}`);
   });
