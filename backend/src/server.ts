@@ -1,8 +1,11 @@
-import  express from "express";
+ 
+import dotenv from "dotenv"
+import { createServer } from "node:http";
+
+dotenv.config()
 const app = express();
-const port = 9090;
-
-
+const port = process.env.PORT || 9090;
+const server = createServer
 
 const startDb = async()=>{
     app.listen(port,()=>{
