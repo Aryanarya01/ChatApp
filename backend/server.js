@@ -6,8 +6,9 @@ const client = new OpenAI({
 
 const response = await client.responses.create({
   model: 'gpt-5.2',
-  instructions: 'You are a coding assistant that talks like a pirate',
-  input: 'Are semicolons optional in JavaScript?',
+ 
+ 
+  input: 'Joke related to computer science',
 });
 
 console.log(response.output_text);
