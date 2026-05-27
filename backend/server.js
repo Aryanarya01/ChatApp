@@ -1,14 +1,21 @@
-import OpenAI from 'openai';
-import 'dotenv/config'
-const client = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY, // This is the default and can be omitted
-});
+import { GoogleGenerativeAI }
+from "@google/generative-ai";
+import "dotenv/config"
+const genAI =
+  new GoogleGenerativeAI(
+    process.env.GEMINI_API_KEY
+  );
 
-const response = await client.responses.create({
-  model: 'gpt-5.2',
- 
- 
-  input: 'Joke related to computer science',
-});
+const model =
+  genAI.getGenerativeModel({
+    model: "gemini-1.5-flash",
+  });
 
-console.log(response.output_text);
+const result =
+  await model.generateContent(
+    "Hello"
+  );
+
+console.log(
+  result.response.text()
+);
