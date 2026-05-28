@@ -26,6 +26,16 @@ export const register = async(req:Request,res:Response)=>{
 
         
     }catch(err){
+        return res.status(500).json({message : "Error Registering..."})
+    }
+}
 
+
+export const Login = async(req:Request,res:Response)=>{
+    try{
+        const {email, password} = req.body;
+        
+    }catch(err){
+        return res.status(500).json({message : "Error Loggin..."})
     }
 }
