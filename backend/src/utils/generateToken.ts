@@ -5,3 +5,5 @@ const generateToken = (id:string)=>{
         expiresIn : "7d",
     })
 }
+
+export default generateToken;
