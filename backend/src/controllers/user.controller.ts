@@ -1,6 +1,7 @@
 import type { Request, Response } from "express";
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
+import generateToken from "../utils/generateToken.js";
 
 export const register = async(req:Request,res:Response)=>{
     try{
@@ -19,9 +20,16 @@ export const register = async(req:Request,res:Response)=>{
             email,
             password : hashedPassword
         });
-
+        const token = generateToken(user._id.toString())
         return res.status(200).json({message : "User registered",
-            user
+            token,
+            user : {
+                 _id: user._id,
+    name: user.name,
+    username: user.username,
+    email: user.email,
+    profilePicture : user.profilePicture,
+            }
         })
 
         
