@@ -44,3 +44,12 @@ export const Login = async (req: Request, res: Response) => {
     return res.status(500).json({ message: "Error Loggin..." });
   }
 };
+
+
+export const login = async(req:Request,res:Response)=>{
+    try{
+
+    }catch(err){
+        return res.status(500).json({message : "Server Error"});
+    }
+}
