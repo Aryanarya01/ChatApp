@@ -3,6 +3,7 @@ import { createServer } from "node:http";
 import { Server } from "socket.io";
 import app from "./app.js";
 import connectDb from "./config/db.js";
+import socketHandler from "./sockets/socketHandler.js";
 dotenv.config();
 
 const port = process.env.PORT || 9090;
@@ -16,7 +17,7 @@ const io = new Server(server,{
 })
 
 
-socketHa
+socketHandler(io);
 
 
 const startDb = async () => {
