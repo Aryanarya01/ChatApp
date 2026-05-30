@@ -96,3 +96,18 @@ export const getMe = async (req: AuthRequest, res: Response) => {
     return res.status(500).json({ message: "Server error" });
   }
 };
+
+
+export const logout = async(req:Request,res:Response)=>{
+    {
+        try{
+            res.cookie("token","",{
+                httpOnly : true,
+                expires : new Date(0)
+            });
+            res.status(200).json({message : "Logout successfully!"})
+        }catch(err){
+            return res.status(500).json({message : "Server error!"})
+        }
+    }
+}
