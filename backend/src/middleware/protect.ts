@@ -31,3 +31,4 @@ const Protect = async (req: AuthRequest, res: Response, next: NextFunction) => {
 };
 
 
+export default Protect;
