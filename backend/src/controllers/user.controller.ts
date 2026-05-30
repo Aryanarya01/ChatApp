@@ -2,6 +2,7 @@ import type { Request, Response } from "express";
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import generateToken from "../utils/generateToken.js";
+import type { AuthRequest } from "../middleware/protect.js";
 
 export const register = async (req: Request, res: Response) => {
   try {
@@ -85,3 +86,12 @@ export const login = async (req: Request, res: Response) => {
     return res.status(500).json({ message: "Server Error" });
   }
 };
+
+
+export const getMe = async(req:AuthRequest,res:Response)=>{
+    try{    
+
+    }catch(err){
+        return res.status(500).json({message : "Server error"})
+    }
+}
