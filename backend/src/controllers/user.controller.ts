@@ -87,13 +87,12 @@ export const login = async (req: Request, res: Response) => {
   }
 };
 
-
-export const getMe = async(req:AuthRequest,res:Response)=>{
-    try{    
-        return res.status(200).json({
-            user : req.user,
-        })
-    }catch(err){
-        return res.status(500).json({message : "Server error"})
-    }
-}
+export const getMe = async (req: AuthRequest, res: Response) => {
+  try {
+    return res.status(200).json({
+      user: req.user,
+    });
+  } catch (err) {
+    return res.status(500).json({ message: "Server error" });
+  }
+};
