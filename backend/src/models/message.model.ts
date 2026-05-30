@@ -23,4 +23,8 @@ const messageSchema = new mongoose.Schema({
         required : true,
         trim : true,
     }
+},{
+    timestamps : true,
 })
+
+const Message = mongoose.model<IMessage>("Message",messageSchema);
