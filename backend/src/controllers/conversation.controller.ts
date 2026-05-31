@@ -17,7 +17,7 @@ export const createConversation = async(req:AuthRequest,res:Response)=>{
         }
         const conversation = await Conversation.create({
             participants : [
-
+                req.user!._id, recieverId
             ]
         })
     }catch(err){    
