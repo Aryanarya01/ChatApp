@@ -28,7 +28,10 @@ export const createConversation = async(req:AuthRequest,res:Response)=>{
 
 export const getUserConversations = async(req:AuthRequest,res:Response)=>{
     try{
-
+        const conversations = await Conversation.find({
+            participants : req.user!._id
+        }).populate("participants","name username email profilePicture");
+        return res.status(200).json(conversations)
     }catch(err){
         return res.status(500).json({
             message : "Server error"
