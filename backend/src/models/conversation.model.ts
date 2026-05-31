@@ -20,8 +20,8 @@ const consversationSchema = new mongoose.Schema(
   },
 );
 
-const conversation = mongoose.model<IConversation>(
-  "conversation",
+const Conversation = mongoose.model<IConversation>(
+  "Conversation",
   consversationSchema,
 );
-export default conversation;
+export default Conversation;
