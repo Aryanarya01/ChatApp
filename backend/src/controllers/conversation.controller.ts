@@ -9,7 +9,12 @@ export const createConversation = async(req:AuthRequest,res:Response)=>{
             participants : {
                 $all : [ req.user!._id,recieverId]
             }
-        })
+        });
+        if(existingConversation){
+            return res.status(400).json({
+                message : "Conversation already exists"
+            })
+        }
         const conversation = await Conversation.create({
             participants : [
 
