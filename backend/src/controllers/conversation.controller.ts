@@ -24,3 +24,14 @@ export const createConversation = async(req:AuthRequest,res:Response)=>{
         return res.status(500).json({message : "Server Error"});
     }
 }
+
+
+export const getUserConversations = async(req:AuthRequest,res:Response)=>{
+    try{
+
+    }catch(err){
+        return res.status(500).json({
+            message : "Server error"
+        })
+    }
+}
