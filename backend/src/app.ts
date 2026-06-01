@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
 app.use(userRoute);
-app.use(conversationRoute)
+app.use("/conversation",conversationRoute)
 app.get("/", (req, res) => {
   res.send("working");
 });
