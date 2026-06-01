@@ -25,7 +25,11 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
 
 export const getMessage = async(req:AuthRequest, res: Response)=>{
     try{
-
+        const {conversationId} = req.body;
+        const message = await Message.find({
+            conversation : conversationId,
+        }).po;
+        return res.status(200).json(message)
     }catch(err){
         return res.status(500).json({message : "Server Error"})
     }
