@@ -9,7 +9,15 @@ export const sendMessage = async(req:AuthRequest,res:Response)=>{
     try{
         const {conversationId, content} = req.body;
         const conversation = await Conversation.findById(conversationId);
-        if
+        if(!conversation){
+            return res.status(404).json({message : "Conversation not found"})
+        }
+        const message = await Message.create({
+            sender : req.user!._id,
+            conversation : conversationId,
+            content,
+        });
+        return res.status(201).json(message)
     }catch(err){
         return res.status(500).json({message : "Server Error"})
     }
