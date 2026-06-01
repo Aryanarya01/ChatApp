@@ -2,14 +2,16 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import userRoute from "./routes/user.route.js"
-import conversationRoute from "./routes/conversation.route.js"
+import conversationRoute from "./routes/conversation.route.js";
+import messageRoute from "./routes/message.route.js"
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
 app.use(userRoute);
-app.use("/conversation",conversationRoute)
+app.use("/conversation",conversationRoute);
+app.use("/message",messageRoute)
 app.get("/", (req, res) => {
   res.send("working");
 });
