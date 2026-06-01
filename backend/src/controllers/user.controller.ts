@@ -110,3 +110,12 @@ export const logout = async (req: Request, res: Response) => {
     }
   }
 };
+
+
+export const getAllUser = async(req:AuthRequest, res: Response)=>{
+  try{
+
+  }catch(err){
+    return res.status(500).json({message : "Server error"})
+  }
+}
