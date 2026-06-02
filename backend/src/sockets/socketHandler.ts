@@ -8,7 +8,7 @@ const socketHandler = (io: Server) => {
 
     socket.on("setup",(userId : string)=>{
       onlineUser.set(userId,socket.id);
-      
+      console.log("Online user :",onlineUser)
     })
 
     socket.on("disconnect", () => {
