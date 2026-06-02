@@ -1,3 +1,4 @@
+import clientServer from '@/lib/axios'
 import React, { useState } from 'react'
 
 const page = () => {
@@ -16,7 +17,12 @@ const page = () => {
   }
   const handelSubmit = async(e:React.FormEvent)=>{
     e.preventDefault();
-    
+    try{
+      const res = await clientServer.post("/register",formData);
+      
+    }catch(err){
+      console.log(err)
+    }
   }
   return (
     <div> 
