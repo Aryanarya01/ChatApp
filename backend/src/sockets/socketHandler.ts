@@ -12,6 +12,11 @@ const socketHandler = (io: Server) => {
     })
 
     socket.on("disconnect", () => {
+      for(const [userId, socketId] of onlineUser.entries()){
+         if(socketId === socket.id){
+          onlineUser.delete()
+         }
+      }
       console.log("user disconnected", socket.id);
     });
   });
