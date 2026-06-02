@@ -1,3 +1,7 @@
 backend/node_modules
 backend/.env
 backend/dist
+
+client/.next
+client/next.config.mjs
+client/next-env.d.ts
