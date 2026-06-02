@@ -14,7 +14,8 @@ const socketHandler = (io: Server) => {
     socket.on("disconnect", () => {
       for(const [userId, socketId] of onlineUser.entries()){
          if(socketId === socket.id){
-          onlineUser.delete()
+          onlineUser.delete(userId);
+          break;
          }
       }
       console.log("user disconnected", socket.id);
