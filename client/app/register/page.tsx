@@ -21,6 +21,7 @@ const page = () => {
         <input type="username" placeholder='Enter your username' value={formData.username} onChange={handelChange} />
         <input type="email" placeholder='Enter your email' value={formData.email} onChange={handelChange} />
         <input type="password" placeholder='Enter your password' value={formData.password} onChange={handelChange} />
+        <button type='submit'>Register</button>
       </form>
     </div>
   )
