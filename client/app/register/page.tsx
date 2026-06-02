@@ -14,9 +14,13 @@ const page = () => {
         [e.target.name] : e.target.value
       })
   }
+  const handelSubmit = async(e:React.FormEvent)=>{
+    e.preventDefault();
+    
+  }
   return (
     <div> 
-      <form>
+      <form onSubmit={handelSubmit}>
         <input type="text" placeholder='Enter your name' value={formData.name} onChange={handelChange} />
         <input type="username" placeholder='Enter your username' value={formData.username} onChange={handelChange} />
         <input type="email" placeholder='Enter your email' value={formData.email} onChange={handelChange} />
