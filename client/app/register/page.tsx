@@ -7,13 +7,17 @@ const page = () => {
     email : "",
     password : ""
   })
+
+  const handelChange = async(e:React.ChangeEvent<HTMLInputElement>)=>{
+      setFormData
+  }
   return (
     <div> 
       <form>
-        <input type="text" placeholder='Enter your name' value={} />
-        <input type="username" placeholder='Enter your username' value={} />
-        <input type="email" placeholder='Enter your email' value={} />
-        <input type="password" placeholder='Enter your password' value={} />
+        <input type="text" placeholder='Enter your name' value={formData.name} />
+        <input type="username" placeholder='Enter your username' value={formData.username} />
+        <input type="email" placeholder='Enter your email' value={formData.email} />
+        <input type="password" placeholder='Enter your password' value={formData.password} />
       </form>
     </div>
   )
