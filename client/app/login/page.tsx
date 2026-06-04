@@ -4,7 +4,13 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div>page</div>
+    <div>
+      
+      <form>
+        <input type="text" />
+        <input type="password" />
+      </form>
+    </div>
   )
 }
 
