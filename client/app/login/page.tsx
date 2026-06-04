@@ -6,6 +6,7 @@ const page = () => {
       <form>
         <input type="text" />
         <input type="password" />
+        <button type="submit">Login</button>
       </form>
     </div>
   );
