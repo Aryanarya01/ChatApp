@@ -45,6 +45,7 @@ const page = () => {
           onChange={handelChange}
         />
         <input
+        
           type="password"
           placeholder="Enter your password"
           value={formData.password}
