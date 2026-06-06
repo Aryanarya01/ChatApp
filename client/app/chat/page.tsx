@@ -1,25 +1,23 @@
-
-import clientServer from '@/lib/axios'
-import React, { useEffect } from 'react'
+import clientServer from "@/lib/axios";
+import React, { useEffect } from "react";
 
 const page = () => {
-    const getMe = async()=>{
-        try{
-            const {data} = await clientServer.get("/me");
-            console.log(data)
-        }catch(err){
-            console.log(err)
-        }
+  const getMe = async () => {
+    try {
+      const { data } = await clientServer.get("/me");
+      console.log(data);
+    } catch (err) {
+      console.log(err);
     }
-    useEffect(()=>{
-        getMe();
-    },[])
+  };
+  useEffect(() => {
+    getMe();
+  }, []);
   return (
     <div>
-        <h2>Chat page</h2>
-
+      <h2>Chat page</h2>
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;
