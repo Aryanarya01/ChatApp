@@ -30,25 +30,25 @@ const page = () => {
         <input
           type="text"
           placeholder="Enter your name"
-          value={formData.name}
+           
           onChange={handelChange}
         />
         <input
           type="username"
           placeholder="Enter your username"
-          value={formData.username}
+           
           onChange={handelChange}
         />
         <input
           type="email"
           placeholder="Enter your email"
-          value={formData.email}
+           
           onChange={handelChange}
         />
         <input
           type="password"
           placeholder="Enter your password"
-          value={formData.password}
+          
           onChange={handelChange}
         />
         <button type="submit">Register</button>
