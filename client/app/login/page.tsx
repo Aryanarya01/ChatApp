@@ -17,10 +17,10 @@ const page = () => {
     }
   };
   const handelChange = async (e: ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
+    setFormData((prev)=>({
+      ...prev,
       [e.target.name]: e.target.value,
-    });
+    }));
   };
   return (
     <div>
@@ -28,13 +28,13 @@ const page = () => {
         <input
           type="email"
           placeholder="example : xyz@gmail.com"
-          value={formData.email}
+       
           onChange={handelChange}
         />
         <input
           type="password"
           placeholder="*********"
-          value={formData.password}
+         
           onChange={handelChange}
         />
         <button type="submit">Login</button>
