@@ -16,7 +16,7 @@ const page = () => {
     },[])
   return (
     <div>
-        
+        <h2>Chat page</h2>
 
     </div>
   )
