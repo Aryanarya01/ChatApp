@@ -1,8 +1,9 @@
 "use client"
 import clientServer from "@/lib/axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const page = () => {
+    const [users, setUsers] = useState()
   const getMe = async () => {
     try {
       const { data } = await clientServer.get("/me");
