@@ -1,6 +1,6 @@
 
 import clientServer from '@/lib/axios'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const page = () => {
     const getMe = async()=>{
@@ -11,7 +11,9 @@ const page = () => {
             console.log(err)
         }
     }
-    
+    useEffect(()=>{
+        getMe();
+    },[])
   return (
     <div>
         
