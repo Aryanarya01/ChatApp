@@ -1,3 +1,4 @@
+"use client"
 import clientServer from "@/lib/axios";
 import React, { ChangeEvent, useState } from "react";
 

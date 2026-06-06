@@ -1,5 +1,6 @@
+"use client"
 import clientServer from "@/lib/axios";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 const page = () => {
   const getMe = async () => {
