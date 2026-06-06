@@ -9,7 +9,7 @@ const page = () => {
   const handelSubmit = async(e:React.FormEvent)=>{
       e.preventDefault();
       try{
-        const {data} = await clientServer.post("")
+        const {data} = await clientServer.post(" ")
       }catch(err){
         console.log(err)
       }
