@@ -24,8 +24,8 @@ const page = () => {
   return (
     <div>
       <form onSubmit={handelSubmit}>
-        <input type="email" placeholder="example : xyz@gmail.com" value={formData.email} />
-        <input type="password" placeholder="*********" value={formData.password} />
+        <input type="email" placeholder="example : xyz@gmail.com" value={formData.email}onChange={handelChange}  />
+        <input type="password" placeholder="*********" value={formData.password} onChange={handelChange} />
         <button type="submit">Login</button>
       </form>
     </div>
