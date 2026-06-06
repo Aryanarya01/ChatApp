@@ -20,6 +20,7 @@ const page = () => {
     e.preventDefault();
     try {
       const {data} = await clientServer.post("/auth/register", formData);
+      console.log(data)
     } catch (err) {
       console.log(err);
     }
