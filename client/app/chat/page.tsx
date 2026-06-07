@@ -6,7 +6,7 @@ const page = () => {
     const [users, setUsers] = useState()
   const getMe = async () => {
     try {
-      const { data } = await clientServer.get("/me");
+      const { data } = await clientServer.get("/auth/me");
       console.log(data);
     } catch (err) {
       console.log(err);
