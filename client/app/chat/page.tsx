@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const page = () => {
     const [users, setUsers] = useState([])
-    const [selected]
+    const [selectedUser, setSelectedUser] = useState(null)
   const getMe = async () => {
     try {
       const { data } = await clientServer.get("/auth/me");
@@ -31,7 +31,7 @@ const page = () => {
       <div>
         {users.map((user:any)=>(
           <div key={user._id}>
-            <p>{user.name}</p>
+            <p onClick={()=>setSelectedUser(user)}>{user.name}</p>
           </div>
         ))}
       </div>
