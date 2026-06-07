@@ -13,14 +13,15 @@ const page = () => {
     }
   };
   const fetchUsers = async()=>{
-    try{
-
+    try{  
+      const {data} = await clientServer.get("/auth/users");
+      setUsers(data)
     }catch(err:any){
       console.log(err)
     }
   }
   useEffect(() => {
-    getMe();
+      fetchUsers()
   }, []);
   return (
     <div>
