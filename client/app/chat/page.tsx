@@ -42,7 +42,7 @@ useEffect(()=>{
   const fetchMessages = async()=>{
     if(!selectedConversation) return;
     try{
-
+      const {data} = await clientServer.get(`/messages/${selectedConversation._id}`)
     }catch(err : any){
       console.log(err.response?.data)
     }

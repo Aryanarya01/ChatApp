@@ -16,7 +16,7 @@ app.use(
 app.use(cookieParser());
 app.use("/auth",userRoute);
 app.use("/conversation",conversationRoute);
-app.use("/message",messageRoute)
+app.use("/messages",messageRoute)
 app.get("/", (req, res) => {
   res.send("working");
 });
