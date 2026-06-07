@@ -12,6 +12,13 @@ const page = () => {
       console.log(err);
     }
   };
+  const fetchUsers = async()=>{
+    try{
+
+    }catch(err:any){
+      console.log(err)
+    }
+  }
   useEffect(() => {
     getMe();
   }, []);
