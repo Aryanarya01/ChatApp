@@ -6,7 +6,7 @@ const page = () => {
     const [users, setUsers] = useState([])
     const [selectedUser, setSelectedUser] = useState<any>(null);
     const [selectedConversation, setSelectedConversation] = useState<any>(null);
-    const [message, setMessage] = useState([])
+    const [message, setMessage] = useState<any[]>([])
   const getMe = async () => {
     try {
       const { data } = await clientServer.get("/auth/me");
@@ -32,12 +32,15 @@ const page = () => {
       });
       setSelectedUser(user);
       setSelectedConversation(data)
+      console.log(data)
     }catch(err:any){
-      console.log(err)
+       console.log(err.response?.data);
     }
   }
 
+useEffect(()=>{
 
+},[selectedConversation])
   useEffect(() => {
     getMe();
       fetchUsers();
