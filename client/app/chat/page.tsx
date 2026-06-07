@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 const page = () => {
     const [users, setUsers] = useState([])
+    const [selected]
   const getMe = async () => {
     try {
       const { data } = await clientServer.get("/auth/me");

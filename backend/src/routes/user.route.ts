@@ -8,6 +8,6 @@ router.route("/register").post(register);
 router.route("/login").post(login);
 router.route("/me").get(Protect, getMe);
 router.route("/logout").post(logout);
-router.route("/users").get(getAllUser);
+router.route("/users").get(Protect,getAllUser);
 
 export default router;
