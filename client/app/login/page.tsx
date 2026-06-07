@@ -1,8 +1,11 @@
 "use client"
 import clientServer from "@/lib/axios";
+import { useRouter } from "next/router";
 import React, { ChangeEvent, useState } from "react";
 
 const page = () => {
+  const router = useRouter();
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -11,6 +14,7 @@ const page = () => {
     e.preventDefault();
     try {
       const { data } = await clientServer.post("/auth/login", formData);
+      router.
       console.log(data);
     } catch (err) {
       console.log(err);

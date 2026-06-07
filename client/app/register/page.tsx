@@ -31,25 +31,25 @@ const page = () => {
         <input
           type="text"
           placeholder="Enter your name"
-           
+           name="name"
           onChange={handelChange}
         />
         <input
           type="username"
           placeholder="Enter your username"
-           
+           name="username"
           onChange={handelChange}
         />
         <input
           type="email"
           placeholder="Enter your email"
-           
+           name="email"
           onChange={handelChange}
         />
         <input
           type="password"
           placeholder="Enter your password"
-          
+          name="password"
           onChange={handelChange}
         />
         <button type="submit">Register</button>
