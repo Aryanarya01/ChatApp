@@ -4,7 +4,9 @@ import { useEffect, useState } from "react";
 
 const page = () => {
     const [users, setUsers] = useState([])
-    const [selectedUser, setSelectedUser] = useState(null)
+    const [selectedUser, setSelectedUser] = useState<any>(null);
+    const [selectedConversation, setSelectedConversation] = useState<any>(null);
+    const [message, setMessage] = useState([])
   const getMe = async () => {
     try {
       const { data } = await clientServer.get("/auth/me");
@@ -23,9 +25,13 @@ const page = () => {
   }
 
 
-  const handelClick = async()=>{
+  const handelUserClick = async(user : any)=>{
     try{
-      const {data} = await clientServer.get("/")
+      const {data} = await clientServer.post("/conversation/create",{
+        recieverId :user._id,
+      });
+      setSelectedUser(user);
+      setSelectedConversation(data)
     }catch(err:any){
       console.log(err)
     }
@@ -42,9 +48,16 @@ const page = () => {
       <div>
         {users.map((user:any)=>(
           <div key={user._id}>
-            <p onClick={()=>setSelectedUser(user)}>{user.name}</p>
+            <h4 onClick={()=>handelUserClick(user)}>{user.name}</h4>
           </div>
         ))}
+      </div>
+      <div>
+        {selectedUser ? (
+          <p>{selectedUser.name}</p>
+        ) : (
+          <p>Select a user</p>
+        )}
       </div>
     </div>
   );

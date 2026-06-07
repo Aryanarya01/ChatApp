@@ -18,6 +18,8 @@ export const createConversation = async (req: AuthRequest, res: Response) => {
     const conversation = await Conversation.create({
       participants: [req.user!._id, recieverId],
     });
+
+return res.status(201).json(conversation);
   } catch (err) {
     return res.status(500).json({ message: "Server Error" });
   }
