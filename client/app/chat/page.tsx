@@ -71,7 +71,15 @@ useEffect(()=>{
         {selectedUser ? (
           <p>{selectedUser.name}</p>
         ) : (
+          <> 
           <p>Select a user</p>
+
+          <div>
+            {message.map((mess:any)=>(
+              <p key={mess._id}>{mess.content}</p>
+            ))}
+          </div>
+          </>
         )}
       </div>
     </div>
