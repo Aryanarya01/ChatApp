@@ -42,11 +42,12 @@ useEffect(()=>{
   const fetchMessages = async()=>{
     if(!selectedConversation) return;
     try{
-      
+
     }catch(err : any){
       console.log(err.response?.data)
     }
   }
+  fetchMessages()
 },[selectedConversation])
   useEffect(() => {
     getMe();
