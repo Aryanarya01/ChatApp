@@ -21,6 +21,17 @@ const page = () => {
       console.log(err)
     }
   }
+
+
+  const handelClick = ()=>{
+    try{
+
+    }catch(err:any){
+      console.log(err)
+    }
+  }
+
+
   useEffect(() => {
     getMe();
       fetchUsers();
