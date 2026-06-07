@@ -42,13 +42,17 @@ useEffect(()=>{
   const fetchMessages = async()=>{
     if(!selectedConversation) return;
     try{
-      const {data} = await clientServer.get(`/messages/${selectedConversation._id}`)
+      const {data} = await clientServer.get(`/messages/${selectedConversation._id}`);
+      setMessage(data);
     }catch(err : any){
       console.log(err.response?.data)
     }
   }
   fetchMessages()
-},[selectedConversation])
+},[selectedConversation]);
+
+
+
   useEffect(() => {
     getMe();
       fetchUsers();
