@@ -25,7 +25,7 @@ const page = () => {
 
   const handelClick = ()=>{
     try{
-
+      const {data} = await clientServer.get("/")
     }catch(err:any){
       console.log(err)
     }
