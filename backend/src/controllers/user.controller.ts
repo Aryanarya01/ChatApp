@@ -114,9 +114,7 @@ export const logout = async (req: Request, res: Response) => {
 
 export const getAllUser = async(req:AuthRequest, res: Response)=>{
   try{
-    const users = await User.find({
-      _id : {$ne : req.user!._id}
-    }).select("-password");
+    const users = await User.find().select("-password");
     return res.status(200).json(users)
   }catch(err){
     return res.status(500).json({message : "Server error"})

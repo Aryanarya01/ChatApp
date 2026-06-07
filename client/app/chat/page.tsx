@@ -21,7 +21,8 @@ const page = () => {
     }
   }
   useEffect(() => {
-      fetchUsers()
+    getMe();
+      fetchUsers();
   }, []);
   return (
     <div>
