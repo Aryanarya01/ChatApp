@@ -23,7 +23,7 @@ const page = () => {
   }
 
 
-  const handelClick = ()=>{
+  const handelClick = async()=>{
     try{
       const {data} = await clientServer.get("/")
     }catch(err:any){
