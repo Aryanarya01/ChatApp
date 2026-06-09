@@ -25,6 +25,14 @@ const page = () => {
     }
   }
 
+  const handelSendMessage = async()=>{
+    if(!selectedConversation || !content.trim()) return;
+    try{
+
+    }catch(err:any){
+      console.log(err);
+    }
+  }
 
   const handelUserClick = async(user : any)=>{
     try{
