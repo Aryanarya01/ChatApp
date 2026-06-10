@@ -32,7 +32,7 @@ const page = () => {
         conversationId : selectedConversation._id,
         content, 
       })
-      setMessage((prev)=>[...prev,data])
+      setMessage((prev)=>[...prev,data])   
       setContent("");
     }catch(err:any){
       console.log(err);
