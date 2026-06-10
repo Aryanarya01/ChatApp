@@ -1,13 +1,13 @@
-"use client"
+"use client";
 import clientServer from "@/lib/axios";
 import { useEffect, useState } from "react";
 
 const page = () => {
-    const [users, setUsers] = useState([])
-    const [selectedUser, setSelectedUser] = useState<any>(null);
-    const [selectedConversation, setSelectedConversation] = useState<any>(null);
-    const [message, setMessage] = useState<any[]>([]);
-    const [content, setContent] = useState("")
+  const [users, setUsers] = useState([]);
+  const [selectedUser, setSelectedUser] = useState<any>(null);
+  const [selectedConversation, setSelectedConversation] = useState<any>(null);
+  const [message, setMessage] = useState<any[]>([]);
+  const [content, setContent] = useState("");
   const getMe = async () => {
     try {
       const { data } = await clientServer.get("/auth/me");
@@ -16,68 +16,68 @@ const page = () => {
       console.log(err);
     }
   };
-  const fetchUsers = async()=>{
-    try{  
-      const {data} = await clientServer.get("/auth/users");
-      setUsers(data)
-    }catch(err:any){
-      console.log(err)
-    }
-  }
-
-  const handelSendMessage = async()=>{
-    if(!selectedConversation || !content.trim()) return;
-    try{
-      const {data} = await clientServer.post("/messages",{
-        conversationId : selectedConversation._id,
-        content, 
-      })
-      setMessage((prev)=>[...prev,data])   
-      setContent("");
-    }catch(err:any){
+  const fetchUsers = async () => {
+    try {
+      const { data } = await clientServer.get("/auth/users");
+      setUsers(data);
+    } catch (err: any) {
       console.log(err);
     }
-  }
+  };
 
-  const handelUserClick = async(user : any)=>{
-    try{
-      const {data} = await clientServer.post("/conversation/create",{
-        recieverId :user._id,
+  const handelSendMessage = async () => {
+    if (!selectedConversation || !content.trim()) return;
+    try {
+      const { data } = await clientServer.post("/messages", {
+        conversationId: selectedConversation._id,
+        content,
+      });
+      setMessage((prev) => [...prev, data]);
+      setContent("");
+    } catch (err: any) {
+      console.log(err);
+    }
+  };
+
+  const handelUserClick = async (user: any) => {
+    try {
+      const { data } = await clientServer.post("/conversation/create", {
+        recieverId: user._id,
       });
       setSelectedUser(user);
-      setSelectedConversation(data)
-      console.log(data)
-    }catch(err:any){
-       console.log(err.response?.data);
+      setSelectedConversation(data);
+      console.log(data);
+    } catch (err: any) {
+      console.log(err.response?.data);
     }
-  }
+  };
 
-useEffect(()=>{
-  const fetchMessages = async()=>{
-    if(!selectedConversation) return;
-    try{
-      const {data} = await clientServer.get(`/messages/${selectedConversation._id}`);
-      setMessage(data);
-    }catch(err : any){
-      console.log(err.response?.data)
-    }
-  }
-  fetchMessages()
-},[selectedConversation]);
-
-
+  useEffect(() => {
+    const fetchMessages = async () => {
+      if (!selectedConversation) return;
+      try {
+        const { data } = await clientServer.get(
+          `/messages/${selectedConversation._id}`,
+        );
+        setMessage(data);
+      } catch (err: any) {
+        console.log(err.response?.data);
+      }
+    };
+    fetchMessages();
+  }, [selectedConversation]);
 
   useEffect(() => {
     getMe();
-      fetchUsers();
+    fetchUsers();
   }, []);
   return (
     <div>
       <h2>Chat page</h2>
       <div>
-        {users.map((user:any)=>(
+        {users.map((user: any) => (
           <div key={user._id}>
-            <h4 onClick={()=>handelUserClick(user)}>{user.name}</h4>
+            <h4 onClick={() => handelUserClick(user)}>{user.name}</h4>
           </div>
         ))}
       </div>
@@ -85,15 +85,15 @@ useEffect(()=>{
         {selectedUser ? (
           <p>{selectedUser.name}</p>
         ) : (
-          <> 
-          <p>Select a user</p>
+          <>
+            <p>Select a user</p>
 
-          <div>
-            {message.map((mess:any)=>(
-              <p key={mess._id}>{mess.content}</p>
-            ))}
-          </div>
-          </>   
+            <div>
+              {message.map((mess: any) => (
+                <p key={mess._id}>{mess.content}</p>
+              ))}
+            </div>
+          </>
         )}
       </div>
     </div>
