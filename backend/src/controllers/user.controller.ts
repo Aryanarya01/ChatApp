@@ -153,3 +153,13 @@ export const registerr = async(req:Request,res:Response)=>{
     res.status(500).json({message : "Server Error"})
   }
 }
+
+
+export const loginn = async (req:Request,res:Response)=>{
+  try{
+    const {email, password} = req.body;
+    if(!email || !password)
+  }catch(err:any){
+    return res.status(500).json({message : "Server error"})
+  }
+}
