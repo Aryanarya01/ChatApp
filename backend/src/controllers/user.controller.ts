@@ -158,7 +158,9 @@ export const registerr = async(req:Request,res:Response)=>{
 export const loginn = async (req:Request,res:Response)=>{
   try{
     const {email, password} = req.body;
-    if(!email || !password)
+    if(!email || !password){
+      return res.status(400).json({message : "all fields are required"})
+    }
   }catch(err:any){
     return res.status(500).json({message : "Server error"})
   }
