@@ -141,10 +141,14 @@ export const registerr = async(req:Request,res:Response)=>{
         password : newPassword,
       
       });
-      return res.status(200).json({message : "User registered successfully!",{
-        nma
-      }})
-  }catch(err){
+      return res.status(200).json({message : "User registered successfully!",
+        newUser : {
+          _id : newPassword._id,
+          name : user.name,
+          username : user.username
+        }
+      })
+  }catch(err:any){
     res.status(500).json({message : "Server Error"})
   }
 }
