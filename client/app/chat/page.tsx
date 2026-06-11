@@ -30,7 +30,7 @@ const page = () => {
     try {
       const { data } = await clientServer.post("/messages", {
         conversationId: selectedConversation._id,
-        content,
+        content, 
       });
       setMessage((prev) => [...prev, data]);
       setContent("");
