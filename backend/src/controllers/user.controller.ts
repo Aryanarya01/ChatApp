@@ -134,7 +134,16 @@ export const registerr = async(req:Request,res:Response)=>{
         return res.status(400).json({message : "User already exists"});
       }
       const newPassword = await bcrypt.hash(password,10);
-      const newUser = await User.create
+      const newUser = await User.create({
+        name,
+        username,
+        email,
+        password : newPassword,
+      
+      });
+      return res.status(200).json({message : "User registered successfully!",{
+        nma
+      }})
   }catch(err){
     res.status(500).json({message : "Server Error"})
   }
