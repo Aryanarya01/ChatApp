@@ -129,7 +129,12 @@ export const registerr = async(req:Request,res:Response)=>{
       if(!name || !email|| !password||!username){
         res.status(400).json({message : "All fields are required"})
       }
-      const user = aw
+      const user = await User.findOne({email});
+      if(user){
+        return res.status(400).json({message : "User already exists"});
+      }
+      const newPassword = await bcrypt.hash(password,10);
+      const newUser = await User.create
   }catch(err){
     res.status(500).json({message : "Server Error"})
   }
