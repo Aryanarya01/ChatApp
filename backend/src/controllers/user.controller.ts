@@ -123,12 +123,13 @@ export const getAllUser = async(req:AuthRequest, res: Response)=>{
  
 
 
-export const registerr = (req:Request,res:Response)=>{
+export const registerr = async(req:Request,res:Response)=>{
   try{
       const {name ,email,username,password} = req.body;
       if(!name || !email|| !password||!username){
-        re
+        res.status(400).json({message : "All fields are required"})
       }
+      const user = aw
   }catch(err){
     res.status(500).json({message : "Server Error"})
   }
