@@ -143,9 +143,10 @@ export const registerr = async(req:Request,res:Response)=>{
       });
       return res.status(200).json({message : "User registered successfully!",
         newUser : {
-          _id : newPassword._id,
-          name : user.name,
-          username : user.username
+          _id : newUser._id,
+          name : newUser.name,
+          username : newUser.username,
+          profilePicture : newUser.profilePicture,
         }
       })
   }catch(err:any){
