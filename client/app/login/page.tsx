@@ -1,10 +1,10 @@
-"use client"
+"use client";
 import clientServer from "@/lib/axios";
 import { useRouter } from "next/navigation";
 import React, { ChangeEvent, useState } from "react";
 
 const page = () => {
-  const router = useRouter()
+  const router = useRouter();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -13,14 +13,14 @@ const page = () => {
     e.preventDefault();
     try {
       const { data } = await clientServer.post("/auth/login", formData);
-      router.push("/chat")
+      router.push("/chat");
       console.log(data);
     } catch (err) {
       console.log(err);
     }
   };
   const handelChange = async (e: ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev)=>({
+    setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
@@ -31,13 +31,13 @@ const page = () => {
         <input
           type="email"
           placeholder="example : xyz@gmail.com"
-       name="email"
+          name="email"
           onChange={handelChange}
         />
         <input
           type="password"
           placeholder="*********"
-         name="password"
+          name="password"
           onChange={handelChange}
         />
         <button type="submit">Login</button>
