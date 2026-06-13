@@ -161,6 +161,10 @@ export const loginn = async (req:Request,res:Response)=>{
     if(!email || !password){
       return res.status(400).json({message : "all fields are required"})
     }
+    const user = await User.findOne({email});
+    if(!user){
+      retr
+    }
   }catch(err:any){
     return res.status(500).json({message : "Server error"})
   }
