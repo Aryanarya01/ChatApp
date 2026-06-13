@@ -165,6 +165,7 @@ export const loginn = async (req:Request,res:Response)=>{
     if(!user){
       return res.status(404).json({message : "User not found!"})
     }
+    const isMatched = bcrypt.compare(password,password)
   }catch(err:any){
     return res.status(500).json({message : "Server error"})
   }
