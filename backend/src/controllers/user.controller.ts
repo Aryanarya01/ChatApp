@@ -163,7 +163,7 @@ export const loginn = async (req:Request,res:Response)=>{
     }
     const user = await User.findOne({email});
     if(!user){
-      retr
+      return
     }
   }catch(err:any){
     return res.status(500).json({message : "Server error"})
