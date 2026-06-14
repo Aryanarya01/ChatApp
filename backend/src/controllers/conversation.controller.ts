@@ -11,9 +11,7 @@ export const createConversation = async (req: AuthRequest, res: Response) => {
       },
     });
     if (existingConversation) {
-      return res.status(400).json({
-        message: "Conversation already exists",
-      });
+      return res.status(200).json(existingConversation);
     }
     const conversation = await Conversation.create({
       participants: [req.user!._id, recieverId],
