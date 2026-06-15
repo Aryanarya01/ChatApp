@@ -97,6 +97,9 @@ const page = () => {
               {message.map((mess: any) => (
                 <p key={mess._id}>{mess.content}</p>
               ))}
+
+              <input type="text" name="message" />
+              <button onClick={handelSendMessage}>Send</button>
             </div>
           </>
         )}
