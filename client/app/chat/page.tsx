@@ -30,7 +30,7 @@ const page = () => {
     try {
       const { data } = await clientServer.post("/messages", {
         conversationId: selectedConversation._id,
-        content,
+        content, 
       });
       setMessage((prev) => [...prev, data]);
       setContent("");
@@ -84,17 +84,8 @@ const page = () => {
       <div>
         {selectedUser ? (
           <>
-            <h3>{selectedUser.name}</h3>
-            {message.map((mess: any) => (
-              <p key={mess._id}>{mess.content}</p>
-            ))}
-          </>
-        ) : (
-          <>
-            <p>Select a user</p>
-
-            <div>
-              {message.map((mess: any) => (
+          <h3>{selectedUser.name}</h3>
+           {message.map((mess: any) => (
                 <p key={mess._id}>{mess.content}</p>
               ))}
 
@@ -104,6 +95,17 @@ const page = () => {
                 onChange={(e) => setContent(e.target.value)}
               />
               <button onClick={handelSendMessage}>Send</button>
+          </>
+           
+         
+        ) : (
+          <>
+            <p>Select a user</p>
+
+            <div>
+              {message.map((mess: any) => (
+                <p key={mess._id}>{mess.content}</p>
+              ))}
             </div>
           </>
         )}
