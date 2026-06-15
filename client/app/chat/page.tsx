@@ -83,10 +83,12 @@ const page = () => {
       </div>
       <div>
         {selectedUser ? (
-          <h3>{selectedUser.name}</h3>
+          <>
+             <h3>{selectedUser.name}</h3>
           {message.map((mess:any)=>(
             <p key={mess._id}>{mess.content}</p>
           ))}
+          </>
         ) : (
           <>
             <p>Select a user</p>
