@@ -83,7 +83,7 @@ const page = () => {
       </div>
       <div>
         {selectedUser ? (
-          <p>{selectedUser.name}</p>
+          <h3>{selectedUser.name}</h3>
         ) : (
           <>
             <p>Select a user</p>
