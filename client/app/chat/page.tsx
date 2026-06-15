@@ -98,7 +98,7 @@ const page = () => {
                 <p key={mess._id}>{mess.content}</p>
               ))}
 
-              <input type="text" name="message" />
+              <input placeholder="Type message..." value={content} onChange={(e)=>setContent(e.target.value)} />
               <button onClick={handelSendMessage}>Send</button>
             </div>
           </>
