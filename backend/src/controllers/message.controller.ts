@@ -18,7 +18,7 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
     });
    const recieverSocketId = onlineUser.get(conversationId);
    if(recieverSocketId){
-    io.to(recieverSocketId).emit("")
+    io.to(recieverSocketId).emit("newMessage",message)
    }
     return res.status(201).json(message);
   } catch (err) {
