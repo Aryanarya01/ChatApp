@@ -2,6 +2,7 @@ import type { Response } from "express";
 import type { AuthRequest } from "../middleware/protect.js";
 import Message from "../models/message.model.js";
 import Conversation from "../models/conversation.model.js";
+import { onlineUser } from "../sockets/socketHandler.js";
 
 export const sendMessage = async (req: AuthRequest, res: Response) => {
   try {
@@ -15,6 +16,10 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
       conversation: conversationId,
       content,
     });
+   const recieverSocketId = onlineUser.get(conversationId);
+   if(recieverSocketId){
+    io.to(recieverSocketId).emit("")
+   }
     return res.status(201).json(message);
   } catch (err) {
     return res.status(500).json({ message: "Server Error" });
