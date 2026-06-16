@@ -21,8 +21,8 @@ socketHandler(io);
 
 
 const startDb = async () => {
-    connectDb()
-  app.listen(port, () => {
+   await connectDb()
+  server.listen(port, () => {
     console.log(`App is listining to port ${port}`);
   });
 };

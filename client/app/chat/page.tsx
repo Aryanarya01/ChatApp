@@ -53,8 +53,9 @@ const page = () => {
     }
   };
 
+ 
 useEffect(()=>{
-  const connectSockets = async()=>{
+const connectSockets = async()=>{
     try{
           const { data } = await clientServer.get("/auth/me");
           socket.connect();
@@ -68,7 +69,6 @@ useEffect(()=>{
     socket.disconnect()
   }
 },[])
-
 
   useEffect(() => {
     const fetchMessages = async () => {
@@ -86,8 +86,10 @@ useEffect(()=>{
   }, [selectedConversation]);
 
   useEffect(() => {
+    
     getMe();
     fetchUsers();
+    
   }, []);
   return (
     <div>
