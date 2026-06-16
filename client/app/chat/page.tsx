@@ -1,7 +1,7 @@
 "use client";
 import clientServer from "@/lib/axios";
 import { useEffect, useState } from "react";
-
+import {socket} from "@/lib/socket"
 const page = () => {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState<any>(null);
@@ -51,6 +51,9 @@ const page = () => {
       console.log(err.response?.data);
     }
   };
+
+
+  
 
   useEffect(() => {
     const fetchMessages = async () => {
