@@ -81,6 +81,9 @@ const connectSockets = async()=>{
           const { data } = await clientServer.get("/auth/me");
           socket.connect();
           socket.emit("setup",data.user._id);
+            socket.on("newMessage", (newMessage) => {
+    setMessage((prev) => [...prev, newMessage]);
+  });
     }catch(err){
       console.log(err)
     }
