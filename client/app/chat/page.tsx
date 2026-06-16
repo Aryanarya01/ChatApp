@@ -55,7 +55,7 @@ const page = () => {
 useEffect(()=>{
   const connectSockets = async()=>{
     try{
-          const { data } = await clientServer.get("/auth/users");
+          const { data } = await clientServer.get("/auth/me");
           socket.connect();
           socket.emit("setup",data.user._id);
     }catch(err){
