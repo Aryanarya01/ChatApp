@@ -56,10 +56,16 @@ useEffect(()=>{
   const connectSockets = async()=>{
     try{
           const { data } = await clientServer.get("/auth/users");
+          socket.connect();
+          socket.emit("setup",data.user._id);
     }catch(err){
-
+      console.log(err)
     }
   } 
+  connectSockets();
+  return()=>{
+    socket.disconnect()
+  }
 },[])
 
 
