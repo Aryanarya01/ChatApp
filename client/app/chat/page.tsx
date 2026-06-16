@@ -52,8 +52,16 @@ const page = () => {
     }
   };
 
+useEffect(()=>{
+  const connectSockets = async()=>{
+    try{
 
-  
+    }catch(err){
+
+    }
+  } 
+},[])
+
 
   useEffect(() => {
     const fetchMessages = async () => {
