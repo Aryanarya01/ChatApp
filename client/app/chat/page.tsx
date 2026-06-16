@@ -87,7 +87,9 @@ const page = () => {
     };
     connectSockets();
     return () => {
+        socket.off("newMessage");
       socket.disconnect();
+      
     };
   }, []);
   return (
