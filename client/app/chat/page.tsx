@@ -2,7 +2,7 @@
 import clientServer from "@/lib/axios";
 import { socket } from "@/lib/socket";
 import { useEffect, useState } from "react";
- 
+
 const page = () => {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState<any>(null);
@@ -31,7 +31,7 @@ const page = () => {
     try {
       const { data } = await clientServer.post("/messages", {
         conversationId: selectedConversation._id,
-        content, 
+        content,
       });
       setMessage((prev) => [...prev, data]);
       setContent("");
@@ -53,9 +53,6 @@ const page = () => {
     }
   };
 
- 
- 
-
   useEffect(() => {
     const fetchMessages = async () => {
       if (!selectedConversation) return;
@@ -75,24 +72,24 @@ const page = () => {
     getMe();
     fetchUsers();
   }, []);
-  useEffect(()=>{
-const connectSockets = async()=>{
-    try{
-          const { data } = await clientServer.get("/auth/me");
-          socket.connect();
-          socket.emit("setup",data.user._id);
-            socket.on("newMessage", (newMessage) => {
-    setMessage((prev) => [...prev, newMessage]);
-  });
-    }catch(err){
-      console.log(err)
-    }
-  } 
-  connectSockets();
-  return()=>{
-    socket.disconnect()
-  }
-},[])
+  useEffect(() => {
+    const connectSockets = async () => {
+      try {
+        const { data } = await clientServer.get("/auth/me");
+        socket.connect();
+        socket.emit("setup", data.user._id);
+        socket.on("newMessage", (newMessage) => {
+          setMessage((prev) => [...prev, newMessage]);
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    connectSockets();
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
   return (
     <div>
       <h2>Chat page</h2>
@@ -106,20 +103,18 @@ const connectSockets = async()=>{
       <div>
         {selectedUser ? (
           <>
-          <h3>{selectedUser.name}</h3>
-           {message.map((mess: any) => (
-                <p key={mess._id}>{mess.content}</p>
-              ))}
+            <h3>{selectedUser.name}</h3>
+            {message.map((mess: any) => (
+              <p key={mess._id}>{mess.content}</p>
+            ))}
 
-              <input
-                placeholder="Type message..."
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-              />
-              <button onClick={handelSendMessage}>Send</button>
+            <input
+              placeholder="Type message..."
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+            />
+            <button onClick={handelSendMessage}>Send</button>
           </>
-           
-         
         ) : (
           <>
             <p>Select a user</p>
