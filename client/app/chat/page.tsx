@@ -54,21 +54,7 @@ const page = () => {
   };
 
  
-useEffect(()=>{
-const connectSockets = async()=>{
-    try{
-          const { data } = await clientServer.get("/auth/me");
-          socket.connect();
-          socket.emit("setup",data.user._id);
-    }catch(err){
-      console.log(err)
-    }
-  } 
-  connectSockets();
-  return()=>{
-    socket.disconnect()
-  }
-},[])
+ 
 
   useEffect(() => {
     const fetchMessages = async () => {
@@ -86,11 +72,24 @@ const connectSockets = async()=>{
   }, [selectedConversation]);
 
   useEffect(() => {
-    
     getMe();
     fetchUsers();
-    
   }, []);
+  useEffect(()=>{
+const connectSockets = async()=>{
+    try{
+          const { data } = await clientServer.get("/auth/me");
+          socket.connect();
+          socket.emit("setup",data.user._id);
+    }catch(err){
+      console.log(err)
+    }
+  } 
+  connectSockets();
+  return()=>{
+    socket.disconnect()
+  }
+},[])
   return (
     <div>
       <h2>Chat page</h2>
