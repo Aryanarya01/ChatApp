@@ -94,7 +94,7 @@ const page = () => {
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
               />
-              <button onClick={handelSendMessage}>Send.</button>
+              <button onClick={handelSendMessage}>Send</button>
           </>
            
          
