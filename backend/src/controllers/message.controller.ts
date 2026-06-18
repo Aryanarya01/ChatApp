@@ -16,10 +16,7 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
       conversation: conversationId,
       content,
     });
-   const recieverSocketId = onlineUser.get(conversationId);
-   if(recieverSocketId){
-    io.to(recieverSocketId).emit("newMessage",message)
-   }
+    const recieverId = conversation.participants.find((id)=>id.toString() !== req.userid.toString())
     return res.status(201).json(message);
   } catch (err) {
     return res.status(500).json({ message: "Server Error" });
