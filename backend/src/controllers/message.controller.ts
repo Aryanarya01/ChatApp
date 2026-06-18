@@ -35,7 +35,7 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
 
 export const getMessage = async (req: AuthRequest, res: Response) => {
   try {
-    const { conversationId } = req.body;
+    const { conversationId } = req.params;
     const message = await Message.find({
       conversation: conversationId,
     })
@@ -43,6 +43,7 @@ export const getMessage = async (req: AuthRequest, res: Response) => {
       .sort({ createdAt: 1 });
     return res.status(200).json(message);
   } catch (err) {
+    console.log(err)
     return res.status(500).json({ message: "Server Error" });
   }
 };
