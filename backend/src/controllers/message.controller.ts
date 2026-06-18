@@ -20,7 +20,10 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
     const recieverId = conversation.participants.find(
       (id) => id.toString() !== req.user!._id.toString(),
     );
-    const recieverSocketId = onlineUser.get(recieverId);
+    if(!recieverId){
+      return res.status(404).json({message : "Reciever not found"})
+    }
+    const recieverSocketId = onlineUser.get(recieverId.toString());
     if(recieverSocketId){
       io.to(recieverSocketId).emit("newMessage",message)
     }
