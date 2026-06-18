@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 import { createServer } from "node:http";
+import { setIo } from "./sockets/sockets.js";
 import { Server } from "socket.io";
 import app from "./app.js";
 import connectDb from "./config/db.js";
@@ -15,6 +16,7 @@ const io = new Server(server,{
         credentials : true,
     }
 })
+setIo(io);
 
 
 socketHandler(io);
