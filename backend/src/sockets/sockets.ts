@@ -6,4 +6,4 @@ export const setIo = (socketIO: Server)=>{
     io = socketIO;
 }
 
-export const getIo
+export const getIO = ()=>io;
