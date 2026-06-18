@@ -2,4 +2,8 @@ import type { Server } from "socket.io";
 let io: Server;
 
 
-e
+export const setIo = (socketIO: Server)=>{
+    io = socketIO;
+}
+
+export const getIo
