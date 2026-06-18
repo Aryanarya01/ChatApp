@@ -3,7 +3,7 @@ import type { AuthRequest } from "../middleware/protect.js";
 import Message from "../models/message.model.js";
 import Conversation from "../models/conversation.model.js";
 import { onlineUser } from "../sockets/socketHandler.js";
-
+import { getIO } from "../sockets/sockets.js";
 export const sendMessage = async (req: AuthRequest, res: Response) => {
   try {
     const { conversationId, content } = req.body;
