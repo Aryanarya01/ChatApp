@@ -20,12 +20,12 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
     const recieverId = conversation.participants.find(
       (id) => id.toString() !== req.user!._id.toString(),
     );
-    if(!recieverId){
-      return res.status(404).json({message : "Reciever not found"})
+    if (!recieverId) {
+      return res.status(404).json({ message: "Reciever not found" });
     }
     const recieverSocketId = onlineUser.get(recieverId.toString());
-    if(recieverSocketId){
-      io.to(recieverSocketId).emit("newMessage",message)
+    if (recieverSocketId) {
+      io.to(recieverSocketId).emit("newMessage", message);
     }
     return res.status(201).json(message);
   } catch (err) {
@@ -43,7 +43,7 @@ export const getMessage = async (req: AuthRequest, res: Response) => {
       .sort({ createdAt: 1 });
     return res.status(200).json(message);
   } catch (err) {
-    console.log(err)
+    console.log(err);
     return res.status(500).json({ message: "Server Error!" });
   }
 };
