@@ -103,6 +103,9 @@ const page = () => {
       <div>
         {users.map((user: any) => (
           <div key={user._id}>
+            {onlineUsers.includes(user._id) && (
+                 <span>🟢</span>
+            )}
             <h4 onClick={() => handelUserClick(user)}>{user.name}</h4>
           </div>
         ))}
