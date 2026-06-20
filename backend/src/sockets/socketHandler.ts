@@ -8,6 +8,7 @@ const socketHandler = (io: Server) => {
 
     socket.on("setup", (userId: string) => {
       onlineUser.set(userId, socket.id);
+      io.emit("onlineUsers")
       console.log("Online user :", onlineUser);
     });
 
