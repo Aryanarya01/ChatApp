@@ -11,7 +11,6 @@ const page = () => {
   const [content, setContent] = useState("");
   const [onlineUsers, setonlineUsers] = useState<string[]>([]);
 
-
   const getMe = async () => {
     try {
       const { data } = await clientServer.get("/auth/me");
@@ -56,8 +55,6 @@ const page = () => {
     }
   };
 
-
-
   useEffect(() => {
     const fetchMessages = async () => {
       if (!selectedConversation) return;
@@ -86,19 +83,18 @@ const page = () => {
         socket.on("newMessage", (newMessage) => {
           setMessage((prev) => [...prev, newMessage]);
         });
-        socket.on("onlineUsers",(users)=>{
-          setonlineUsers(users)
-        })
+        socket.on("onlineUsers", (users) => {
+          setonlineUsers(users);
+        });
       } catch (err) {
         console.log(err);
       }
     };
     connectSockets();
     return () => {
-        socket.off("newMessage");
-        socket.off("onlineUsers")
+      socket.off("newMessage");
+      socket.off("onlineUsers");
       socket.disconnect();
-      
     };
   }, []);
   return (
