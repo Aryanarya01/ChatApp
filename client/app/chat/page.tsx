@@ -86,8 +86,8 @@ const page = () => {
         socket.on("newMessage", (newMessage) => {
           setMessage((prev) => [...prev, newMessage]);
         });
-        socket.on("onlineUser",(users)=>{
-          
+        socket.on("onlineUsers",(users)=>{
+          setonlineUsers(users)
         })
       } catch (err) {
         console.log(err);
@@ -96,6 +96,7 @@ const page = () => {
     connectSockets();
     return () => {
         socket.off("newMessage");
+        socket.off("onlineUsers")
       socket.disconnect();
       
     };
