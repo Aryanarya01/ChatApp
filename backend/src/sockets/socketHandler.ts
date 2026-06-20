@@ -8,7 +8,7 @@ const socketHandler = (io: Server) => {
 
     socket.on("setup", (userId: string) => {
       onlineUser.set(userId, socket.id);
-      io.emit("onlineUsers")
+      io.emit("onlineUsers",[...onlineUser.keys()])
       console.log("Online user :", onlineUser);
     });
 
@@ -16,6 +16,7 @@ const socketHandler = (io: Server) => {
       for (const [userId, socketId] of onlineUser.entries()) {
         if (socketId === socket.id) {
           onlineUser.delete(userId);
+          io.emit("onlineUsers",[...onlineUser.keys()])
           break;
         }
       }
