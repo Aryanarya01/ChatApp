@@ -9,6 +9,7 @@ const page = () => {
   const [selectedConversation, setSelectedConversation] = useState<any>(null);
   const [message, setMessage] = useState<any[]>([]);
   const [content, setContent] = useState("");
+  const [onlineUsers, setonlineUsers]
   const getMe = async () => {
     try {
       const { data } = await clientServer.get("/auth/me");
