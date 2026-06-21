@@ -119,7 +119,7 @@ const page = () => {
             ))}
 
             <input
-              placeholder="Type message...."
+              placeholder="Type message..."
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />
