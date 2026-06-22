@@ -34,6 +34,7 @@ const page = () => {
           name="email"
           onChange={handelChange}
         />
+        <br />
         <input
           type="password"
           placeholder="*********"
