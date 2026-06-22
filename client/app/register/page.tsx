@@ -55,7 +55,7 @@ const page = () => {
           name="password"
           onChange={handelChange}
         />
-        
+        <br />
         <button type="submit">Register</button>
       </form>
     </div>
