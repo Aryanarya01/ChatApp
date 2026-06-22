@@ -37,7 +37,7 @@ const page = () => {
         <br />
         <input
           type="password"
-          placeholder="*********"
+          placeholder="********"
           name="password"
           onChange={handelChange}
         />
