@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import clientServer from "@/lib/axios";
 import React, { useState } from "react";
 
@@ -19,8 +19,8 @@ const page = () => {
   const handelSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const {data} = await clientServer.post("/auth/register", formData);
-      console.log(data)
+      const { data } = await clientServer.post("/auth/register", formData);
+      console.log(data);
     } catch (err) {
       console.log(err);
     }
@@ -31,21 +31,21 @@ const page = () => {
         <input
           type="text"
           placeholder="Enter your name"
-           name="name"
+          name="name"
           onChange={handelChange}
         />
         <br />
         <input
           type="username"
           placeholder="Enter your username"
-           name="username"
+          name="username"
           onChange={handelChange}
         />
         <br />
         <input
           type="email"
           placeholder="Enter your email"
-           name="email"
+          name="email"
           onChange={handelChange}
         />
         <br />
