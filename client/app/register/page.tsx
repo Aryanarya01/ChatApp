@@ -34,24 +34,28 @@ const page = () => {
            name="name"
           onChange={handelChange}
         />
+        <br />
         <input
           type="username"
           placeholder="Enter your username"
            name="username"
           onChange={handelChange}
         />
+        <br />
         <input
           type="email"
           placeholder="Enter your email"
            name="email"
           onChange={handelChange}
         />
+        <br />
         <input
           type="password"
           placeholder="Enter your password"
           name="password"
           onChange={handelChange}
         />
+        
         <button type="submit">Register</button>
       </form>
     </div>
