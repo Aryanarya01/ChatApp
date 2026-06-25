@@ -27,7 +27,13 @@ const page = () => {
       console.log(err);
     }
   };
-
+  const fetchConversation = async()=>{
+    try{
+      const {data} = await clientServer.
+    }catch(err:any){
+      console.log(err)
+    }
+  }
   const handelSendMessage = async () => {
     if (!selectedConversation || !content.trim()) return;
     try {
