@@ -40,7 +40,7 @@ export const getMessage = async (req: AuthRequest, res: Response) => {
   try {
     const { conversationId } = req.params;
     const message = await Message.find({
-      conversation: conversationId,
+      conversation : conversationId,
     })
       .populate("sender", "name username profilePicture")
       .sort({ createdAt: 1 });
