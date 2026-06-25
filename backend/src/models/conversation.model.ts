@@ -14,6 +14,10 @@ const consversationSchema = new mongoose.Schema(
         required: true,
       },
     ],
+    lastMessage : {
+      type : mongoose.Schema.Types.ObjectId,
+      ref : "Message",
+    }
   },
   {
     timestamps: true,
