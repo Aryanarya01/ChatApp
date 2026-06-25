@@ -29,7 +29,7 @@ const page = () => {
   };
   const fetchConversation = async()=>{
     try{
-      const {data} = await clientServer.
+      const {data} = await clientServer.get("/conversation/")
     }catch(err:any){
       console.log(err)
     }
