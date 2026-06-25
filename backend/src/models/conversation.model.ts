@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 
 interface IConversation extends Document {
   participants: mongoose.Schema.Types.ObjectId[];
-  lastMessage : mongoose.Schema.Types.ObjectId;
+  lastMessage: mongoose.Schema.Types.ObjectId;
 }
 
 const consversationSchema = new mongoose.Schema(
@@ -15,10 +15,10 @@ const consversationSchema = new mongoose.Schema(
         required: true,
       },
     ],
-    lastMessage : {
-      type : mongoose.Schema.Types.ObjectId,
-      ref : "Message",
-    }
+    lastMessage: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Message",
+    },
   },
   {
     timestamps: true,
