@@ -16,6 +16,7 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
       conversation: conversationId,
       content,
     });
+    await Conversation.findByIdAndUpdate(conversationId)
     const io = getIO();
     const recieverId = conversation.participants.find(
       (id) => id.toString() !== req.user!._id.toString(),
