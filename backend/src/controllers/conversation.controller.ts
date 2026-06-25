@@ -27,7 +27,7 @@ export const getUserConversations = async (req: AuthRequest, res: Response) => {
   try {
     const conversations = await Conversation.find({
       participants: req.user!._id,
-    }).populate("participants", "name username email profilePicture");
+    }).populate("participants", "name username email profilePicture").populate("lastMessage").sort;
     return res.status(200).json(conversations);
   } catch (err) {
     return res.status(500).json({
