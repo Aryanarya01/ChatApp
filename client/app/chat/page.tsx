@@ -31,7 +31,7 @@ const page = () => {
   const fetchConversation = async()=>{
     try{
       const {data} = await clientServer.get("/conversation");
-      se
+      setConversation(data)
     }catch(err:any){
       console.log(err)
     }
@@ -109,10 +109,10 @@ const page = () => {
     <div>
       <h2>Chat page</h2>
       <div>
-        {users.map((user: any) => (
-          <div key={user._id}>
+        {conversation.map((user: any) => (
+          <div key={conversation._id}>
             <h4 onClick={() => handelUserClick(user)}>
-              {user.name}
+              {conversation.name}
               {onlineUsers.includes(user._id) && <span>🟢</span>}
             </h4>
           </div>
