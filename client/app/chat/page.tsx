@@ -109,11 +109,11 @@ const page = () => {
     <div>
       <h2>Chat page</h2>
       <div>
-        {conversation.map((user: any) => (
+        {conversation.map((conversation: any) => (
           <div key={conversation._id}>
             <h4 onClick={() => handelUserClick(user)}>
               {conversation.name}
-              {onlineUsers.includes(user._id) && <span>🟢</span>}
+              {onlineUsers.includes(conversation._id) && <span>🟢</span>}
             </h4>
           </div>
         ))}
