@@ -81,6 +81,7 @@ const page = () => {
   useEffect(() => {
     getMe();
     fetchUsers();
+    fetchConversation();
   }, []);
   useEffect(() => {
     const connectSockets = async () => {
@@ -111,7 +112,7 @@ const page = () => {
       <div>
         {conversation.map((conversation: any) => (
           <div key={conversation._id}>
-            <h4 onClick={() => handelUserClick(user)}>
+            <h4 onClick={() => handelUserClick(conversation)}>
               {conversation.name}
               {onlineUsers.includes(conversation._id) && <span>🟢</span>}
             </h4>
