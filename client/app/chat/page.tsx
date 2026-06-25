@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 const page = () => {
   const [users, setUsers] = useState([]);
+  const [conversation, setConversation] = useState([])
   const [selectedUser, setSelectedUser] = useState<any>(null);
   const [selectedConversation, setSelectedConversation] = useState<any>(null);
   const [message, setMessage] = useState<any[]>([]);
@@ -29,7 +30,8 @@ const page = () => {
   };
   const fetchConversation = async()=>{
     try{
-      const {data} = await clientServer.get("/conversation/")
+      const {data} = await clientServer.get("/conversation");
+      se
     }catch(err:any){
       console.log(err)
     }
