@@ -113,14 +113,18 @@ const page = () => {
     <div>
       <h2>Chat page..</h2>
       <div>
-        {conversation.map((conversation: any) => (
-          <div key={conversation._id}>
-            <h4 onClick={() => handelUserClick(conversation)}>
-              {conversation.lastMessage}
-              {onlineUsers.includes(conversation._id) && <span>🟢</span>}
-            </h4>
-          </div>
-        ))}
+        {conversation.map((conv: any) => {
+  const otherUser = conv.participants.find(
+    (p: any) => p._id !== me?._id
+  );
+
+  return (
+    <div key={conv._id}>
+      <h4>{otherUser?.name}</h4>
+      <p>{conv.lastMessage?.content || "No messages yet"}</p>
+    </div>
+  );
+})}
       </div>
       <div>
         {selectedUser ? (
