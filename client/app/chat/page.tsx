@@ -116,7 +116,7 @@ const page = () => {
           ))}
       </div>
       </div>
-      <div>
+      <div className="flex flex-col flex-1">
         <div>
           {selectedUser ? (
             <>
