@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const page = () => {
   const [users, setUsers] = useState([]);
-  const [conversation, setConversation] = useState([])
+ 
   const [selectedUser, setSelectedUser] = useState<any>(null);
   const [selectedConversation, setSelectedConversation] = useState<any>(null);
   const [message, setMessage] = useState<any[]>([]);
@@ -28,14 +28,7 @@ const page = () => {
       console.log(err);
     }
   };
-  const fetchConversation = async()=>{
-    try{
-      const {data} = await clientServer.get("/conversation");
-      setConversation(data)
-    }catch(err:any){
-      console.log(err)
-    }
-  }
+ 
   const handelSendMessage = async () => {
     if (!selectedConversation || !content.trim()) return;
     try {
@@ -81,7 +74,7 @@ const page = () => {
   useEffect(() => {
     getMe();
     fetchUsers();
-    fetchConversation(); ////till hear
+    
   }, []);
   useEffect(() => {
     const connectSockets = async () => {
@@ -110,7 +103,7 @@ const page = () => {
     <div>
       <h2>Chat page..</h2>
       <div>
-        {conversation.map((conversation: any) => (
+        {users.map((conversation: any) => (
           <div key={conversation._id}>
             <h4 onClick={() => handelUserClick(conversation)}>
               {conversation.name}
