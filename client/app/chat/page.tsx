@@ -53,6 +53,8 @@ const page = () => {
     }
   };
 const handleConversationClick = (conv: any) => {
+  const otherUser = conv.participants.find((p:any)=>p._id !== me._id)
+  setSelectedUser(otherUser)
   setSelectedConversation(conv);
 };
   const handelUserClick = async (user: any) => {
