@@ -112,7 +112,8 @@ const page = () => {
 
           return (
             <div key={conv._id}>
-              <h4 onClick={() => handleConversationClick(conv)}>
+              <h4 onClick={() => handleConversationClick(conv)} className={`p-3 cursor-pointer ${selectedConversation?._id === conv._id  ? "bg-gray-300"
+      : "hover:bg-gray-100"}`}>
                 {otherUser?.name}
               </h4>
               <p>{conv.lastMessage?.content || "No messages yet"}</p>
