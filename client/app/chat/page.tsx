@@ -86,7 +86,7 @@ const handleConversationClick = (conv: any) => {
   useEffect(() => {
     getMe();
     fetchUsers();
-   
+   fetchConversation()
   }, []);
   useEffect(() => {
     const connectSockets = async () => {
@@ -122,7 +122,7 @@ const handleConversationClick = (conv: any) => {
 
   return (
     <div key={conv._id}>
-      <h4>{otherUser?.name}</h4>
+      <h4 onClick={() => handleConversationClick(conv)}>{otherUser?.name}</h4>
       <p>{conv.lastMessage?.content || "No messages yet"}</p>
     </div>
   );
