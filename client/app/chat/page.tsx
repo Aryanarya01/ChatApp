@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 const page = () => {
   const [users, setUsers] = useState([]);
   const [me, setMe] = useState<any>(null);
-  const [conversation, setConversation] = useState([])
+  const [conversation, setConversation] = useState([]);
   const [selectedUser, setSelectedUser] = useState<any>(null);
   const [selectedConversation, setSelectedConversation] = useState<any>(null);
   const [message, setMessage] = useState<any[]>([]);
@@ -17,7 +17,7 @@ const page = () => {
     try {
       const { data } = await clientServer.get("/auth/me");
       console.log(data);
-         setMe(data.user);
+      setMe(data.user);
     } catch (err) {
       console.log(err);
     }
@@ -30,15 +30,15 @@ const page = () => {
       console.log(err);
     }
   };
-  const fetchConversation = async()=>{
-    try{
-      const {data} = await clientServer.get("/conversation");
-      console.log(data)
-      setConversation(data)
-    }catch(err:any){
-      console.log(err)
+  const fetchConversation = async () => {
+    try {
+      const { data } = await clientServer.get("/conversation");
+      console.log(data);
+      setConversation(data);
+    } catch (err: any) {
+      console.log(err);
     }
-  }
+  };
   const handelSendMessage = async () => {
     if (!selectedConversation || !content.trim()) return;
     try {
@@ -52,12 +52,11 @@ const page = () => {
       console.log(err);
     }
   };
-const handleConversationClick = (conv: any) => {
-  const otherUser = conv.participants.find((p:any)=>p._id !== me._id)
-  setSelectedUser(otherUser)
-  setSelectedConversation(conv);
-};
-   
+  const handleConversationClick = (conv: any) => {
+    const otherUser = conv.participants.find((p: any) => p._id !== me._id);
+    setSelectedUser(otherUser);
+    setSelectedConversation(conv);
+  };
 
   useEffect(() => {
     const fetchMessages = async () => {
@@ -77,7 +76,7 @@ const handleConversationClick = (conv: any) => {
   useEffect(() => {
     getMe();
     fetchUsers();
-   fetchConversation()
+    fetchConversation();
   }, []);
   useEffect(() => {
     const connectSockets = async () => {
@@ -107,18 +106,20 @@ const handleConversationClick = (conv: any) => {
       <h2>Chat page..</h2>
       <div className="w-1/3 border-r">
         {conversation.map((conv: any) => {
-  const otherUser = conv.participants.find(
-    (p: any) => p._id !== me?._id
-  );
+          const otherUser = conv.participants.find(
+            (p: any) => p._id !== me?._id,
+          );
 
-  return (
-    <div  key={conv._id}>
-      <h4 onClick={() => handleConversationClick(conv)}>{otherUser?.name}</h4>
-      <p>{conv.lastMessage?.content || "No messages yet"}</p>
-    </div>
-  );
-})}
-      
+          return (
+            <div key={conv._id}>
+              <h4 onClick={() => handleConversationClick(conv)}>
+                {otherUser?.name}
+              </h4>
+              <p>{conv.lastMessage?.content || "No messages yet"}</p>
+            </div>
+          );
+        })}
+      </div>
       <div className="flex-1">
         {selectedUser ? (
           <>
@@ -147,7 +148,6 @@ const handleConversationClick = (conv: any) => {
         )}
       </div>
     </div>
-    
   );
 };
 
