@@ -120,11 +120,11 @@ const page = () => {
         <div className="border-b p-4">
           {selectedUser ? (
             <>
-              <h2>{selectedUser.name}</h2>
+              <h2 className="text-xl font-semibold">{selectedUser.name}</h2>
               {message.map((mess: any) => (
                 <p key={mess._id}>{mess.content}</p>
               ))}
-              <input
+              <input className="flex-1 border rounded p-2"
                 placeholder="Type message..."
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
@@ -134,7 +134,7 @@ const page = () => {
                   }
                 }}
               />
-              <button onClick={handelSendMessage}>Send</button>
+              <button className="bg-blue-500 text-white px-4 rounded" onClick={handelSendMessage}>Send</button>
             </>
           ) : (
             <>
