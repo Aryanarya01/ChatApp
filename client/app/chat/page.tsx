@@ -126,6 +126,11 @@ const page = () => {
               placeholder="Type message..."
               value={content}
               onChange={(e) => setContent(e.target.value)}
+              onKeyDown={(e)=>{
+                if(e.key === "Enter"){
+                  handelSendMessage()
+                }
+              }}
             />
             <button onClick={handelSendMessage}>Send</button>
           </>
