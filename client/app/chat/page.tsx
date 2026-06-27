@@ -103,11 +103,11 @@ const page = () => {
     <div>
       <h2>Chat page..</h2>
       <div>
-        {users.map((conversation: any) => (
-          <div key={conversation._id}>
-            <h4 onClick={() => handelUserClick(conversation)}>
-              {conversation.name}
-              {onlineUsers.includes(conversation._id) && <span>🟢</span>}
+        {users.map((user: any) => (
+          <div key={user._id} className={`p-3 cursor-pointer ${selectedUser?._id === user._id ? "bg-gray-300" : "hover:bg-gray-100"}`}>
+            <h4 onClick={() => handelUserClick(user)}>
+              {user.name}
+              {onlineUsers.includes(user._id) && <span>🟢</span>}
             </h4>
           </div>
         ))}
