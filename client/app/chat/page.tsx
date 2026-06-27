@@ -2,8 +2,9 @@
 import clientServer from "@/lib/axios";
 import { socket } from "@/lib/socket";
 import { useEffect, useRef, useState } from "react";
-const messageEndRef = useRef<HTMLDivElement>(null)
+ 
 const page = () => {
+  
   const [users, setUsers] = useState([]);
   const [me, setMe] = useState<any>(null)
   const [selectedUser, setSelectedUser] = useState<any>(null);
@@ -11,6 +12,7 @@ const page = () => {
   const [message, setMessage] = useState<any[]>([]);
   const [content, setContent] = useState("");
   const [onlineUsers, setonlineUsers] = useState<string[]>([]);
+const messageEndRef = useRef<HTMLDivElement>(null)
 
   const getMe = async () => {
     try {
@@ -56,6 +58,12 @@ const page = () => {
       console.log(err.response?.data);
     }
   };
+
+  useEffect(()=>{
+    messageEndRef.current?.scrollIntoView({
+      behavior: "smooth"
+    });
+  },[message])
 
   useEffect(() => {
     const fetchMessages = async () => {
