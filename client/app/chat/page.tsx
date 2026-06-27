@@ -124,25 +124,31 @@ const page = () => {
               {message.map((mess: any) => (
                 <p key={mess._id}>{mess.content}</p>
               ))}
-              <input className="flex-1 border rounded p-2"
-                placeholder="Type message..."
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                onKeyDown={(e)=>{
-                  if(e.key === "Enter"){
-                    handelSendMessage()
-                  }
-                }}
-              />
-              <button className="bg-blue-500 text-white px-4 rounded" onClick={handelSendMessage}>Send</button>
+              <div className="border-t p-4 flex gap-2">
+                <input className="flex-1 border rounded p-2"
+                  placeholder="Type message..."
+                  value={content}
+                  onChange={(e) => setContent(e.target.value)}
+                  onKeyDown={(e)=>{
+                    if(e.key === "Enter"){
+                      handelSendMessage()
+                    }
+                  }}
+                />
+                <button className="bg-blue-500 text-white px-4 rounded" onClick={handelSendMessage}>Send</button>
+              </div>
             </>
           ) : (
             <>
-              <p>Select a user</p>
-              <div>
-                {message.map((mess: any) => (
-                  <p key={mess._id}>{mess.content}</p>
-                ))}
+              <div className="flex-1 overflow-y-auto p-4">
+                <p>Select a user</p>
+                <div className="flex flex-col gap-3">
+                  {message.map((mess: any) => (
+                    <div key={mess._id} className="">
+                      <p>{mess.content}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </>
           )}
