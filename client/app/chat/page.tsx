@@ -17,6 +17,7 @@ const page = () => {
     try {
       const { data } = await clientServer.get("/auth/me");
       console.log(data);
+         setMe(data.user);
     } catch (err) {
       console.log(err);
     }
@@ -83,7 +84,7 @@ const page = () => {
   useEffect(() => {
     getMe();
     fetchUsers();
-    fetchConversation(); ////till hear
+   
   }, []);
   useEffect(() => {
     const connectSockets = async () => {
