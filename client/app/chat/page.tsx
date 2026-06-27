@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const page = () => {
   const [users, setUsers] = useState([]);
- 
+
   const [selectedUser, setSelectedUser] = useState<any>(null);
   const [selectedConversation, setSelectedConversation] = useState<any>(null);
   const [message, setMessage] = useState<any[]>([]);
@@ -28,7 +28,7 @@ const page = () => {
       console.log(err);
     }
   };
- 
+
   const handelSendMessage = async () => {
     if (!selectedConversation || !content.trim()) return;
     try {
@@ -74,7 +74,6 @@ const page = () => {
   useEffect(() => {
     getMe();
     fetchUsers();
-    
   }, []);
   useEffect(() => {
     const connectSockets = async () => {
@@ -104,7 +103,10 @@ const page = () => {
       <h2>Chat page..</h2>
       <div>
         {users.map((user: any) => (
-          <div key={user._id} className={`p-3 cursor-pointer ${selectedUser?._id === user._id ? "bg-gray-300" : "hover:bg-gray-100"}`}>
+          <div
+            key={user._id}
+            className={`p-3 cursor-pointer ${selectedUser?._id === user._id ? "bg-gray-300" : "hover:bg-gray-100"}`}
+          >
             <h4 onClick={() => handelUserClick(user)}>
               {user.name}
               {onlineUsers.includes(user._id) && <span>🟢</span>}
