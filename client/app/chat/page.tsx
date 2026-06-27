@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 const page = () => {
   const [users, setUsers] = useState([]);
+  const [me, setMe] = useState<any>(null);
   const [conversation, setConversation] = useState([])
   const [selectedUser, setSelectedUser] = useState<any>(null);
   const [selectedConversation, setSelectedConversation] = useState<any>(null);
@@ -114,7 +115,7 @@ const page = () => {
         {conversation.map((conversation: any) => (
           <div key={conversation._id}>
             <h4 onClick={() => handelUserClick(conversation)}>
-              {conversation.name}
+              {conversation.lastMessage}
               {onlineUsers.includes(conversation._id) && <span>🟢</span>}
             </h4>
           </div>
