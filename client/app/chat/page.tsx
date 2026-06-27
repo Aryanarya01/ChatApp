@@ -1,11 +1,11 @@
 "use client";
 import clientServer from "@/lib/axios";
 import { socket } from "@/lib/socket";
-import { useEffect, useState } from "react";
-
+import { useEffect, useRef, useState } from "react";
+const messageEndRef = useRef<HTMLDivElement>(null)
 const page = () => {
   const [users, setUsers] = useState([]);
-
+  const [me, setMe] = useState<any>(null)
   const [selectedUser, setSelectedUser] = useState<any>(null);
   const [selectedConversation, setSelectedConversation] = useState<any>(null);
   const [message, setMessage] = useState<any[]>([]);
@@ -15,6 +15,7 @@ const page = () => {
   const getMe = async () => {
     try {
       const { data } = await clientServer.get("/auth/me");
+      setMe(data.user)
       console.log(data);
     } catch (err) {
       console.log(err);
@@ -144,8 +145,18 @@ const page = () => {
                 <p>Select a user</p>
                 <div className="flex flex-col gap-3">
                   {message.map((mess: any) => (
-                    <div key={mess._id} className={``}>
+                    <div key={mess._id} className={`max-w-[70%] p-3 rounded-lg ${
+                      mess.sender._id === me._id
+                       ? "self-end bg-blue-500 text-white"
+          : "self-start bg-gray-200 text-black"
+                    }`}>
                       <p>{mess.content}</p>
+                      <p className="text-xs mt-1">
+  {new Date(mess.createdAt).toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  })}
+</p>
                     </div>
                   ))}
                 </div>
