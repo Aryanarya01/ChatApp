@@ -4,9 +4,8 @@ import { socket } from "@/lib/socket";
 import { useEffect, useState } from "react";
 
 const page = () => {
- 
-  const [me, setMe] = useState<any>(null);
-  const [conversation, setConversation] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [conversation, setConversation] = useState([])
   const [selectedUser, setSelectedUser] = useState<any>(null);
   const [selectedConversation, setSelectedConversation] = useState<any>(null);
   const [message, setMessage] = useState<any[]>([]);
@@ -17,21 +16,26 @@ const page = () => {
     try {
       const { data } = await clientServer.get("/auth/me");
       console.log(data);
-      setMe(data.user);
     } catch (err) {
       console.log(err);
     }
   };
-   
-  const fetchConversation = async () => {
+  const fetchUsers = async () => {
     try {
-      const { data } = await clientServer.get("/conversation");
-      console.log(data);
-      setConversation(data);
+      const { data } = await clientServer.get("/auth/users");
+      setUsers(data);
     } catch (err: any) {
       console.log(err);
     }
   };
+  const fetchConversation = async()=>{
+    try{
+      const {data} = await clientServer.get("/conversation");
+      setConversation(data)
+    }catch(err:any){
+      console.log(err)
+    }
+  }
   const handelSendMessage = async () => {
     if (!selectedConversation || !content.trim()) return;
     try {
@@ -45,10 +49,18 @@ const page = () => {
       console.log(err);
     }
   };
-  const handleConversationClick = (conv: any) => {
-    const otherUser = conv.participants.find((p: any) => p._id !== me._id);
-    setSelectedUser(otherUser);
-    setSelectedConversation(conv);
+
+  const handelUserClick = async (user: any) => {
+    try {
+      const { data } = await clientServer.post("/conversation/create", {
+        recieverId: user._id,
+      });
+      setSelectedUser(user);
+      setSelectedConversation(data);
+      console.log(data);
+    } catch (err: any) {
+      console.log(err.response?.data);
+    }
   };
 
   useEffect(() => {
@@ -68,8 +80,8 @@ const page = () => {
 
   useEffect(() => {
     getMe();
- 
-    fetchConversation();
+    fetchUsers();
+    fetchConversation(); ////till hear
   }, []);
   useEffect(() => {
     const connectSockets = async () => {
@@ -95,31 +107,19 @@ const page = () => {
     };
   }, []);
   return (
-    <div className="flex h-screen">
+    <div>
       <h2>Chat page..</h2>
-      <div className="w-1/3 border-r">
-        {conversation.map((conv: any) => {
-          const otherUser = conv.participants.find(
-            (p: any) => p._id !== me?._id,
-          );
-
-          return (
-            <div key={conv._id}
-               onClick={() => handleConversationClick(conv)}
-                className={`p-3 cursor-pointer ${
-                  selectedConversation?._id === conv._id
-                    ? "bg-gray-300"
-                    : "hover:bg-gray-100"
-                }`}>
-              <h4>
-                {otherUser?.name}
-              </h4>
-              <p>{conv.lastMessage?.content || "No messages yet"}</p>
-            </div>
-          );
-        })}
+      <div>
+        {conversation.map((conversation: any) => (
+          <div key={conversation._id}>
+            <h4 onClick={() => handelUserClick(conversation)}>
+              {conversation.name}
+              {onlineUsers.includes(conversation._id) && <span>🟢</span>}
+            </h4>
+          </div>
+        ))}
       </div>
-      <div className="flex-1">
+      <div>
         {selectedUser ? (
           <>
             <h3>{selectedUser.name}</h3>
@@ -138,18 +138,9 @@ const page = () => {
           <>
             <p>Select a user</p>
 
-            <div className="flex flex-col gap-2 mt-4">
+            <div>
               {message.map((mess: any) => (
-                <div
-                  key={mess._id}
-                  className={`max-w-xs p-3 rounded-lg ${
-                    mess.sender._id === me._id
-                      ? "ml-auto bg-blue-500 text-white"
-                      : "mr-auto bg-gray-200 text-black"
-                  }`}
-                >
-                  {mess.content}
-                </div>
+                <p key={mess._id}>{mess.content}</p>
               ))}
             </div>
           </>
