@@ -141,11 +141,16 @@ const page = () => {
 
             <div className="flex flex-col gap-2 mt-4">
               {message.map((mess: any) => (
-                <div key={mess._id}  className={`max-w-xs p-3 rounded-lg ${
-        mess.sender._id === me._id
-          ? "ml-auto bg-blue-500 text-white"
-          : "mr-auto bg-gray-200 text-black"
-      }`}>{mess.content}</div>
+                <div
+                  key={mess._id}
+                  className={`max-w-xs p-3 rounded-lg ${
+                    mess.sender._id === me._id
+                      ? "ml-auto bg-blue-500 text-white"
+                      : "mr-auto bg-gray-200 text-black"
+                  }`}
+                >
+                  {mess.content}
+                </div>
               ))}
             </div>
           </>
