@@ -52,7 +52,9 @@ const page = () => {
       console.log(err);
     }
   };
-
+const handleConversationClick = (conv: any) => {
+  setSelectedConversation(conv);
+};
   const handelUserClick = async (user: any) => {
     try {
       const { data } = await clientServer.post("/conversation/create", {
