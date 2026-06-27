@@ -117,36 +117,36 @@ const page = () => {
       </div>
       </div>
       <div>
-        {selectedUser ? (
-          <>
-            <h3>{selectedUser.name}</h3>
-            {message.map((mess: any) => (
-              <p key={mess._id}>{mess.content}</p>
-            ))}
-
-            <input
-              placeholder="Type message..."
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              onKeyDown={(e)=>{
-                if(e.key === "Enter"){
-                  handelSendMessage()
-                }
-              }}
-            />
-            <button onClick={handelSendMessage}>Send</button>
-          </>
-        ) : (
-          <>
-            <p>Select a user</p>
-
-            <div>
+        <div>
+          {selectedUser ? (
+            <>
+              <h3>{selectedUser.name}</h3>
               {message.map((mess: any) => (
                 <p key={mess._id}>{mess.content}</p>
               ))}
-            </div>
-          </>
-        )}
+              <input
+                placeholder="Type message..."
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+                onKeyDown={(e)=>{
+                  if(e.key === "Enter"){
+                    handelSendMessage()
+                  }
+                }}
+              />
+              <button onClick={handelSendMessage}>Send</button>
+            </>
+          ) : (
+            <>
+              <p>Select a user</p>
+              <div>
+                {message.map((mess: any) => (
+                  <p key={mess._id}>{mess.content}</p>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
