@@ -117,10 +117,10 @@ const page = () => {
       </div>
       </div>
       <div className="flex flex-col flex-1">
-        <div>
+        <div className="border-b p-4">
           {selectedUser ? (
             <>
-              <h3>{selectedUser.name}</h3>
+              <h2>{selectedUser.name}</h2>
               {message.map((mess: any) => (
                 <p key={mess._id}>{mess.content}</p>
               ))}
