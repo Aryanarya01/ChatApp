@@ -99,20 +99,22 @@ const page = () => {
     };
   }, []);
   return (
-    <div>
-      <h2>Chat page..</h2>
-      <div>
-        {users.map((user: any) => (
-          <div
-            key={user._id}
-            className={`p-3 cursor-pointer ${selectedUser?._id === user._id ? "bg-gray-300" : "hover:bg-gray-100"}`}
-          >
-            <h4 onClick={() => handelUserClick(user)}>
-              {user.name}
-              {onlineUsers.includes(user._id) && <span>🟢</span>}
-            </h4>
-          </div>
-        ))}
+    <div className="flex h-screen">
+      <div className="w-1/4 border-r p-4">
+        <h2 className="text-xl font-bold mb-4">Chat page..</h2>
+        <div>
+          {users.map((user: any) => (
+            <div
+              key={user._id}
+              className={`p-3 cursor-pointer ${selectedUser?._id === user._id ? "bg-gray-300" : "hover:bg-gray-100"}`}
+            >
+              <h4 onClick={() => handelUserClick(user)}>
+                {user.name}
+                {onlineUsers.includes(user._id) && <span>🟢</span>}
+              </h4>
+            </div>
+          ))}
+      </div>
       </div>
       <div>
         {selectedUser ? (
