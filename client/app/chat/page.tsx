@@ -144,7 +144,7 @@ const page = () => {
                 <p>Select a user</p>
                 <div className="flex flex-col gap-3">
                   {message.map((mess: any) => (
-                    <div key={mess._id} className="">
+                    <div key={mess._id} className={``}>
                       <p>{mess.content}</p>
                     </div>
                   ))}
