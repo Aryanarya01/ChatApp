@@ -2,22 +2,21 @@
 import clientServer from "@/lib/axios";
 import { socket } from "@/lib/socket";
 import { useEffect, useRef, useState } from "react";
- 
+
 const page = () => {
-  
   const [users, setUsers] = useState([]);
-  const [me, setMe] = useState<any>(null)
+  const [me, setMe] = useState<any>(null);
   const [selectedUser, setSelectedUser] = useState<any>(null);
   const [selectedConversation, setSelectedConversation] = useState<any>(null);
   const [message, setMessage] = useState<any[]>([]);
   const [content, setContent] = useState("");
   const [onlineUsers, setonlineUsers] = useState<string[]>([]);
-const messageEndRef = useRef<HTMLDivElement>(null)
+  const messageEndRef = useRef<HTMLDivElement>(null);
 
   const getMe = async () => {
     try {
       const { data } = await clientServer.get("/auth/me");
-      setMe(data.user)
+      setMe(data.user);
       console.log(data);
     } catch (err) {
       console.log(err);
@@ -59,11 +58,11 @@ const messageEndRef = useRef<HTMLDivElement>(null)
     }
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     messageEndRef.current?.scrollIntoView({
-      behavior: "smooth"
+      behavior: "smooth",
     });
-  },[message])
+  }, [message]);
 
   useEffect(() => {
     const fetchMessages = async () => {
@@ -123,7 +122,7 @@ const messageEndRef = useRef<HTMLDivElement>(null)
               </h4>
             </div>
           ))}
-      </div>
+        </div>
       </div>
       <div className="flex flex-col flex-1">
         <div className="border-b p-4">
@@ -134,17 +133,23 @@ const messageEndRef = useRef<HTMLDivElement>(null)
                 <p key={mess._id}>{mess.content}</p>
               ))}
               <div className="border-t p-4 flex gap-2">
-                <input className="flex-1 border rounded p-2"
+                <input
+                  className="flex-1 border rounded p-2"
                   placeholder="Type message..."
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
-                  onKeyDown={(e)=>{
-                    if(e.key === "Enter"){
-                      handelSendMessage()
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      handelSendMessage();
                     }
                   }}
                 />
-                <button className="bg-blue-500 text-white px-4 rounded" onClick={handelSendMessage}>Send</button>
+                <button
+                  className="bg-blue-500 text-white px-4 rounded"
+                  onClick={handelSendMessage}
+                >
+                  Send
+                </button>
               </div>
             </>
           ) : (
@@ -153,18 +158,21 @@ const messageEndRef = useRef<HTMLDivElement>(null)
                 <p>Select a user</p>
                 <div className="flex flex-col gap-3">
                   {message.map((mess: any) => (
-                    <div key={mess._id} className={`max-w-[70%] p-3 rounded-lg ${
-                      mess.sender._id === me._id
-                       ? "self-end bg-blue-500 text-white"
-          : "self-start bg-gray-200 text-black"
-                    }`}>
+                    <div
+                      key={mess._id}
+                      className={`max-w-[70%] p-3 rounded-lg ${
+                        mess.sender._id === me._id
+                          ? "self-end bg-blue-500 text-white"
+                          : "self-start bg-gray-200 text-black"
+                      }`}
+                    >
                       <p>{mess.content}</p>
                       <p className="text-xs mt-1">
-  {new Date(mess.createdAt).toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-  })}
-</p>
+                        {new Date(mess.createdAt).toLocaleTimeString([], {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })}
+                      </p>
                     </div>
                   ))}
                 </div>
