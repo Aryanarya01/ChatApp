@@ -103,23 +103,23 @@ const handleConversationClick = (conv: any) => {
     };
   }, []);
   return (
-    <div>
+    <div className="flex h-screen">
       <h2>Chat page..</h2>
-      <div>
+      <div className="w-1/3 border-r">
         {conversation.map((conv: any) => {
   const otherUser = conv.participants.find(
     (p: any) => p._id !== me?._id
   );
 
   return (
-    <div key={conv._id}>
+    <div  key={conv._id}>
       <h4 onClick={() => handleConversationClick(conv)}>{otherUser?.name}</h4>
       <p>{conv.lastMessage?.content || "No messages yet"}</p>
     </div>
   );
 })}
-      </div>
-      <div>
+      
+      <div className="flex-1">
         {selectedUser ? (
           <>
             <h3>{selectedUser.name}</h3>
@@ -147,6 +147,7 @@ const handleConversationClick = (conv: any) => {
         )}
       </div>
     </div>
+    
   );
 };
 
