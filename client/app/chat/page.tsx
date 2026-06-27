@@ -104,7 +104,7 @@ const page = () => {
   return (
     <div className="flex h-screen">
       <h2>Chat page..</h2>
-      <div className="w-1/3 border-r bg-red-500">
+      <div className="w-1/3 border-r">
         {conversation.map((conv: any) => {
           const otherUser = conv.participants.find(
             (p: any) => p._id !== me?._id,
@@ -120,7 +120,7 @@ const page = () => {
           );
         })}
       </div>
-      <div className="flex-1  bg-blue-500">
+      <div className="flex-1">
         {selectedUser ? (
           <>
             <h3>{selectedUser.name}</h3>
