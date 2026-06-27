@@ -4,7 +4,7 @@ import { socket } from "@/lib/socket";
 import { useEffect, useState } from "react";
 
 const page = () => {
-  const [users, setUsers] = useState([]);
+ 
   const [me, setMe] = useState<any>(null);
   const [conversation, setConversation] = useState([]);
   const [selectedUser, setSelectedUser] = useState<any>(null);
@@ -22,14 +22,7 @@ const page = () => {
       console.log(err);
     }
   };
-  const fetchUsers = async () => {
-    try {
-      const { data } = await clientServer.get("/auth/users");
-      setUsers(data);
-    } catch (err: any) {
-      console.log(err);
-    }
-  };
+   
   const fetchConversation = async () => {
     try {
       const { data } = await clientServer.get("/conversation");
@@ -75,7 +68,7 @@ const page = () => {
 
   useEffect(() => {
     getMe();
-    fetchUsers();
+ 
     fetchConversation();
   }, []);
   useEffect(() => {
