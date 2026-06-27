@@ -173,7 +173,9 @@ const page = () => {
                           minute: "2-digit",
                         })}
                       </p>
+                      <div ref={messageEndRef}></div>
                     </div>
+                    
                   ))}
                 </div>
               </div>
