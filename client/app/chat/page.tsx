@@ -99,6 +99,10 @@ const page = () => {
         socket.on("onlineUsers", (users) => {
           setonlineUsers(users);
         });
+        socket.on("typing",()=>{
+          setIsTyping(true);
+        })
+        
       } catch (err) {
         console.log(err);
       }
