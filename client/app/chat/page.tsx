@@ -68,6 +68,9 @@ const page = () => {
   useEffect(() => {
     const fetchMessages = async () => {
       if (!selectedConversation) return;
+
+      socket.emit("")
+
       try {
         const { data } = await clientServer.get(
           `/messages/${selectedConversation._id}`,
