@@ -11,7 +11,7 @@ const page = () => {
   const [message, setMessage] = useState<any[]>([]);
   const [content, setContent] = useState("");
   const [onlineUsers, setonlineUsers] = useState<string[]>([]);
-  const [isTyping, setIsTyping] = useState(false)
+  const [isTyping, setIsTyping] = useState(false);
   const messageEndRef = useRef<HTMLDivElement>(null);
 
   const getMe = async () => {
@@ -138,7 +138,10 @@ const page = () => {
                   className="flex-1 border rounded p-2"
                   placeholder="Type message..."
                   value={content}
-                  onChange={(e) => setContent(e.target.value)}
+                  onChange={(e) =>{
+                    setContent(e.target.value);
+                    
+                  }}
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
                       handelSendMessage();
@@ -176,7 +179,6 @@ const page = () => {
                       </p>
                       <div ref={messageEndRef}></div>
                     </div>
-                    
                   ))}
                 </div>
               </div>
