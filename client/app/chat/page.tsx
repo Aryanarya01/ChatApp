@@ -11,6 +11,7 @@ const page = () => {
   const [message, setMessage] = useState<any[]>([]);
   const [content, setContent] = useState("");
   const [onlineUsers, setonlineUsers] = useState<string[]>([]);
+  const [isTyping, setIsTyping] = useState(false)
   const messageEndRef = useRef<HTMLDivElement>(null);
 
   const getMe = async () => {
