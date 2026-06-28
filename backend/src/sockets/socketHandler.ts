@@ -15,7 +15,9 @@ const socketHandler = (io: Server) => {
       socket.to(conversationId).emit("typing")
     })
 
-    
+    socket.on("joinConversation",(conversationId : string)=>{
+      socket.join(conversationId)
+    })
 
     socket.on("disconnect", () => {
       for (const [userId, socketId] of onlineUser.entries()) {
