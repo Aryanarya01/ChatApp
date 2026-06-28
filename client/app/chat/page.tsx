@@ -69,7 +69,7 @@ const page = () => {
     const fetchMessages = async () => {
       if (!selectedConversation) return;
 
-      socket.emit("joinConversation",selectedConversation._id)
+      socket.emit("joinConversation", selectedConversation._id);
 
       try {
         const { data } = await clientServer.get(
@@ -99,12 +99,12 @@ const page = () => {
         socket.on("onlineUsers", (users) => {
           setonlineUsers(users);
         });
-        socket.on("typing",()=>{
+        socket.on("typing", () => {
           setIsTyping(true);
-        })
-        socket.on("stopTyping",()=>{
-          setIsTyping(false)
-        })
+        });
+        socket.on("stopTyping", () => {
+          setIsTyping(false);
+        });
       } catch (err) {
         console.log(err);
       }
@@ -139,9 +139,7 @@ const page = () => {
           {selectedUser ? (
             <>
               <h2 className="text-xl font-semibold">{selectedUser.name}</h2>
-              {isTyping && (
-                <p className="text-sm text-gray-500">Typing...</p>
-              )}
+              {isTyping && <p className="text-sm text-gray-500">Typing...</p>}
               {message.map((mess: any) => (
                 <p key={mess._id}>{mess.content}</p>
               ))}
@@ -150,9 +148,9 @@ const page = () => {
                   className="flex-1 border rounded p-2"
                   placeholder="Type message..."
                   value={content}
-                  onChange={(e) =>{
+                  onChange={(e) => {
                     setContent(e.target.value);
-                    socket.emit("typing",selectedConversation._id)
+                    socket.emit("typing", selectedConversation._id);
                   }}
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
