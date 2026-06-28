@@ -140,7 +140,7 @@ const page = () => {
                   value={content}
                   onChange={(e) =>{
                     setContent(e.target.value);
-                    
+                    socket.emit("typing",selectedConversation._id)
                   }}
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
