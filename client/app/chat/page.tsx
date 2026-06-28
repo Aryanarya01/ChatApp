@@ -102,7 +102,9 @@ const page = () => {
         socket.on("typing",()=>{
           setIsTyping(true);
         })
-        
+        socket.on("stopTyping",()=>{
+          setIsTyping(false)
+        })
       } catch (err) {
         console.log(err);
       }
