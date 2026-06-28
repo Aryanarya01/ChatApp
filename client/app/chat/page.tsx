@@ -69,7 +69,7 @@ const page = () => {
     const fetchMessages = async () => {
       if (!selectedConversation) return;
 
-      socket.emit("")
+      socket.emit("joinConversation",selectedConversation._id)
 
       try {
         const { data } = await clientServer.get(
