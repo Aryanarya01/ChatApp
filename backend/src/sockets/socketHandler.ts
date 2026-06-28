@@ -11,6 +11,11 @@ const socketHandler = (io: Server) => {
       io.emit("onlineUsers", [...onlineUser.keys()]);
       console.log("Online user :", onlineUser);
     });
+    socket.on("typing",(conversationId:string)=>{
+      socket.to(conversationId).emit("typing")
+    })
+
+    
 
     socket.on("disconnect", () => {
       for (const [userId, socketId] of onlineUser.entries()) {
