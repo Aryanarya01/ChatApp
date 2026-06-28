@@ -139,6 +139,9 @@ const page = () => {
           {selectedUser ? (
             <>
               <h2 className="text-xl font-semibold">{selectedUser.name}</h2>
+              {isTyping && (
+                <p className="text-sm text-gray-500">Typing...</p>
+              )}
               {message.map((mess: any) => (
                 <p key={mess._id}>{mess.content}</p>
               ))}
