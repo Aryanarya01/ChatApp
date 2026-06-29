@@ -151,6 +151,9 @@ const page = () => {
                   onChange={(e) => {
                     setContent(e.target.value);
                     socket.emit("typing", selectedConversation._id);
+                     if(typingTimeout){
+                      clearTimeout(typingTimeout)
+                     }
                      
 
                   }}
