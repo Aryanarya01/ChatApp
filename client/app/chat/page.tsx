@@ -11,7 +11,7 @@ const page = () => {
   const [message, setMessage] = useState<any[]>([]);
   const [content, setContent] = useState("");
   const [onlineUsers, setonlineUsers] = useState<string[]>([]);
-  const [isTyping, setIsTyping] = useState(false);
+  const [isTyping, setIsTyping] = useState<NodeJS.Timeout | null>(null);
   const messageEndRef = useRef<HTMLDivElement>(null);
 
   const getMe = async () => {
@@ -152,7 +152,7 @@ const page = () => {
                     setContent(e.target.value);
                     socket.emit("typing", selectedConversation._id);
                     clearTimeout(window.typingTimer);
-                    
+                    window.typingTimer = setTimeout(())
 
                   }}
                   onKeyDown={(e) => {
