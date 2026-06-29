@@ -11,9 +11,9 @@ const page = () => {
   const [message, setMessage] = useState<any[]>([]);
   const [content, setContent] = useState("");
   const [onlineUsers, setonlineUsers] = useState<string[]>([]);
-  const [isTyping, setIsTyping] = useState<NodeJS.Timeout | null>(null);
+  const [isTyping, setIsTyping] = useState(false);
   const messageEndRef = useRef<HTMLDivElement>(null);
-
+  const [typingTimeout,setTypingTimeout] = useState<NodeJS.Timeout | null>(null);
   const getMe = async () => {
     try {
       const { data } = await clientServer.get("/auth/me");
@@ -151,8 +151,7 @@ const page = () => {
                   onChange={(e) => {
                     setContent(e.target.value);
                     socket.emit("typing", selectedConversation._id);
-                    clearTimeout(window.typingTimer);
-                    window.typingTimer = setTimeout(())
+                     
 
                   }}
                   onKeyDown={(e) => {
