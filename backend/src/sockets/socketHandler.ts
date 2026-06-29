@@ -14,7 +14,7 @@ const socketHandler = (io: Server) => {
     socket.on("typing",(conversationId:string)=>{
       socket.to(conversationId).emit("typing")
     })
-
+    socket.on("stopTyping",(conversationId:string))
     socket.on("joinConversation",(conversationId : string)=>{
       socket.join(conversationId)
     })
