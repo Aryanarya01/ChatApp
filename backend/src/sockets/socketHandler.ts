@@ -11,15 +11,15 @@ const socketHandler = (io: Server) => {
       io.emit("onlineUsers", [...onlineUser.keys()]);
       console.log("Online user :", onlineUser);
     });
-    socket.on("typing",(conversationId:string)=>{
-      socket.to(conversationId).emit("typing")
-    })
-    socket.on("stopTyping",(conversationId:string)=>{
-      socket.to(conversationId).emit("stopTyping")
-    })
-    socket.on("joinConversation",(conversationId : string)=>{
-      socket.join(conversationId)
-    })
+    socket.on("typing", (conversationId: string) => {
+      socket.to(conversationId).emit("typing");
+    });
+    socket.on("stopTyping", (conversationId: string) => {
+      socket.to(conversationId).emit("stopTyping");
+    });
+    socket.on("joinConversation", (conversationId: string) => {
+      socket.join(conversationId);
+    });
 
     socket.on("disconnect", () => {
       for (const [userId, socketId] of onlineUser.entries()) {
