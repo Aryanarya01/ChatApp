@@ -151,6 +151,9 @@ const page = () => {
                   onChange={(e) => {
                     setContent(e.target.value);
                     socket.emit("typing", selectedConversation._id);
+                    clearTimeout(window.typingTimer);
+                    
+
                   }}
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
