@@ -154,8 +154,10 @@ const page = () => {
                      if(typingTimeout){
                       clearTimeout(typingTimeout)
                      }
-                     
-
+                     const timer = setTimeout(()=>{
+                      socket.emit("stopTyping",selectedConversation._id);
+                     },1000);
+                     setTypingTimeout(timer)
                   }}
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
