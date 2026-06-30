@@ -88,7 +88,6 @@ const page = () => {
   useEffect(() => {
     getMe();
     fetchUsers();
-    
   }, []);
   useEffect(() => {
     const connectSockets = async () => {
