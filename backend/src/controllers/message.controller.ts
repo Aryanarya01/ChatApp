@@ -16,9 +16,9 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
       conversation: conversationId,
       content,
     });
-    await Conversation.findByIdAndUpdate(conversationId, {
-      lastMessage: message._id,
-    });
+    await Conversation.findByIdAndUpdate(conversationId,{
+      lastMessage : message._id
+    })
     const io = getIO();
     const recieverId = conversation.participants.find(
       (id) => id.toString() !== req.user!._id.toString(),
@@ -40,7 +40,7 @@ export const getMessage = async (req: AuthRequest, res: Response) => {
   try {
     const { conversationId } = req.params;
     const message = await Message.find({
-      conversation: conversationId,
+      conversation : conversationId,
     })
       .populate("sender", "name username profilePicture")
       .sort({ createdAt: 1 });
@@ -51,22 +51,22 @@ export const getMessage = async (req: AuthRequest, res: Response) => {
   }
 };
 
-export const markAsSeen = async (req: AuthRequest, res: Response) => {
-  try {
-    const { conversationId } = req.params;
+
+export const markAsSeen = async(req:AuthRequest, res:Response)=>{
+  try{
+    const {conversationId} = req.params;
     await Message.updateMany(
       {
-        conversation: conversationId,
-        sender: { $ne: req.user!._id },
-        seen: false,
-      },
-      {
-        seen: true,
-      },
+        conversation : conversationId,
+        sender : {$ne : req.user!._id},
+        seen : false,
+      },{
+        seen : true,
+      }
     );
-    return res.status(200).json({ message: "Message marked as seen" });
-  } catch (err) {
+    return res.status(200).json({message : "Message marked as seen"})
+  }catch(err){
     console.log(err);
-    return res.status(500).json({ message: "Server Error!" });
+    return res.status(500).json({message : "Server Error!"})
   }
-};
+}
