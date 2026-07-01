@@ -78,6 +78,9 @@ const page = () => {
           `/messages/${selectedConversation._id}`,
         );
         setMessage(data);
+
+        await clientServer.patch(`conversation/seen/${selectedConversation._id}`)
+
       } catch (err: any) {
         console.log(err.response?.data);
       }
