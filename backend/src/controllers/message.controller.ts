@@ -53,5 +53,19 @@ export const getMessage = async (req: AuthRequest, res: Response) => {
 
 
 export const markAsSeen = async(req:AuthRequest, res:Response)=>{
-  
+  try{
+    const {conversationId} = req.params;
+    await Message.updateMany(
+      {
+        conversation : conversationId,
+        sender : {$ne : req.user!._id},
+        seen : false,
+      },{
+        seen : true
+      }
+    )
+  }catch(err){
+    console.log(err);
+    return res.status(500).json({message : "Server Error!"})
+  }
 }
