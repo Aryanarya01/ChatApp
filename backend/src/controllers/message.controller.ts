@@ -50,3 +50,8 @@ export const getMessage = async (req: AuthRequest, res: Response) => {
     return res.status(500).json({ message: "Server Error!" });
   }
 };
+
+
+export const markAsSeen = async(req:AuthRequest, res:Response)=>{
+  
+}
