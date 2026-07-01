@@ -63,7 +63,8 @@ export const markAsSeen = async(req:AuthRequest, res:Response)=>{
       },{
         seen : true
       }
-    )
+    );
+    return res.status(200).json({message : "Message marked as seen"})
   }catch(err){
     console.log(err);
     return res.status(500).json({message : "Server Error!"})
