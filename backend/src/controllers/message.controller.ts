@@ -60,9 +60,9 @@ export const markAsSeen = async(req:AuthRequest, res:Response)=>{
         conversation : conversationId,
         sender : {$ne : req.user!._id},
         seen : false,
-      },{
+      },{ $set :{
         seen : true,
-      }
+      }}
     );
     return res.status(200).json({message : "Message marked as seen"})
   }catch(err){
