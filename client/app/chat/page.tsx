@@ -199,9 +199,6 @@ const page = () => {
                           minute: "2-digit",
                         })}
                       </p>
-                       <p className="text-xs">
-    {mess.seen ? "Seen" : "Delivered"}
-  </p>
                       <div ref={messageEndRef}></div>
                     </div>
                   ))}
