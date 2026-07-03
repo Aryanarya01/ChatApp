@@ -79,8 +79,7 @@ const page = () => {
         );
         setMessage(data);
 
-        await clientServer.patch(`messages/seen/${selectedConversation._id}`)
-
+        await clientServer.patch(`messages/seen/${selectedConversation._id}`);
       } catch (err: any) {
         console.log(err.response?.data);
       }
@@ -143,33 +142,48 @@ const page = () => {
         <div className="border-b p-4">
           {selectedUser ? (
             <>
-              <h2 className="text-xl font-semibold">{selectedUser.name}</h2>
-              {isTyping && <p className="text-sm text-gray-500">Typing...</p>}
-              {message.map((mess: any) => (
-                <p key={mess._id}>{mess.content}</p>
-              ))}
+              {/* Header */}
+              <div className="border-b p-4">
+                <h2 className="text-xl font-semibold">{selectedUser.name}</h2>
+
+                {isTyping && <p className="text-sm text-gray-500">Typing...</p>}
+              </div>
+
+              {/* Messages */}
+              <div className="flex-1 overflow-y-auto p-4">
+                <div className="flex flex-col gap-3">
+                  {message.map((mess: any) => (
+                    <div
+                      key={mess._id}
+                      className={`max-w-[70%] p-3 rounded-lg ${
+                        mess.sender._id === me._id
+                          ? "self-end bg-blue-500 text-white"
+                          : "self-start bg-gray-200 text-black"
+                      }`}
+                    >
+                      <p>{mess.content}</p>
+
+                      <p className="text-xs mt-1">
+                        {new Date(mess.createdAt).toLocaleTimeString([], {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })}
+                      </p>
+
+                      {mess.sender._id === me._id && (
+                        <p className="text-xs">
+                          {mess.seen ? "Seen" : "Delivered"}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+
+                  <div ref={messageEndRef}></div>
+                </div>
+              </div>
+
+              {/* Input */}
               <div className="border-t p-4 flex gap-2">
-                <input
-                  className="flex-1 border rounded p-2"
-                  placeholder="Type message..."
-                  value={content}
-                  onChange={(e) => {
-                    setContent(e.target.value);
-                    socket.emit("typing", selectedConversation._id);
-                    if (typingTimeout) {
-                      clearTimeout(typingTimeout);
-                    }
-                    const timer = setTimeout(() => {
-                      socket.emit("stopTyping", selectedConversation._id);
-                    }, 1000);
-                    setTypingTimeout(timer);
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      handelSendMessage();
-                    }
-                  }}
-                />
                 <button
                   className="bg-blue-500 text-white px-4 rounded"
                   onClick={handelSendMessage}
