@@ -125,104 +125,98 @@ const page = () => {
     <div className="flex h-screen">
       <div className="w-1/4 border-r p-4">
         <h2 className="text-xl font-bold mb-4">Chat page..</h2>
-        
-          {users.map((user: any) => (
-            <div
-              key={user._id}
-              className={`p-3 cursor-pointer ${selectedUser?._id === user._id ? "bg-gray-300" : "hover:bg-gray-100"}`}
-            >
-               <div className="flex justify-between"> 
-              <h4 onClick={() => handelUserClick(user)}>
-                {user.name}
-                </h4>
-                {onlineUsers.includes(user._id) && <span>🟢</span>}
-               
-              </div>
+
+        {users.map((user: any) => (
+          <div
+            key={user._id}
+            className={`p-3 cursor-pointer ${selectedUser?._id === user._id ? "bg-gray-300" : "hover:bg-gray-100"}`}
+          >
+            <div className="flex justify-between">
+              <h4 onClick={() => handelUserClick(user)}>{user.name}</h4>
+              {onlineUsers.includes(user._id) && <span>🟢</span>}
             </div>
-          ))}
+          </div>
+        ))}
       </div>
 
       {/* right side */}
       <div className="flex flex-col flex-1">
-          {selectedUser ? (
-            <>
-            <div className="border-b p-4"> 
+        {selectedUser ? (
+          <>
+            <div className="border-b p-4">
               <h2 className="text-xl font-semibold">{selectedUser.name}</h2>
               {isTyping && <p className="text-sm text-gray-500">Typing...</p>}
-              </div>
+            </div>
 
-             <div className="flex-1 overflow-y-auto p-4">
-                <div className="flex flex-col gap-3">
-                  {message.map((mess: any) => (
-                    <div
-                      key={mess._id}
-                      className={`max-w-[70%] p-3 rounded-lg ${
-                        mess.sender._id === me._id
-                          ? "self-end bg-blue-500 text-white"
-                          : "self-start bg-gray-200 text-black"
-                      }`}
-                    >
-                      <p>{mess.content}</p>
-                      <p className="text-xs mt-1">
-                        {new Date(mess.createdAt).toLocaleTimeString([], {
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        })}
+            <div className="flex-1 overflow-y-auto p-4">
+              <div className="flex flex-col gap-3">
+                {message.map((mess: any) => (
+                  <div
+                    key={mess._id}
+                    className={`max-w-[70%] p-3 rounded-lg ${
+                      mess.sender._id === me._id
+                        ? "self-end bg-blue-500 text-white"
+                        : "self-start bg-gray-200 text-black"
+                    }`}
+                  >
+                    <p>{mess.content}</p>
+                    <p className="text-xs mt-1">
+                      {new Date(mess.createdAt).toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
+                    </p>
+
+                    {mess.sender._id === me._id && (
+                      <p className="text-xs">
+                        {mess.seen ? "Seen" : "Delivered"}
                       </p>
-
-                      {mess.sender._id === me._id && (
-                         <p className="text-xs">
-                    {mess.seen ? "Seen" : "Delivered"}
-                  </p>
-                      )}
-                       
-                    </div>
-                  ))}
-                  <div ref={messageEndRef}></div>
-                </div>
+                    )}
+                  </div>
+                ))}
+                <div ref={messageEndRef}></div>
               </div>
+            </div>
 
-
-              <div className="border-t p-4 flex gap-2">
-                <input
-                  className="flex-1 border rounded p-2"
-                  placeholder="Type message..."
-                  value={content}
-                  onChange={(e) => {
-                    setContent(e.target.value);
-                    socket.emit("typing", selectedConversation._id);
-                    if (typingTimeout) {
-                      clearTimeout(typingTimeout);
-                    }
-                    const timer = setTimeout(() => {
-                      socket.emit("stopTyping", selectedConversation._id);
-                    }, 1000);
-                    setTypingTimeout(timer);
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      handelSendMessage();
-                    }
-                  }}
-                />
-                <button
-                  className="bg-blue-500 text-white px-4 rounded"
-                  onClick={handelSendMessage}
-                >
-                  Send
-                </button>
-              </div>
-            </>
-          ) : (
-             <div className="flex flex-1 items-center justify-center">
-          <h2 className="text-gray-500 text-xl">
-            Select a user to start chatting
-          </h2>
-        </div>
-          )}
-        </div>
+            <div className="border-t p-4 flex gap-2">
+              <input
+                className="flex-1 border rounded p-2"
+                placeholder="Type message..."
+                value={content}
+                onChange={(e) => {
+                  setContent(e.target.value);
+                  socket.emit("typing", selectedConversation._id);
+                  if (typingTimeout) {
+                    clearTimeout(typingTimeout);
+                  }
+                  const timer = setTimeout(() => {
+                    socket.emit("stopTyping", selectedConversation._id);
+                  }, 1000);
+                  setTypingTimeout(timer);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handelSendMessage();
+                  }
+                }}
+              />
+              <button
+                className="bg-blue-500 text-white px-4 rounded"
+                onClick={handelSendMessage}
+              >
+                Send
+              </button>
+            </div>
+          </>
+        ) : (
+          <div className="flex flex-1 items-center justify-center">
+            <h2 className="text-gray-500 text-xl">
+              Select a user to start chatting
+            </h2>
+          </div>
+        )}
       </div>
-     
+    </div>
   );
 };
 
