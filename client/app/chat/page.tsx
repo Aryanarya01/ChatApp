@@ -124,7 +124,7 @@ const page = () => {
     <div className="flex h-screen">
       <div className="w-1/4 border-r p-4">
         <h2 className="text-xl font-bold mb-4">Chat page..</h2>
-        <div>
+        
           {users.map((user: any) => (
             <div
               key={user._id}
@@ -139,17 +139,19 @@ const page = () => {
               </div>
             </div>
           ))}
-        </div>
       </div>
+
+      {/* right side */}
       <div className="flex flex-col flex-1">
-        <div className="border-b p-4">
           {selectedUser ? (
             <>
+            <div className="border-b p-4"> 
               <h2 className="text-xl font-semibold">{selectedUser.name}</h2>
               {isTyping && <p className="text-sm text-gray-500">Typing...</p>}
               {message.map((mess: any) => (
                 <p key={mess._id}>{mess.content}</p>
               ))}
+              </div>
               <div className="border-t p-4 flex gap-2">
                 <input
                   className="flex-1 border rounded p-2"
