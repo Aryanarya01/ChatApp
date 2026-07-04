@@ -43,6 +43,7 @@ const page = () => {
       });
       setMessage((prev) => [...prev, data]);
       setContent("");
+      socket.emit("stopTyping", selectedConversation._id);
     } catch (err: any) {
       console.log(err);
     }
@@ -151,7 +152,6 @@ const page = () => {
               </div>
 
              <div className="flex-1 overflow-y-auto p-4">
-                <p>Select a user</p>
                 <div className="flex flex-col gap-3">
                   {message.map((mess: any) => (
                     <div
@@ -175,13 +175,14 @@ const page = () => {
                     {mess.seen ? "Seen" : "Delivered"}
                   </p>
                       )}
-                      <div ref={messageEndRef}></div>
+                       
                     </div>
                   ))}
+                  <div ref={messageEndRef}></div>
                 </div>
               </div>
 
-              
+
               <div className="border-t p-4 flex gap-2">
                 <input
                   className="flex-1 border rounded p-2"
@@ -213,7 +214,11 @@ const page = () => {
               </div>
             </>
           ) : (
-             
+             <div className="flex flex-1 items-center justify-center">
+          <h2 className="text-gray-500 text-xl">
+            Select a user to start chatting
+          </h2>
+        </div>
           )}
         </div>
       </div>
