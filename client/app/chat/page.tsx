@@ -156,7 +156,7 @@ const page = () => {
                   <div
                     key={mess._id}
                     className={`max-w-[70%] p-3 rounded-lg ${
-                      mess.sender._id === me._id
+                      mess.sender?._id === me?._id
                         ? "self-end bg-blue-500 text-white"
                         : "self-start bg-gray-200 text-black"
                     }`}
