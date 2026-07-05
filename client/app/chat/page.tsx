@@ -151,7 +151,7 @@ const page = () => {
             </div>
 
             <div className="flex-1 overflow-y-auto p-4">
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-3 w-full">
                 {message.map((mess: any) => (
                   <div
                     key={mess._id}
