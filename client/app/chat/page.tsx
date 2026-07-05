@@ -54,6 +54,7 @@ const page = () => {
       const { data } = await clientServer.post("/conversation/create", {
         recieverId: user._id,
       });
+      
       setSelectedUser(user);
       setSelectedConversation(data);
       console.log(data);
@@ -132,8 +133,8 @@ const page = () => {
             key={user._id}
             className={`p-3 cursor-pointer ${selectedUser?._id === user._id ? "bg-gray-300" : "hover:bg-gray-100"}`}
           >
-            <div className="flex justify-between">
-              <h4 onClick={() => handelUserClick(user)}>{user.name}</h4>
+            <div onClick={() => handelUserClick(user)} className="flex justify-between">
+              <h4>{user.name}</h4>
               {onlineUsers.includes(user._id) && <span>🟢</span>}
             </div>
           </div>
