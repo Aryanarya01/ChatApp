@@ -121,6 +121,7 @@ const page = () => {
       socket.disconnect();
     };
   }, []);
+  
   return (
     <div className="flex h-screen">
       <div className="w-1/4 border-r p-4">
