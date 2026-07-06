@@ -16,6 +16,7 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
       conversation: conversationId,
       content,
     });
+    const populatedMessage = await
     await Conversation.findByIdAndUpdate(conversationId,{
       lastMessage : message._id
     })
