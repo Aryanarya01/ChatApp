@@ -29,7 +29,7 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
     }
     const recieverSocketId = onlineUser.get(recieverId.toString());
     if (recieverSocketId) {
-      io.to(recieverSocketId).emit("newMessage", message);
+      io.to(recieverSocketId).emit("newMessage", populatedMessage);
     }
     return res.status(201).json(populatedMessage);
   } catch (err) {
