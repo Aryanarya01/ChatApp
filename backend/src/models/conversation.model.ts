@@ -10,9 +10,7 @@ const consversationSchema = new mongoose.Schema(
   {
     participants: [
       {
-        type: mongoose.Schema.Types.ObjectId,  
-
-        
+        type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true,
       },
