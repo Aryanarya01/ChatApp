@@ -120,7 +120,7 @@ const page = () => {
       socket.off("newMessage");
       socket.off("onlineUsers");
       socket.off("typing");
-      soc
+      socket.off("stopTyping")
       socket.disconnect();
     };
   }, []);
