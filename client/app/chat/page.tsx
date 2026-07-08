@@ -41,7 +41,7 @@ const page = () => {
         conversationId: selectedConversation._id,
         content,
       });
-      setMessage((prev) => [...prev, data]);
+     
       setContent("");
       socket.emit("stopTyping", selectedConversation._id);
     } catch (err: any) {
@@ -119,6 +119,8 @@ const page = () => {
     return () => {
       socket.off("newMessage");
       socket.off("onlineUsers");
+      socket.off("typing");
+      soc
       socket.disconnect();
     };
   }, []);
