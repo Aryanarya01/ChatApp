@@ -41,7 +41,7 @@ const page = () => {
         conversationId: selectedConversation._id,
         content,
       });
-     
+      console.log(data)
       setContent("");
       socket.emit("stopTyping", selectedConversation._id);
     } catch (err: any) {
@@ -190,13 +190,12 @@ const page = () => {
                 onChange={(e) => {
                   setContent(e.target.value);
                   socket.emit("typing", selectedConversation._id);
-                  if (typingTimeout) {
-                    clearTimeout(typingTimeout);
+                  if(typingTimeout.current){
+                    clearTimeout(typingTimeout.current)
                   }
-                  const timer = setTimeout(() => {
-                    socket.emit("stopTyping", selectedConversation._id);
-                  }, 1000);
-                  setTypingTimeout(timer);
+                   typingTimeout.current = setTimeout(()=>{
+                    socket.emit("stopTyping",selectedConversation._id)
+                   },1000)
                 }}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
