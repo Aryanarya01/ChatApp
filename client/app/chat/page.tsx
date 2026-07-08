@@ -13,9 +13,9 @@ const page = () => {
   const [onlineUsers, setonlineUsers] = useState<string[]>([]);
   const [isTyping, setIsTyping] = useState(false);
   const messageEndRef = useRef<HTMLDivElement>(null);
-  const [typingTimeout, setTypingTimeout] = useState<NodeJS.Timeout | null>(
-    null,
-  );
+  
+
+  const time
   const getMe = async () => {
     try {
       const { data } = await clientServer.get("/auth/me");
@@ -171,7 +171,7 @@ const page = () => {
                       })}
                     </p>
 
-                    {mess.sender._id === me._id && (
+                    {mess.sender?._id === me?._id && (
                       <p className="text-xs">
                         {mess.seen ? "Seen" : "Delivered"}
                       </p>
