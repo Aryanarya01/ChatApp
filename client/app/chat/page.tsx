@@ -15,7 +15,7 @@ const page = () => {
   const messageEndRef = useRef<HTMLDivElement>(null);
   
 
-  const time
+  const typingTimeout = useRef<NodeJS.Timeout | null>(null)
   const getMe = async () => {
     try {
       const { data } = await clientServer.get("/auth/me");
