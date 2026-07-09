@@ -41,6 +41,7 @@ const page = () => {
         conversationId: selectedConversation._id,
         content,
       });
+      setMessage((prev)=>[...prev,data])
       console.log(data)
       setContent("");
       socket.emit("stopTyping", selectedConversation._id);
