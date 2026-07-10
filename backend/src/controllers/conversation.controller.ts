@@ -63,7 +63,7 @@ export const getConversations = async(req : AuthRequest, res : Response)=>{
   try{
     const conversations = await Conversation.find({
       participants : req.user!._id;
-    });
-    
+    }).populate("participants","name username profilePicture")
+    .populate("lastMessage")
   }
 }
