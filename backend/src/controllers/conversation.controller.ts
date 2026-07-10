@@ -59,4 +59,8 @@ export const getConversation = async (req: AuthRequest, res: Response) => {
 
 
 
-export const 
+export const getConversations = async(req : AuthRequest, res : Response)=>{
+  try{
+    const conversations = await 
+  }
+}
