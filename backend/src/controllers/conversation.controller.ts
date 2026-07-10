@@ -61,6 +61,9 @@ export const getConversation = async (req: AuthRequest, res: Response) => {
 
 export const getConversations = async(req : AuthRequest, res : Response)=>{
   try{
-    const conversations = await 
+    const conversations = await Conversation.find({
+      participants : req.user!._id;
+    });
+    
   }
 }
