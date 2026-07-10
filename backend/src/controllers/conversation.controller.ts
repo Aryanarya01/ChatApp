@@ -65,5 +65,7 @@ export const getConversations = async(req : AuthRequest, res : Response)=>{
       participants : req.user!._id;
     }).populate("participants","name username profilePicture")
     .populate("lastMessage")
+    .sort({updatedAt : -1});
+    res.status(200).json(conversations);
   }
 }
