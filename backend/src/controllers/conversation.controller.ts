@@ -67,5 +67,7 @@ export const getConversations = async(req : AuthRequest, res : Response)=>{
     .populate("lastMessage")
     .sort({updatedAt : -1});
     res.status(200).json(conversations);
+  }catch(err){
+    return res.status(500).json({message : "Server Error"})
   }
 }
