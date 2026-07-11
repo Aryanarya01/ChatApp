@@ -12,6 +12,8 @@ const page = () => {
   const [content, setContent] = useState("");
   const [onlineUsers, setonlineUsers] = useState<string[]>([]);
   const [isTyping, setIsTyping] = useState(false);
+  const [conversation,setConversation] = useState([]);
+
   const messageEndRef = useRef<HTMLDivElement>(null);
   
 
@@ -34,6 +36,7 @@ const page = () => {
     }
   };
 
+  const fetchConversations = 
   const handelSendMessage = async () => {
     if (!selectedConversation || !content.trim()) return;
     try {
