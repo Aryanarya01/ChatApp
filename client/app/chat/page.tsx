@@ -99,6 +99,7 @@ const page = () => {
   useEffect(() => {
     getMe();
     fetchUsers();
+    fetchConversations();
   }, []);
   useEffect(() => {
     const connectSockets = async () => {
