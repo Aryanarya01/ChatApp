@@ -37,7 +37,8 @@ const page = () => {
   };
 
   const fetchConversations = async()=>{
-    const {data} = await clientServer
+    const {data} = await clientServer.get("/conversation");
+    
   }
   const handelSendMessage = async () => {
     if (!selectedConversation || !content.trim()) return;
