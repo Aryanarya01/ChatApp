@@ -31,6 +31,10 @@ export const getUserConversations = async (req: AuthRequest, res: Response) => {
       .populate("participants", "name username email profilePicture")
       .populate("lastMessage")
       .sort({ updatedAt: -1 });
+const updatedConversation = await Promise.all(
+  
+)
+
     return res.status(200).json(conversations);
   } catch (err) {
     return res.status(500).json({
@@ -56,5 +60,6 @@ export const getConversation = async (req: AuthRequest, res: Response) => {
     });
   }
 };
+
 
   
