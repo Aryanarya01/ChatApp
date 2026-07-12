@@ -39,12 +39,11 @@ export const register = async (req: Request, res: Response) => {
       },
     });
   } catch (err) {
-    console.log(err)
+    console.log(err);
     return res.status(500).json({ message: "Error Registering..." });
   }
 };
 
-  
 export const login = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
@@ -105,14 +104,11 @@ export const logout = async (req: Request, res: Response) => {
   }
 };
 
-
-export const getAllUser = async(req:AuthRequest, res: Response)=>{
-  try{
+export const getAllUser = async (req: AuthRequest, res: Response) => {
+  try {
     const users = await User.find().select("-password");
-    return res.status(200).json(users)
-  }catch(err){
-    return res.status(500).json({message : "Server error"})
+    return res.status(200).json(users);
+  } catch (err) {
+    return res.status(500).json({ message: "Server error" });
   }
-}
- 
- 
+};
