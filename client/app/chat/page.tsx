@@ -145,7 +145,7 @@ const page = () => {
             key={conv._id}
             className={`p-3 cursor-pointer ${selectedConversation?._id === conv._id ? "bg-gray-300" : "hover:bg-gray-100"}`}
           >
-            <div onClick={() =>{ selectedConversation(conv); setSelectedUser(otherUser);}} className="flex justify-between">
+            <div onClick={() =>{setSelectedConversation(conv); setSelectedUser(otherUser);}} className="flex justify-between">
               <h4>{otherUser.name}</h4>
               {onlineUsers.includes(otherUser._id) && <span>🟢</span>}
             </div>
