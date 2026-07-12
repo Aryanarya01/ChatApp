@@ -138,20 +138,20 @@ const page = () => {
       <div className="w-1/4 border-r p-4">
         <h2 className="text-xl font-bold mb-4">Chat page..</h2>
 
-        {conversation.map((conv: any) => (
+        {conversation.map((conv: any) => {
           const otherUser = conv.participants.find((p:any)=>p._id !== me?._id)
           return(
           <div
             key={conv._id}
-            className={`p-3 cursor-pointer ${selectedUser?._id === conv._id ? "bg-gray-300" : "hover:bg-gray-100"}`}
+            className={`p-3 cursor-pointer ${selectedConversation?._id === conv._id ? "bg-gray-300" : "hover:bg-gray-100"}`}
           >
-            <div onClick={() => handelUserClick(conv)} className="flex justify-between">
+            <div onClick={() =>{ selectedConversation(conv); setSelectedUser(otherUser);}} className="flex justify-between">
               <h4>{conv.name}</h4>
               {onlineUsers.includes(conv._id) && <span>🟢</span>}
             </div>
           </div>
           )
-        ))}
+})}
       </div>
 
       {/* right side */}
