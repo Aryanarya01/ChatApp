@@ -149,6 +149,9 @@ const page = () => {
               <h4>{otherUser.name}</h4>
               {onlineUsers.includes(otherUser._id) && <span>🟢</span>}
             </div>
+            <p className="text-sm text-gray-500">
+              {conv.lastMessage?.content || "No messages"}
+            </p>
           </div>
           )
 })}
