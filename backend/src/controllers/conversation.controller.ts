@@ -32,19 +32,19 @@ export const getUserConversations = async (req: AuthRequest, res: Response) => {
       .populate("participants", "name username email profilePicture")
       .populate("lastMessage")
       .sort({ updatedAt: -1 });
-const updatedConversations = await Promise.all(
-    conversations.map(async(conv : any)=>{
-      const unreadCount = await Message.countDocuments({
-        conversation : conv._id,
-        sender : {$ne : req.user!._id},
-        seen : false,
-      });
-      return {
-        ...conv.toObject(),
-        unreadCount,
-      }
-    })
-)
+    const updatedConversations = await Promise.all(
+      conversations.map(async (conv: any) => {
+        const unreadCount = await Message.countDocuments({
+          conversation: conv._id,
+          sender: { $ne: req.user!._id },
+          seen: false,
+        });
+        return {
+          ...conv.toObject(),
+          unreadCount,
+        };
+      }),
+    );
 
     return res.status(200).json(updatedConversations);
   } catch (err) {
@@ -71,6 +71,3 @@ export const getConversation = async (req: AuthRequest, res: Response) => {
     });
   }
 };
-
-
-  
