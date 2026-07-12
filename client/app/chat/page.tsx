@@ -12,12 +12,11 @@ const page = () => {
   const [content, setContent] = useState("");
   const [onlineUsers, setonlineUsers] = useState<string[]>([]);
   const [isTyping, setIsTyping] = useState(false);
-  const [conversation,setConversation] = useState([]);
+  const [conversation, setConversation] = useState([]);
 
   const messageEndRef = useRef<HTMLDivElement>(null);
-  
 
-  const typingTimeout = useRef<NodeJS.Timeout | null>(null)
+  const typingTimeout = useRef<NodeJS.Timeout | null>(null);
   const getMe = async () => {
     try {
       const { data } = await clientServer.get("/auth/me");
@@ -36,10 +35,10 @@ const page = () => {
     }
   };
 
-  const fetchConversations = async()=>{
-    const {data} = await clientServer.get("/conversation");
+  const fetchConversations = async () => {
+    const { data } = await clientServer.get("/conversation");
     setConversation(data);
-  }
+  };
   const handelSendMessage = async () => {
     if (!selectedConversation || !content.trim()) return;
     try {
@@ -47,8 +46,8 @@ const page = () => {
         conversationId: selectedConversation._id,
         content,
       });
-      setMessage((prev)=>[...prev,data])
-      console.log(data)
+      setMessage((prev) => [...prev, data]);
+      console.log(data);
       setContent("");
       socket.emit("stopTyping", selectedConversation._id);
     } catch (err: any) {
@@ -61,7 +60,7 @@ const page = () => {
       const { data } = await clientServer.post("/conversation/create", {
         recieverId: user._id,
       });
-      
+
       setSelectedUser(user);
       setSelectedConversation(data);
       console.log(data);
@@ -128,33 +127,41 @@ const page = () => {
       socket.off("newMessage");
       socket.off("onlineUsers");
       socket.off("typing");
-      socket.off("stopTyping")
+      socket.off("stopTyping");
       socket.disconnect();
     };
   }, []);
-  
+
   return (
     <div className="flex h-screen">
       <div className="w-1/4 border-r p-4">
         <h2 className="text-xl font-bold mb-4">Chat page..</h2>
 
         {conversation.map((conv: any) => {
-          const otherUser = conv.participants.find((p:any)=>p._id !== me?._id)
-          return(
-          <div
-            key={conv._id}
-            className={`p-3 cursor-pointer ${selectedConversation?._id === conv._id ? "bg-gray-300" : "hover:bg-gray-100"}`}
-          >
-            <div onClick={() =>{setSelectedConversation(conv); setSelectedUser(otherUser);}} className="flex justify-between">
-              <h4>{otherUser.name}</h4>
-              {onlineUsers.includes(otherUser._id) && <span>🟢</span>}
+          const otherUser = conv.participants.find(
+            (p: any) => p._id !== me?._id,
+          );
+          return (
+            <div
+              key={conv._id}
+              className={`p-3 cursor-pointer ${selectedConversation?._id === conv._id ? "bg-gray-300" : "hover:bg-gray-100"}`}
+            >
+              <div
+                onClick={() => {
+                  setSelectedConversation(conv);
+                  setSelectedUser(otherUser);
+                }}
+                className="flex justify-between"
+              >
+                <h4>{otherUser.name}</h4>
+                {onlineUsers.includes(otherUser._id) && <span>🟢</span>}
+              </div>
+              <p className="text-sm text-gray-500">
+                {conv.lastMessage?.content || "No messages"}
+              </p>
             </div>
-            <p className="text-sm text-gray-500">
-              {conv.lastMessage?.content || "No messages"}
-            </p>
-          </div>
-          )
-})}
+          );
+        })}
       </div>
 
       {/* right side */}
@@ -204,12 +211,12 @@ const page = () => {
                 onChange={(e) => {
                   setContent(e.target.value);
                   socket.emit("typing", selectedConversation._id);
-                  if(typingTimeout.current){
-                    clearTimeout(typingTimeout.current)
+                  if (typingTimeout.current) {
+                    clearTimeout(typingTimeout.current);
                   }
-                   typingTimeout.current = setTimeout(()=>{
-                    socket.emit("stopTyping",selectedConversation._id)
-                   },1000)
+                  typingTimeout.current = setTimeout(() => {
+                    socket.emit("stopTyping", selectedConversation._id);
+                  }, 1000);
                 }}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
@@ -238,7 +245,3 @@ const page = () => {
 };
 
 export default page;
-
-
-
- 
