@@ -154,12 +154,7 @@ const page = () => {
                 className="flex justify-between items-center"
               >
                 <h4>{otherUser.name}</h4>
-                  <p className="text-sm text-gray-500">
-                {conv.lastMessage?.content || "No messages"}
-              </p>
-              </div>
-              
-              <div className="flex flex-col items-end gap-1">
+                  <div className="flex flex-row items-end gap-1">
                 {onlineUsers.includes(otherUser._id) && <span>🟢</span>}
                 {conv.unreadCount > 0 && (
                   <span className="bg-green-500 text-white text-xs rounded-full px-2 py-1">
@@ -167,6 +162,12 @@ const page = () => {
                   </span>
                 )}
               </div>
+                 
+              </div>
+              
+               <p className="text-sm text-gray-500">
+                {conv.lastMessage?.content || "No messages"}
+              </p>
             </div>
           );
         })}
