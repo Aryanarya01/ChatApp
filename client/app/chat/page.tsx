@@ -155,6 +155,11 @@ const page = () => {
               >
                 <h4>{otherUser.name}</h4>
                 {onlineUsers.includes(otherUser._id) && <span>🟢</span>}
+                {conv.unreadCount > 0 && (
+                  <span className="bg-green-500 text-white text-xs rounded-full px-2 py-1">
+                    {conv.unreadCount}
+                  </span>
+                )}
               </div>
               <p className="text-sm text-gray-500">
                 {conv.lastMessage?.content || "No messages"}
