@@ -4,6 +4,9 @@ import Message from "../models/message.model.js";
 import Conversation from "../models/conversation.model.js";
 import { onlineUser } from "../sockets/socketHandler.js";
 import { getIO } from "../sockets/sockets.js";
+import cloudinary from "../lib/cloudinary.js";
+
+
 export const sendMessage = async (req: AuthRequest, res: Response) => {
   try {
     const { conversationId, content } = req.body;
