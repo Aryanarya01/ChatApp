@@ -1,47 +1,49 @@
 import type { Document } from "mongoose";
 import mongoose from "mongoose";
 
-
-interface IMessage extends Document{
-    sender : mongoose.Schema.Types.ObjectId,
-    conversation : mongoose.Schema.Types.ObjectId,
-    content: string,
-  seen: boolean,
-  image : string,
-  messageType : "text" | "image",
+interface IMessage extends Document {
+  sender: mongoose.Schema.Types.ObjectId;
+  conversation: mongoose.Schema.Types.ObjectId;
+  content: string;
+  seen: boolean;
+  image: string;
+  messageType: "text" | "image";
 }
-const messageSchema = new mongoose.Schema({
-    sender : {
-        type : mongoose.Schema.Types.ObjectId,
-        ref : "User",
-        required : true,
+const messageSchema = new mongoose.Schema(
+  {
+    sender: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
-    conversation : { 
-        type : mongoose.Schema.Types.ObjectId,
-        ref : "Conversation",
-        required : true,
+    conversation: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Conversation",
+      required: true,
     },
-    content : {
-        type : String,
-        default : "",
-        trim : true,
+    content: {
+      type: String,
+      default: "",
+      trim: true,
     },
-    image : {
-        type : String,
-        default : "",
+    image: {
+      type: String,
+      default: "",
     },
-    messageType : {
-        type : String,
-        enum : ["text","image"],
-        default : "text"
+    messageType: {
+      type: String,
+      enum: ["text", "image"],
+      default: "text",
     },
-    seen : {
-        type : Boolean,
-        default : false,
+    seen: {
+      type: Boolean,
+      default: false,
     },
-},{
-    timestamps : true,
-})
+  },
+  {
+    timestamps: true,
+  },
+);
 
-const Message = mongoose.model<IMessage>("Message",messageSchema);
+const Message = mongoose.model<IMessage>("Message", messageSchema);
 export default Message;
