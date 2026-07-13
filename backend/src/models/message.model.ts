@@ -7,6 +7,8 @@ interface IMessage extends Document{
     conversation : mongoose.Schema.Types.ObjectId,
     content: string,
   seen: boolean,
+  image : string,
+  messageType : "text" | "image",
 }
 const messageSchema = new mongoose.Schema({
     sender : {
