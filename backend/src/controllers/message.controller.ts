@@ -5,7 +5,7 @@ import Conversation from "../models/conversation.model.js";
 import { onlineUser } from "../sockets/socketHandler.js";
 import { getIO } from "../sockets/sockets.js";
 import cloudinary from "../lib/cloudinary.js";
- 
+ import fs from "fs"
 
 
 export const sendMessage = async (req: AuthRequest, res: Response) => {
@@ -19,12 +19,22 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
     let image = "";
     let messageType : "text" | "image" = "text";
     if(req.file){
-      
+        const result = await cloudinary.uploader.upload(req.file.path);
+        image = result.secure_url;
+        messageType = "image"
+    }
+    fs.unlinkSync(req.file.path)
+    if(!content && !req.file){
+      return res.status(400).json({
+        message : "Message or image is required"
+      })
     }
     const message = await Message.create({
       sender: req.user!._id,
       conversation: conversationId,
       content,
+      image,  
+      messageType,
     });
     const populatedMessage = await Message.findById(message._id).populate("sender","name username profilePicture")
     await Conversation.findByIdAndUpdate(conversationId,{

@@ -1,5 +1,5 @@
 import type { NextFunction, Request, Response } from "express";
-
+import type { Express } from "express";
 import jwt from "jsonwebtoken";
 import User from "../models/user.model.js";
 interface JwtPayload {
@@ -7,6 +7,7 @@ interface JwtPayload {
 }
 export interface AuthRequest extends Request {
   user?: any;
+  file? : any;
 }
 
 const Protect = async (req: AuthRequest, res: Response, next: NextFunction) => {
