@@ -15,6 +15,12 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
     if (!conversation) {
       return res.status(404).json({ message: "Conversation not found" });
     }
+
+    let image = "";
+    let messageType : "text" | "image" = "text";
+    if(req.file){
+      
+    }
     const message = await Message.create({
       sender: req.user!._id,
       conversation: conversationId,
@@ -24,6 +30,9 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
     await Conversation.findByIdAndUpdate(conversationId,{
       lastMessage : message._id
     })
+
+    
+
     const io = getIO();
     const recieverId = conversation.participants.find(
       (id) => id.toString() !== req.user!._id.toString(),
