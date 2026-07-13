@@ -5,8 +5,7 @@ import Conversation from "../models/conversation.model.js";
 import { onlineUser } from "../sockets/socketHandler.js";
 import { getIO } from "../sockets/sockets.js";
 import cloudinary from "../lib/cloudinary.js";
- import fs from "fs"
-
+import fs from "fs";
 
 export const sendMessage = async (req: AuthRequest, res: Response) => {
   try {
@@ -17,32 +16,33 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
     }
 
     let image = "";
-    let messageType : "text" | "image" = "text";
-    if(req.file){
-        const result = await cloudinary.uploader.upload(req.file.path);
-        image = result.secure_url;
-        messageType = "image";
-         fs.unlinkSync(req.file.path)
+    let messageType: "text" | "image" = "text";
+    if (req.file) {
+      const result = await cloudinary.uploader.upload(req.file.path);
+      image = result.secure_url;
+      messageType = "image";
+      fs.unlinkSync(req.file.path);
     }
-    
-    if(!content && !req.file){
+
+    if (!content && !req.file) {
       return res.status(400).json({
-        message : "Message or image is required"
-      })
+        message: "Message or image is required",
+      });
     }
     const message = await Message.create({
       sender: req.user!._id,
       conversation: conversationId,
       content,
-      image,  
+      image,
       messageType,
     });
-    const populatedMessage = await Message.findById(message._id).populate("sender","name username profilePicture")
-    await Conversation.findByIdAndUpdate(conversationId,{
-      lastMessage : message._id
-    })
-
-    
+    const populatedMessage = await Message.findById(message._id).populate(
+      "sender",
+      "name username profilePicture",
+    );
+    await Conversation.findByIdAndUpdate(conversationId, {
+      lastMessage: message._id,
+    });
 
     const io = getIO();
     const recieverId = conversation.participants.find(
@@ -65,7 +65,7 @@ export const getMessage = async (req: AuthRequest, res: Response) => {
   try {
     const { conversationId } = req.params;
     const message = await Message.find({
-      conversation : conversationId,
+      conversation: conversationId,
     })
       .populate("sender", "name username profilePicture")
       .sort({ createdAt: 1 });
@@ -76,24 +76,26 @@ export const getMessage = async (req: AuthRequest, res: Response) => {
   }
 };
 
-
-export const markAsSeen = async(req:AuthRequest, res:Response)=>{
-  try{
-    const {conversationId} = req.params;
+export const markAsSeen = async (req: AuthRequest, res: Response) => {
+  try {
+    const { conversationId } = req.params;
     await Message.updateMany(
       {
-        conversation : conversationId,
-        sender : {$ne : req.user!._id},
-        seen : false,
-      },{ $set :{
-        seen : true,
-      }}
-    ); console.log("conversationId : ", conversationId);
-    console.log("user :",req.user!._id)
-    return res.status(200).json({message : "Message marked as seen"});
-    
-  }catch(err){
+        conversation: conversationId,
+        sender: { $ne: req.user!._id },
+        seen: false,
+      },
+      {
+        $set: {
+          seen: true,
+        },
+      },
+    );
+    console.log("conversationId : ", conversationId);
+    console.log("user :", req.user!._id);
+    return res.status(200).json({ message: "Message marked as seen" });
+  } catch (err) {
     console.log(err);
-    return res.status(500).json({message : "Server Error!"})
+    return res.status(500).json({ message: "Server Error!" });
   }
-}
+};
