@@ -21,9 +21,10 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
     if(req.file){
         const result = await cloudinary.uploader.upload(req.file.path);
         image = result.secure_url;
-        messageType = "image"
+        messageType = "image";
+         fs.unlinkSync(req.file.path)
     }
-    fs.unlinkSync(req.file.path)
+    
     if(!content && !req.file){
       return res.status(400).json({
         message : "Message or image is required"
