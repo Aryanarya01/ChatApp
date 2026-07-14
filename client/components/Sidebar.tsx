@@ -1,19 +1,25 @@
-import React from 'react'
+import React from "react";
 
 interface SidebarProps {
-    conversation : any[],
-    me : any,
-    onlineUsers : string[],
-    selectedConversation : any,
-    setSelectedConversation : any,
-    setSelectedUser : any,
+  conversation: any[];
+  me: any;
+  onlineUsers: string[];
+  selectedConversation: any;
+  setSelectedConversation: any;
+  setSelectedUser: any;
 }
 
-const Sidebar = ({conversation,me,onlineUsers,selectedConversation,setSelectedConversation,setSelectedUser}:SidebarProps) => {
-
+const Sidebar = ({
+  conversation,
+  me,
+  onlineUsers,
+  selectedConversation,
+  setSelectedConversation,
+  setSelectedUser,
+}: SidebarProps) => {
   return (
     <>
-        <div className="w-1/4 border-r p-4">
+      <div className="w-1/4 border-r p-4">
         <h2 className="text-xl font-bold mb-4">Chat page..</h2>
 
         {conversation.map((conv: any) => {
@@ -51,7 +57,7 @@ const Sidebar = ({conversation,me,onlineUsers,selectedConversation,setSelectedCo
         })}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;
