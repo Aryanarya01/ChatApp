@@ -136,7 +136,7 @@ const page = () => {
   return (
     <div className="flex h-screen">
        {/* Sidebar */}
-        <Sidebar/>
+        <Sidebar conversation={conversation} me={me} onlineUsers={onlineUsers} selectedConversation={selectedConversation} setSelectedConversation={setSelectedConversation} setSelectedUser={setSelectedUser}/>
       {/* right side */}
       <div className="flex flex-col flex-1">
         {selectedUser ? (
