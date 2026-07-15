@@ -46,7 +46,10 @@ const Sidebar = ({
                       {conv.unreadCount}
                     </span>
                   )}
+                   
                 </div>
+
+                
               </div>
 
               <p className="text-sm text-gray-500">
