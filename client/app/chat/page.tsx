@@ -148,7 +148,8 @@ const page = () => {
       <div className="flex flex-col flex-1">
         {selectedUser ? (
           <>
-            <div className="border-b p-4">
+            <div className="border-b p-4">   
+              
               <h2 className="text-xl font-semibold">{selectedUser.name}</h2>
               {isTyping && <p className="text-sm text-gray-500">Typing...</p>}
             </div>
