@@ -1,5 +1,6 @@
 "use client";
 import ChatHeader from "@/components/chat/ChatHeader";
+import MessageList from "@/components/chat/MessageList";
 import Sidebar from "@/components/chat/Sidebar";
 import clientServer from "@/lib/axios";
 import { socket } from "@/lib/socket";
@@ -152,8 +153,10 @@ const page = () => {
           {/* chatHeader */}
             <ChatHeader selectedUser={selectedUser} isTyping={isTyping}/>
 
-             
+             {/* message List */}
+              <MessageList message={message} me={me} messageEndRef={messageEndRef}/>
 
+              
             <div className="border-t p-4 flex gap-2">
               <input
                 className="flex-1 border rounded p-2"
