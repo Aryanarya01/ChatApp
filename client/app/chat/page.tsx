@@ -17,7 +17,8 @@ const page = () => {
   const [onlineUsers, setonlineUsers] = useState<string[]>([]);
   const [isTyping, setIsTyping] = useState(false);
   const [conversation, setConversation] = useState([]);
-
+  const [image,setImage] = useState<File|null>(null);
+  
   const messageEndRef = useRef<HTMLDivElement>(null);
 
   const typingTimeout = useRef<NodeJS.Timeout | null>(null);
