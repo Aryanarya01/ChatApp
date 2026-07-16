@@ -151,14 +151,25 @@ const page = () => {
       <div className="flex flex-col flex-1">
         {selectedUser ? (
           <>
-          {/* chatHeader */}
-            <ChatHeader selectedUser={selectedUser} isTyping={isTyping}/>
+            {/* chatHeader */}
+            <ChatHeader selectedUser={selectedUser} isTyping={isTyping} />
 
-             {/* message List */}
-              <MessageList message={message} me={me} messageEndRef={messageEndRef}/>
+            {/* message List */}
+            <MessageList
+              message={message}
+              me={me}
+              messageEndRef={messageEndRef}
+            />
 
-              {/* messageInput */}
-              <MessageInput content={content} setContent={setContent} selectedConversation={selectedConversation} typingTimeout={typingTimeout} socket={socket} handelSendMessage={handelSendMessage} />
+            {/* messageInput */}
+            <MessageInput
+              content={content}
+              setContent={setContent}
+              selectedConversation={selectedConversation}
+              typingTimeout={typingTimeout}
+              socket={socket}
+              handelSendMessage={handelSendMessage}
+            />
           </>
         ) : (
           <div className="flex flex-1 items-center justify-center">
