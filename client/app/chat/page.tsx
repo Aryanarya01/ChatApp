@@ -1,4 +1,5 @@
 "use client";
+import ChatHeader from "@/components/chat/ChatHeader";
 import Sidebar from "@/components/Sidebar";
 import clientServer from "@/lib/axios";
 import { socket } from "@/lib/socket";
@@ -148,11 +149,7 @@ const page = () => {
       <div className="flex flex-col flex-1">
         {selectedUser ? (
           <>
-            <div className="border-b p-4">   
-              
-              <h2 className="text-xl font-semibold">{selectedUser.name}</h2>
-              {isTyping && <p className="text-sm text-gray-500">Typing...</p>}
-            </div>
+            <ChatHeader selectedUser={selectedUser} isTyping={isTyping}/>
 
             <div className="flex-1 overflow-y-auto p-4">
               <div className="flex flex-col gap-3 w-full">
