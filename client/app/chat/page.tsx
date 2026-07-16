@@ -1,6 +1,6 @@
 "use client";
 import ChatHeader from "@/components/chat/ChatHeader";
-import Sidebar from "@/components/Sidebar";
+import Sidebar from "@/components/chat/Sidebar";
 import clientServer from "@/lib/axios";
 import { socket } from "@/lib/socket";
 import { useEffect, useRef, useState } from "react";
