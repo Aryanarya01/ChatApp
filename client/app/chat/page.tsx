@@ -149,6 +149,7 @@ const page = () => {
       <div className="flex flex-col flex-1">
         {selectedUser ? (
           <>
+          {/* chatHeader */}
             <ChatHeader selectedUser={selectedUser} isTyping={isTyping}/>
 
             <div className="flex-1 overflow-y-auto p-4">
