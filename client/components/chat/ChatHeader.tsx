@@ -1,9 +1,10 @@
+ 
+import React from 'react'
+
 interface chatHeader {
     selectedUser : any,
     isTyping : Boolean,
 }
-
-import React from 'react'
 
 const ChatHeader = ({selectedUser,isTyping} : chatHeader) => {
   return (
