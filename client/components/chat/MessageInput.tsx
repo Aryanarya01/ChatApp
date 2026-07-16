@@ -7,6 +7,7 @@ interface MessageInputProps {
   typingTimeout: React.MutableRefObject<NodeJS.Timeout | null>;
   handelSendMessage: () => void;
   socket: any;
+  setImage : File,
 }
 
 const MessageInput = ({
@@ -16,9 +17,15 @@ const MessageInput = ({
   typingTimeout,
   handelSendMessage,
   socket,
+  setImage
 }: MessageInputProps) => {
   return (
     <div className="border-t p-4 flex gap-2">
+      <input type="file" onChange={(e)=>{
+        if(e.target.files?.[0]){
+          setImage
+        }
+      }} />
       <input
         className="flex-1 border rounded p-2"
         placeholder="Type message..."

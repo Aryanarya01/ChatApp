@@ -170,6 +170,7 @@ const page = () => {
               typingTimeout={typingTimeout}
               socket={socket}
               handelSendMessage={handelSendMessage}
+              setImage={setImage}
             />
           </>
         ) : (
