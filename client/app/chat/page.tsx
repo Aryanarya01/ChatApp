@@ -1,5 +1,6 @@
 "use client";
 import ChatHeader from "@/components/chat/ChatHeader";
+import MessageInput from "@/components/chat/MessageInput";
 import MessageList from "@/components/chat/MessageList";
 import Sidebar from "@/components/chat/Sidebar";
 import clientServer from "@/lib/axios";
@@ -157,6 +158,7 @@ const page = () => {
               <MessageList message={message} me={me} messageEndRef={messageEndRef}/>
 
               {/* messageInput */}
+              <MessageInput content={content} setContent={setContent} selectedConversation={selectedConversation} typingTimeout={typingTimeout} socket={socket} handelSendMessage={handelSendMessage} />
           </>
         ) : (
           <div className="flex flex-1 items-center justify-center">
