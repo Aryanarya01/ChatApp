@@ -7,7 +7,7 @@ interface MessageInputProps {
   typingTimeout: React.MutableRefObject<NodeJS.Timeout | null>;
   handelSendMessage: () => void;
   socket: any;
-  setImage : File,
+  setImage : File;
 }
 
 const MessageInput = ({
@@ -23,7 +23,7 @@ const MessageInput = ({
     <div className="border-t p-4 flex gap-2">
       <input type="file" onChange={(e)=>{
         if(e.target.files?.[0]){
-          setImage
+          setImage(e.target.files[0])
         }
       }} />
       <input
