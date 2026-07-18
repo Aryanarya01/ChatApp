@@ -155,6 +155,8 @@ const page = () => {
             {/* chatHeader */}
             <ChatHeader selectedUser={selectedUser} isTyping={isTyping} />
 
+
+
             {/* message List */}
             <MessageList
               message={message}
