@@ -15,21 +15,21 @@ const consversationSchema = new mongoose.Schema(
         required: true,
       },
     ],
-    isGroup : {
-      type : Boolean,
-      default : "",
+    isGroup: {
+      type: Boolean,
+      default: "",
     },
-    groupName : {
-      type : String,
-      default : "",
+    groupName: {
+      type: String,
+      default: "",
     },
-    groupImage : {
-      type : String,
-      default : "",
+    groupImage: {
+      type: String,
+      default: "",
     },
-    groupAdmin : {
-      type : mongoose.Schema.Types.ObjectId,
-      ref : "User",
+    groupAdmin: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
     },
     lastMessage: {
       type: mongoose.Schema.Types.ObjectId,
