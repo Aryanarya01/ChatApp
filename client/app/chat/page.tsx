@@ -50,7 +50,9 @@ const page = () => {
         const formData = new FormData();
       formData.append("conversationId",selectedConversation._id);
       formData.append("content",content);
-      formData.append("image",image);
+       if(image){
+        formData.append("image",image);
+       }
       await clientServer.post("/messages",formData)
       setMessage((prev) => [...prev, formData]);
       console.log(formData);
