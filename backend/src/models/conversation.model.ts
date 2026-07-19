@@ -15,6 +15,15 @@ const consversationSchema = new mongoose.Schema(
         required: true,
       },
     ],
+    isGroup : {
+      type : Boolean,
+      default : "",
+    },
+    groupName : {
+      type : String,
+      default : "",
+    },
+    
     lastMessage: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Message",
