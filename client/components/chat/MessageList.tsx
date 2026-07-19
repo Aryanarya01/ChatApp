@@ -21,7 +21,7 @@ const MessageList = ({ message, me, messageEndRef }: MessageListProps) => {
           >
              {
               mess.messageType === "image" ? (
-                <img src="" alt="message" className="w-56 rounded-lg" />
+                <img src={mess.image} alt="message" className="w-56 rounded-lg" />
               ) : (
                 <p>{mess.content}</p>
               )
