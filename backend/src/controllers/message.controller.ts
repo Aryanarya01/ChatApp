@@ -18,10 +18,8 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
     let image = "";
     let messageType: "text" | "image" = "text";
     if (req.file) {
-      const result = await cloudinary.uploader.upload(req.file.path);
-      image = result.secure_url;
+      image = req.file.path;
       messageType = "image";
-      fs.unlinkSync(req.file.path);
     }
 
     if (!content && !req.file) {
@@ -56,9 +54,9 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
       io.to(recieverSocketId).emit("newMessage", populatedMessage);
     }
     return res.status(201).json(populatedMessage);
-  } catch (err : any) {
+  } catch (err: any) {
     console.log(err);
-    
+    console.log("SEND MESSAGE ERROR:");
     return res.status(500).json({ message: "Server Error" });
   }
 };
