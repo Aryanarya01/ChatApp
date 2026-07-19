@@ -22,7 +22,7 @@ const MessageList = ({ message, me, messageEndRef }: MessageListProps) => {
            {mess.image && (
             <img src={mess.image} alt="message" className="w-56 rounded-lg mb-2" />
            )}
-           
+           {mess.content && <p>{mess.content}</p>}
             <p className="text-xs mt-1">
               {new Date(mess.createdAt).toLocaleTimeString([], {
                 hour: "2-digit",
