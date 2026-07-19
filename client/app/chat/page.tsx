@@ -47,10 +47,13 @@ const page = () => {
   const handelSendMessage = async () => {
     if (!selectedConversation || !content.trim()) return;
     try {
-      const formData = new FormData();
-      formData.append
-      setMessage((prev) => [...prev, data]);
-      console.log(data);
+        const formData = new FormData();
+      formData.append("conversationId",selectedConversation._id);
+      formData.append("content",content);
+      formData.append("image",image);
+      await clientServer.post("/messages",formData)
+      setMessage((prev) => [...prev, formData]);
+      console.log(formData);
       setContent("");
       socket.emit("stopTyping", selectedConversation._id);
     } catch (err: any) {
