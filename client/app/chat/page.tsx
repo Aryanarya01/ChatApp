@@ -45,6 +45,7 @@ const page = () => {
     setConversation(data);
   };
   const handelSendMessage = async () => {
+    console.log("clicked")
     if (!selectedConversation || !content.trim()) return;
     try {
       const formData = new FormData();

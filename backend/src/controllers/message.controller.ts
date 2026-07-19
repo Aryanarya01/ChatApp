@@ -57,6 +57,7 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
     }
     return res.status(201).json(populatedMessage);
   } catch (err) {
+    console.log(err)
     return res.status(500).json({ message: "Server Error" });
   }
 };
