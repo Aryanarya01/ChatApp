@@ -8,6 +8,7 @@ interface MessageInputProps {
   handelSendMessage: () => void;
   socket: any;
   setImage : React.Dispatch<React.SetStateAction<File | null>>;
+  image : File | null;
 }
 
 const MessageInput = ({
@@ -17,7 +18,8 @@ const MessageInput = ({
   typingTimeout,
   handelSendMessage,
   socket,
-  setImage
+  setImage,
+  image
 }: MessageInputProps) => {
   return (
     <div className="border-t p-4 flex gap-2">

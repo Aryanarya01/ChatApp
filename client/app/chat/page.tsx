@@ -46,7 +46,7 @@ const page = () => {
   };
   const handelSendMessage = async () => {
     console.log("clicked")
-    if (!selectedConversation || !content.trim()) return;
+    if (!selectedConversation || !content.trim() && !image) return;
     try {
       const formData = new FormData();
       formData.append("conversationId", selectedConversation._id);
@@ -176,6 +176,7 @@ const page = () => {
               socket={socket}
               handelSendMessage={handelSendMessage}
               setImage={setImage}
+              image={image}
             />
           </>
         ) : (
