@@ -50,12 +50,10 @@ const page = () => {
         const formData = new FormData();
       formData.append("conversationId",selectedConversation._id);
       formData.append("content",content);
-       if(image){
-        formData.append("image",image);
-       }
-      await clientServer.post("/messages",formData)
-      setMessage((prev) => [...prev, formData]);
-      console.log(formData);
+      formData.append("image",image);
+     const {data} =  await clientServer.post("/messages",formData)
+      setMessage((prev) => [...prev, data]);
+      console.log(data);
       setContent("");
       socket.emit("stopTyping", selectedConversation._id);
     } catch (err: any) {
