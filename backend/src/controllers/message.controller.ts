@@ -56,8 +56,9 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
       io.to(recieverSocketId).emit("newMessage", populatedMessage);
     }
     return res.status(201).json(populatedMessage);
-  } catch (err) {
-    console.log(err)
+  } catch (err : any) {
+    console.log(err);
+    
     return res.status(500).json({ message: "Server Error" });
   }
 };
