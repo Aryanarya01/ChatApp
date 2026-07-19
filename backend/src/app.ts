@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import path from "path"
 import cookieParser from "cookie-parser";
 import userRoute from "./routes/user.route.js";
 import conversationRoute from "./routes/conversation.route.js";
@@ -13,6 +14,7 @@ app.use(
     credentials: true,
   }),
 );
+app.use("/uploads",express.static(path.join(process.cwd(),"uploads")))
 app.use(cookieParser());
 app.use("/auth", userRoute);
 app.use("/conversation", conversationRoute);
