@@ -7,7 +7,7 @@ interface MessageInputProps {
   typingTimeout: React.MutableRefObject<NodeJS.Timeout | null>;
   handelSendMessage: () => void;
   socket: any;
-  setImage : File;
+  setImage : React.Dispatch<React.SetStateAction<File | null>>;
 }
 
 const MessageInput = ({
