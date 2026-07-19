@@ -47,10 +47,8 @@ const page = () => {
   const handelSendMessage = async () => {
     if (!selectedConversation || !content.trim()) return;
     try {
-      const { data } = await clientServer.post("/messages", {
-        conversationId: selectedConversation._id,
-        content,
-      });
+      const formData = new FormData();
+      formData.append
       setMessage((prev) => [...prev, data]);
       console.log(data);
       setContent("");
