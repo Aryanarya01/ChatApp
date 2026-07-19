@@ -20,7 +20,11 @@ const MessageList = ({ message, me, messageEndRef }: MessageListProps) => {
             }`}
           >
              {
-              
+              mess.messageType === "image" ? (
+                <img src="" alt="message" className="w-56 rounded-lg" />
+              ) : (
+                <p>{mess.content}</p>
+              )
              }
             <p className="text-xs mt-1">
               {new Date(mess.createdAt).toLocaleTimeString([], {
