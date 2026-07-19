@@ -57,6 +57,7 @@ const page = () => {
       setMessage((prev) => [...prev, data]);
       console.log(data);
       setContent("");
+      setImage(null);
       socket.emit("stopTyping", selectedConversation._id);
     } catch (err: any) {
       console.log(err);
