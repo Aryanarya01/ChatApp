@@ -86,6 +86,19 @@ export const createGroup = async (req: AuthRequest, res: Response) => {
     // add logged in user
     participants.push(req.user!._id);
 
+    //create group
+    const group = await Conversation.create({
+      participants,
+      isGroup : true,
+      groupName,
+      groupAdmin : req.user!._id,
+    });
+
+    //populate data
+    const populatedGroup = await Conversation.findById(group._id).populate("participants","name username email profilePicture").
+    populate("groupAdmin","name username profilePicture");
+
+
     
   } catch (err) {
     return res.status(500).json({ message: "Server Error!" });
