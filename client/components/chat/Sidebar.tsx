@@ -22,6 +22,8 @@ const Sidebar = ({
       <div className="w-1/4 border-r p-4">
         <h2 className="text-xl font-bold mb-4">Chat page..</h2>
 
+      <button> + New Group</button>
+
         {conversation.map((conv: any) => {
           const otherUser = conv.participants.find(
             (p: any) => p._id !== me?._id,
