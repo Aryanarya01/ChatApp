@@ -3,10 +3,10 @@ import mongoose from "mongoose";
 
 interface IConversation extends Document {
   participants: mongoose.Schema.Types.ObjectId[];
-  isGroup : boolean,
-  groupName : string,
-  groupImage : string,
-  groupAdmin : mongoose.Schema.Types.ObjectId,
+  isGroup: boolean;
+  groupName: string;
+  groupImage: string;
+  groupAdmin: mongoose.Schema.Types.ObjectId;
   lastMessage: mongoose.Schema.Types.ObjectId;
 }
 
