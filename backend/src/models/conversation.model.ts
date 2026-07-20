@@ -16,7 +16,7 @@ const consversationSchema = new mongoose.Schema(
       },
     ],
     isGroup: {
-      type: Boolean ,
+      type: Boolean,
       default: "",
     },
     groupName: {
