@@ -26,14 +26,14 @@ const CreateGroupModal = ({
   const handelCreateGroup = async () => {
     try {
       if (!groupName.trim()) {
-  alert("Enter group name");
-  return;
-}
+        alert("Enter group name");
+        return;
+      }
 
-if (selectedUsers.length < 2) {
-  alert("Select at least 2 users");
-  return;
-}
+      if (selectedUsers.length < 2) {
+        alert("Select at least 2 users");
+        return;
+      }
       const { data } = await clientServer.post("/conversation/group", {
         groupName,
         participants: selectedUsers,
