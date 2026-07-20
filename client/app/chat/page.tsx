@@ -21,7 +21,6 @@ const page = () => {
   const [image, setImage] = useState<File | null>(null);
   const [openGroupModal, setOpenGroupModal] = useState(false);
 
-
   const messageEndRef = useRef<HTMLDivElement>(null);
 
   const typingTimeout = useRef<NodeJS.Timeout | null>(null);
@@ -48,8 +47,8 @@ const page = () => {
     setConversation(data);
   };
   const handelSendMessage = async () => {
-    console.log("clicked")
-    if (!selectedConversation || !content.trim() && !image) return;
+    console.log("clicked");
+    if (!selectedConversation || (!content.trim() && !image)) return;
     try {
       const formData = new FormData();
       formData.append("conversationId", selectedConversation._id);
@@ -150,17 +149,19 @@ const page = () => {
       {/* Sidebar */}
       <Sidebar
         conversation={conversation}
-        me={me}
+        me={me}   
         onlineUsers={onlineUsers}
         selectedConversation={selectedConversation}
         setSelectedConversation={setSelectedConversation}
         setSelectedUser={setSelectedUser}
-        openGroupModal = {openGroupModal}
-        setOpenGroupModal = {setOpenGroupModal}
+        openGroupModal={openGroupModal}
+        setOpenGroupModal={setOpenGroupModal}
       />
-      {openGroupModal && (
-        <CreateGroupModal/>
-      )}
+      {openGroupModal && <CreateGroupModal 
+        users = {users}
+        setOpenGroupModal = {setOpenGroupModal}
+        fetchConversations={fetchConversations}
+      />}
 
       {/* right side */}
       <div className="flex flex-col flex-1">
