@@ -7,8 +7,8 @@ interface SidebarProps {
   selectedConversation: any;
   setSelectedConversation: any;
   setSelectedUser: any;
-  openGroupModal : boolean,
-  setOpenGroupModal : React.Dispatch<React.SetStateAction<boolean>>;
+  openGroupModal: boolean;
+  setOpenGroupModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Sidebar = ({
@@ -19,12 +19,17 @@ const Sidebar = ({
   setSelectedConversation,
   setSelectedUser,
   openGroupModal,
-  setOpenGroupModal
+  setOpenGroupModal,
 }: SidebarProps) => {
   return (
     <>
       <div className="w-1/4 border-r p-4">
-      <button className="w-full bg-blue-500 text-white p-2 rounded mb-3" onClick={()=> setOpenGroupModal(true)}>+ New Group</button>
+        <button
+          className="w-full bg-blue-500 text-white p-2 rounded mb-3"
+          onClick={() => setOpenGroupModal(true)}
+        >
+          + New Group
+        </button>
         <h2 className="text-xl font-bold mb-4">Chat page..</h2>
 
         {conversation.map((conv: any) => {
