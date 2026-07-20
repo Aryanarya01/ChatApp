@@ -84,6 +84,6 @@ export const createGroup = async(req:AuthRequest, res : Response)=>{
       return res.status(404).json({message : "At least 2 members are required!"})
     }
   }catch(err){
-
+    return res.status(500).json({message : "Server Error!"})
   }
 } 
