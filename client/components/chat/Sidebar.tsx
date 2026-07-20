@@ -8,7 +8,7 @@ interface SidebarProps {
   setSelectedConversation: any;
   setSelectedUser: any;
   openGroupModal : boolean,
-  setOpenGroupModal : any,
+  setOpenGroupModal : React.Dispatch<React.SetStateAction<boolean>>,
 }
 
 const Sidebar = ({
