@@ -14,6 +14,14 @@ const CreateGroupModal = ({
   const [groupName, setGroupName] = useState("");
   const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
 
+    const handleSelectUser = (userId : string)=>{
+      if(selectedUsers.includes(userId)){
+        setSelectedUsers(selectedUsers.filter((id)=>id !== userId))
+      }else{
+        setSelectedUsers([...selectedUsers, userId])
+      }
+    }
+
   return(
     <div>
         <input type="text" placeholder="Group Name" value={groupName} onChange={(e)=> setGroupName(e.target.value)} />
