@@ -46,7 +46,7 @@ const CreateGroupModal = ({
                 <span>{user.name}</span>
             </div>
         ))}
-        <button onClick={()=>handelCreateGroup}>Create Group</button>
+        <button onClick={()=>handelCreateGroup()} className="bg-blue-500 p-2 rounded m-3">Create Group</button>
     </div>
   );
 };
