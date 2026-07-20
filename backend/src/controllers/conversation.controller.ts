@@ -83,7 +83,10 @@ export const createGroup = async (req: AuthRequest, res: Response) => {
         .status(404)
         .json({ message: "At least 3 members are required including you!" });
     }
+    // add logged in user
+    participants.push(req.user!._id);
 
+    
   } catch (err) {
     return res.status(500).json({ message: "Server Error!" });
   }
