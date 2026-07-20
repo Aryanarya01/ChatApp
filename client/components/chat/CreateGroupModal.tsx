@@ -22,6 +22,14 @@ const CreateGroupModal = ({
       }
     }
 
+    const handelCreateGroup = async()=>{
+      try{
+        
+      }catch(err){
+        console.log(err)
+      }
+    }
+
   return(
     <div>
         <input type="text" placeholder="Group Name" value={groupName} onChange={(e)=> setGroupName(e.target.value)} />
