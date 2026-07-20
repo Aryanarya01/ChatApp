@@ -27,9 +27,11 @@ const CreateGroupModal = ({
       try{
         const {data} = await clientServer.post("/conversation/group",{
           groupName,
-          
+          participants : selectedUsers,
         });
-
+        console.log(data);
+        fetchConversations();
+        setOpenGroupModal(false)
       }catch(err){
         console.log(err)
       }
@@ -44,6 +46,7 @@ const CreateGroupModal = ({
                 <span>{user.name}</span>
             </div>
         ))}
+        <button onClick={()=>handelCreateGroup}>Create Group</button>
     </div>
   );
 };
