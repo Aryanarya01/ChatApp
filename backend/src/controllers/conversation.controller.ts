@@ -98,8 +98,8 @@ export const createGroup = async (req: AuthRequest, res: Response) => {
     const populatedGroup = await Conversation.findById(group._id).populate("participants","name username email profilePicture").
     populate("groupAdmin","name username profilePicture");
 
+    return res.status(200).json(populatedGroup)
 
-    
   } catch (err) {
     return res.status(500).json({ message: "Server Error!" });
   }
