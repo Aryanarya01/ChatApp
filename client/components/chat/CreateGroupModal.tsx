@@ -1,3 +1,4 @@
+import clientServer from "@/lib/axios";
 import React, { useState } from "react";
 
 interface groupModalProps {
@@ -24,7 +25,11 @@ const CreateGroupModal = ({
 
     const handelCreateGroup = async()=>{
       try{
-        
+        const {data} = await clientServer.post("/conversation/group",{
+          groupName,
+          
+        });
+
       }catch(err){
         console.log(err)
       }
