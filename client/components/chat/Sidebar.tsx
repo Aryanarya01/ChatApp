@@ -7,6 +7,8 @@ interface SidebarProps {
   selectedConversation: any;
   setSelectedConversation: any;
   setSelectedUser: any;
+  openGroupModal : boolean,
+  setOpenGroupModal : any,
 }
 
 const Sidebar = ({
@@ -16,13 +18,13 @@ const Sidebar = ({
   selectedConversation,
   setSelectedConversation,
   setSelectedUser,
+  openGroupModal,
+  setOpenGroupModal
 }: SidebarProps) => {
   return (
     <>
       <div className="w-1/4 border-r p-4">
         <h2 className="text-xl font-bold mb-4">Chat page..</h2>
-
-      <button className="w-full bg-blue-500 text-white p-2 rounded mb-3">+ New Group</button>
 
         {conversation.map((conv: any) => {
           const otherUser = conv.participants.find(

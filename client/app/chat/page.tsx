@@ -18,7 +18,9 @@ const page = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [conversation, setConversation] = useState([]);
   const [image, setImage] = useState<File | null>(null);
-  const [openGroupModal, setOpenGroupModal] = useState(false)
+  const [openGroupModal, setOpenGroupModal] = useState(false);
+
+
   const messageEndRef = useRef<HTMLDivElement>(null);
 
   const typingTimeout = useRef<NodeJS.Timeout | null>(null);
@@ -152,6 +154,8 @@ const page = () => {
         selectedConversation={selectedConversation}
         setSelectedConversation={setSelectedConversation}
         setSelectedUser={setSelectedUser}
+        openGroupModal = {openGroupModal}
+        setOpenGroupModal = {setOpenGroupModal}
       />
       {/* right side */}
       <div className="flex flex-col flex-1">
