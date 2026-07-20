@@ -71,3 +71,13 @@ export const getConversation = async (req: AuthRequest, res: Response) => {
     });
   }
 };
+
+
+
+export const createGroup = async(req:AuthRequest, res : Response)=>{
+  try{
+
+  }catch(err){
+    
+  }
+} 
