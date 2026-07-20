@@ -72,18 +72,18 @@ export const getConversation = async (req: AuthRequest, res: Response) => {
   }
 };
 
-
-
-export const createGroup = async(req:AuthRequest, res : Response)=>{
-  try{
-    const {groupName, participants} = req.body;
-    if(!groupName){
-      return res.status(400).json({message : "Group name is required!"})
+export const createGroup = async (req: AuthRequest, res: Response) => {
+  try {
+    const { groupName, participants } = req.body;
+    if (!groupName) {
+      return res.status(400).json({ message: "Group name is required!" });
     }
-    if(!participants || participants.length < 2){
-      return res.status(404).json({message : "At least 2 members are required!"})
+    if (!participants || participants.length < 2) {
+      return res
+        .status(404)
+        .json({ message: "At least 2 members are required!" });
     }
-  }catch(err){
-    return res.status(500).json({message : "Server Error!"})
+  } catch (err) {
+    return res.status(500).json({ message: "Server Error!" });
   }
-} 
+};
