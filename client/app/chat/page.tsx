@@ -149,7 +149,7 @@ const page = () => {
       {/* Sidebar */}
       <Sidebar
         conversation={conversation}
-        me={me}   
+        me={me}
         onlineUsers={onlineUsers}
         selectedConversation={selectedConversation}
         setSelectedConversation={setSelectedConversation}
@@ -157,11 +157,13 @@ const page = () => {
         openGroupModal={openGroupModal}
         setOpenGroupModal={setOpenGroupModal}
       />
-      {openGroupModal && <CreateGroupModal 
-         users = {users}
-        setOpenGroupModal = {setOpenGroupModal}
-        fetchConversations={fetchConversations}
-      />}
+      {openGroupModal && (
+        <CreateGroupModal
+          users={users}
+          setOpenGroupModal={setOpenGroupModal}
+          fetchConversations={fetchConversations}
+        />
+      )}
 
       {/* right side */}
       <div className="flex flex-col flex-1">
