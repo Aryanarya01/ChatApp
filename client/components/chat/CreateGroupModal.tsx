@@ -17,6 +17,12 @@ const CreateGroupModal = ({
   return(
     <div>
         <input type="text" placeholder="Group Name" value={groupName} onChange={(e)=> setGroupName(e.target.value)} />
+        {users.map((user)=>(
+            <div key={user._id}>
+                <input type="checkbox"/>
+                <span>{user.name}</span>
+            </div>
+        ))}
     </div>
   );
 };
