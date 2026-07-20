@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
 interface groupModal {
-    users : 
-    setOpenGroupModal :
-    fetchConversations :  
+    users : any[],
+    setOpenGroupModal : React.Dispatch<React.SetStateAction<boolean>>;
+    fetchConversations :  ()=> void;
 }
 
 const CreateGroupModal = () => {

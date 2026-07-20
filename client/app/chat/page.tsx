@@ -158,7 +158,7 @@ const page = () => {
         setOpenGroupModal={setOpenGroupModal}
       />
       {openGroupModal && <CreateGroupModal 
-        users = {users}
+         users = {users}
         setOpenGroupModal = {setOpenGroupModal}
         fetchConversations={fetchConversations}
       />}
