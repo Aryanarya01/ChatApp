@@ -1,5 +1,6 @@
 "use client";
 import ChatHeader from "@/components/chat/ChatHeader";
+import CreateGroupModal from "@/components/chat/CreateGroupModal";
 import MessageInput from "@/components/chat/MessageInput";
 import MessageList from "@/components/chat/MessageList";
 import Sidebar from "@/components/chat/Sidebar";
@@ -157,6 +158,10 @@ const page = () => {
         openGroupModal = {openGroupModal}
         setOpenGroupModal = {setOpenGroupModal}
       />
+      {openGroupModal && (
+        <CreateGroupModal/>
+      )}
+
       {/* right side */}
       <div className="flex flex-col flex-1">
         {selectedUser ? (
