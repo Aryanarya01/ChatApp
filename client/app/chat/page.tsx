@@ -170,7 +170,7 @@ const page = () => {
         {selectedUser ? (
           <>
             {/* chatHeader */}
-            <ChatHeader selectedUser={selectedUser} isTyping={isTyping} />
+            <ChatHeader selectedUser={selectedUser} isTyping={isTyping} selectedConversation={selectedConversation} />
 
             {/* message List */}
             <MessageList
