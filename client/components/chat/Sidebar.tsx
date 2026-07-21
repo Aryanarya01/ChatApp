@@ -44,11 +44,11 @@ const Sidebar = ({
               <div
                 onClick={() => {
                   setSelectedConversation(conv);
-                   if(conv.isGroup){
+                  if (conv.isGroup) {
                     setSelectedUser(null);
-                   }else{
+                  } else {
                     setSelectedUser(otherUser);
-                   }
+                  }
                 }}
                 className="flex justify-between items-center"
               >
