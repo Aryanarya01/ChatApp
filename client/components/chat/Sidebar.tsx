@@ -44,11 +44,15 @@ const Sidebar = ({
               <div
                 onClick={() => {
                   setSelectedConversation(conv);
-                  setSelectedUser(otherUser);
+                   if(conv.isGroup){
+                    setSelectedUser(null);
+                   }else{
+                    setSelectedUser(otherUser);
+                   }
                 }}
                 className="flex justify-between items-center"
               >
-                <h4>{otherUser.name}</h4>
+                <h4>{conv.isGroup ? conv.groupName : otherUser?.name}</h4>
                 <div className="flex flex-row items-end gap-1">
                   {onlineUsers.includes(otherUser._id) && <span>🟢</span>}
                   {conv.unreadCount > 0 && (
