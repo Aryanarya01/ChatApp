@@ -1,4 +1,4 @@
- import React from 'react'
+ import React, { use } from 'react'
  interface GroupInfoModalProp {
     selectedConversation : any,
     me : any,
@@ -17,6 +17,9 @@
             {selectedConversation.participants.map((user:any)=>(
                 <div key={user._id}>
                     {user.name}
+                    {selectedConversation.groupAdmin._id === user._id && (
+                        <span>(Admin)</span>
+                    )}
                 </div>
             ))}
             <button onClick={()=>setOpen(false)}>Close</button>
