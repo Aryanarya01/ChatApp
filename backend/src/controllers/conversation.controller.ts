@@ -154,8 +154,8 @@ export const removeMemberFromGroup = async (
     group.participants = group.participants.filter(
       (id) => id.toString() !== userId,
     );
-    if(userId === req.user!._id.toString()){
-      return res.status(400).json({message : "Admin cannot remove himself"})
+    if (userId === req.user!._id.toString()) {
+      return res.status(400).json({ message: "Admin cannot remove himself" });
     }
     await group.save();
     const updatedGroup = await Conversation.findById(group._id)
