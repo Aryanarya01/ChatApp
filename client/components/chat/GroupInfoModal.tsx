@@ -12,8 +12,13 @@
    return (
      <div className='fixed inset-0 bg-black/40 flex items-center justify-center'>
         <div className="bg-white p-5 rounded w-400px">
-            
-
+            <h2>{selectedConversation.groupName}</h2>
+            <h3>Members</h3>
+            {selectedConversation.participants.map((user:any)=>(
+                <div key={user._id}>
+                    {user.name}
+                </div>
+            ))}
         </div>
      </div>
    )
