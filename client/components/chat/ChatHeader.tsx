@@ -4,12 +4,14 @@ interface chatHeaderProps {
   selectedUser: any;
   isTyping: Boolean;
   selectedConversation: any;
+  setOpenGroupInfo : React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const ChatHeader = ({
   selectedUser,
   isTyping,
   selectedConversation,
+  setOpenGroupInfo
 }: chatHeaderProps) => {
   return (
     <div className="border-b p-4">

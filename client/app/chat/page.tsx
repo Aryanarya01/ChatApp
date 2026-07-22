@@ -22,7 +22,7 @@ const page = () => {
   const [openGroupModal, setOpenGroupModal] = useState(false);
   const [openGroupInfo, setOpenGroupInfo] = useState(false);
 
-  
+
   const messageEndRef = useRef<HTMLDivElement>(null);
 
   const typingTimeout = useRef<NodeJS.Timeout | null>(null);
@@ -172,7 +172,7 @@ const page = () => {
         {selectedConversation ? (
           <>
             {/* chatHeader */}
-            <ChatHeader selectedUser={selectedUser} isTyping={isTyping} selectedConversation={selectedConversation} />
+            <ChatHeader selectedUser={selectedUser} isTyping={isTyping} selectedConversation={selectedConversation} setOpenGroupInfo={setOpenGroupInfo}/>
 
             {/* message List */}
             <MessageList
