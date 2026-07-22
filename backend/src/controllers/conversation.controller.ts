@@ -126,6 +126,7 @@ export const addMemberToGroup = async (req: AuthRequest, res: Response) => {
     const updatedGroup = await Conversation.findById(group._id)
       .populate("participants", "name username profilePicture")
       .populate("groupAdmin", "name username profilePicture");
+      
   } catch (err) {
     return res.status(500).json({ message: "Server error!" });
   }
@@ -141,7 +142,10 @@ export const removeMemberFromGroup = async (req:AuthRequest, res : Response)=>{
     if(group.groupAdmin.toString() !== req.user!._id.toString()){
       return res.status(403).json({message : "only group admin can remove members!"})
     }
-    
+    group.participants = group.participants.filter((id)=>id.toString() !== userId);
+    await group.save();
+    const updatedGroup = await Conversation.findById(group._id).populate("participants","name username profilePicture").populate("groupAdmin","name username profilePicture")
+
   }catch(err){
     return res.status(500).json({message : "Server Error!"})
   }
