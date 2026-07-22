@@ -32,8 +32,8 @@ const GroupInfoModal = ({
       </div>
       {isAdmin && (
         <>
-         <button>Add Member</button>
-     <button>Remove Member</button>
+          <button>Add Member</button>
+          <button>Remove Member</button>
         </>
       )}
       <button>Leave Group</button>
