@@ -145,7 +145,7 @@ export const removeMemberFromGroup = async (req:AuthRequest, res : Response)=>{
     group.participants = group.participants.filter((id)=>id.toString() !== userId);
     await group.save();
     const updatedGroup = await Conversation.findById(group._id).populate("participants","name username profilePicture").populate("groupAdmin","name username profilePicture")
-
+    return res.status(200).json(updatedGroup)
   }catch(err){
     return res.status(500).json({message : "Server Error!"})
   }
