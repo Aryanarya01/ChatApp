@@ -44,7 +44,13 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
 
     const io = getIO();
    for(const participant of conversation.participants){
-    
+    if(participant.toString() === req.user!._id.toString()){
+      continue;
+    }
+    const sockteId = onlineUser.get(participant.toString());
+    if(sockteId){
+      io.to(sockteId).emit("newMessage",populatedMessage)
+    }
    }
     return res.status(201).json(populatedMessage);
   } catch (err: any) {
