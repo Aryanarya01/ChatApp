@@ -133,6 +133,14 @@ export const addMemberToGroup = async (req: AuthRequest, res: Response) => {
 
 export const removeMemberFromGroup = async (req:AuthRequest, res : Response)=>{
   try{
+    const {conversationId, userId} = req.body;
+    const group = await conversationId.findById(conversationId);
+    if(!group){
+      return res.status(404).json({message : "Group not found!"})
+    }
+    if(group.groupAdmin.toString() !== req.user!._id.toString()){
+      return res.status(403).json({message : "only group admin can remove members!"})
+    }
     
   }catch(err){
     return res.status(500).json({message : "Server Error!"})
