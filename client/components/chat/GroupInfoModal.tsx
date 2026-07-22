@@ -5,7 +5,10 @@
     open : boolean,
     setOpen : React.Dispatch<React.SetStateAction<boolean>>,
 }
- const GroupInfoModal = ({}) => {
+ const GroupInfoModal = ({selectedConversation,me,open,setOpen}:GroupInfoModalProp) => {
+    if(!open){
+        return null;
+    }
    return (
      <div>GroupInfoModal</div>
    )
