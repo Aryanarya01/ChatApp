@@ -172,7 +172,7 @@ export const removeMemberFromGroup = async (
 export const leaveGroup = async (req:AuthRequest, res:Response)=>{
   try{
     const {conversationId} = req.body;
-    const group = Conversation.findById(conversationId);
+    const group = await Conversation.findById(conversationId);
     if(!group){
       return res.status(404).json({message : "Group not found!"})
     }
