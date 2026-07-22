@@ -130,3 +130,11 @@ export const addMemberToGroup = async (req: AuthRequest, res: Response) => {
     return res.status(500).json({ message: "Server error!" });
   }
 };
+
+export const removeMemberFromGroup = async (req:AuthRequest, res : Response)=>{
+  try{
+    
+  }catch(err){
+    return res.status(500).json({message : "Server Error!"})
+  }
+}
