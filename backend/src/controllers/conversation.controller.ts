@@ -171,7 +171,15 @@ export const removeMemberFromGroup = async (
 
 export const leaveGroup = async (req:AuthRequest, res:Response)=>{
   try{
-    
+    const {conversationId} = req.body;
+    const group = Conversation.findById(conversationId);
+    if(!group){
+      return res.status(404).json({message : "Group not found!"})
+    }
+    if(group.groupAdmin.toString() === req.user!._id.toString()){
+      return res.status(403).json({message : "Admin cannot leave the group!"})
+    }
+    group.participants  = group.participants.filter((id)=>id.toString() !== req.user!._id.toString()
   }catch(err){
     return res.status(500).json({message : "Server Error!"})
   }
