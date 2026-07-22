@@ -166,3 +166,13 @@ export const removeMemberFromGroup = async (
     return res.status(500).json({ message: "Server Error!" });
   }
 };
+
+
+
+export const leaveGroup = async (req:AuthRequest, res:Response)=>{
+  try{
+    
+  }catch(err){
+    return res.status(500).json({message : "Server Error!"})
+  }
+}
