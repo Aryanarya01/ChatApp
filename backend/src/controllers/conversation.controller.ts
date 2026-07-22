@@ -109,7 +109,14 @@ export const createGroup = async (req: AuthRequest, res: Response) => {
 
 export const addMemberToGroup = async (req:AuthRequest, res : Response)=>{
   try{
-      
+      const {conversationId, userId} = req.body;
+      const group = await Conversation.findById(conversationId);
+      if(!group){
+        return res.status(404).json({message : "Group not found!"});
+      }
+      if(group.groupAdmin.toString() !== req.user!._id.toString()){
+        return res.status(403).json({message : "Only group admin can add members"});
+      }
   }catch(err){
       return res.status(500).json({message : "Server error!"})
   }
