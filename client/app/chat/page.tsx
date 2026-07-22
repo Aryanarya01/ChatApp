@@ -1,6 +1,7 @@
 "use client";
 import ChatHeader from "@/components/chat/ChatHeader";
 import CreateGroupModal from "@/components/chat/CreateGroupModal";
+import GroupInfoModal from "@/components/chat/GroupInfoModal";
 import MessageInput from "@/components/chat/MessageInput";
 import MessageList from "@/components/chat/MessageList";
 import Sidebar from "@/components/chat/Sidebar";
@@ -192,6 +193,7 @@ const page = () => {
               setImage={setImage}
               image={image}
             />
+            <GroupInfoModal me={me} selectedConversation={selectedConversation} open={openGroupInfo} setOpen={setOpenGroupInfo} />
           </>
         ) : (
           <div className="flex flex-1 items-center justify-center">
