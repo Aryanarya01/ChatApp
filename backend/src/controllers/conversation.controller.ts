@@ -109,7 +109,7 @@ export const createGroup = async (req: AuthRequest, res: Response) => {
 
 export const addMemberToGroup = async (req:AuthRequest, res : Response)=>{
   try{
-    
+      
   }catch(err){
       return res.status(500).json({message : "Server error!"})
   }
