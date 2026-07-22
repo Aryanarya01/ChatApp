@@ -19,6 +19,7 @@
                     {user.name}
                 </div>
             ))}
+            <button onClick={()=>setOpen(false)}>Close</button>
         </div>
      </div>
    )
