@@ -167,7 +167,7 @@ const page = () => {
 
       {/* right side */}
       <div className="flex flex-col flex-1">
-        {selectedUser ? (
+        {selectedConversation ? (
           <>
             {/* chatHeader */}
             <ChatHeader selectedUser={selectedUser} isTyping={isTyping} selectedConversation={selectedConversation} />
