@@ -6,6 +6,7 @@ import {
   createGroup,
   getConversation,
   getUserConversations,
+  leaveGroup,
   removeMemberFromGroup,
 } from "../controllers/conversation.controller.js";
 
@@ -17,5 +18,6 @@ router.route("/:id").get(Protect, getConversation);
 router.route("/group").post(Protect, createGroup);
 router.route("/group/add-member").patch(Protect, addMemberToGroup);
 router.route("/group/remove-member").patch(Protect, removeMemberFromGroup);
+router.route("/group/leave-group").patch(Protect, leaveGroup);
 
 export default router;
