@@ -126,27 +126,36 @@ export const addMemberToGroup = async (req: AuthRequest, res: Response) => {
     const updatedGroup = await Conversation.findById(group._id)
       .populate("participants", "name username profilePicture")
       .populate("groupAdmin", "name username profilePicture");
-      return res.status(200).json(updatedGroup)
+    return res.status(200).json(updatedGroup);
   } catch (err) {
     return res.status(500).json({ message: "Server error!" });
   }
 };
 
-export const removeMemberFromGroup = async (req:AuthRequest, res : Response)=>{
-  try{
-    const {conversationId, userId} = req.body;
+export const removeMemberFromGroup = async (
+  req: AuthRequest,
+  res: Response,
+) => {
+  try {
+    const { conversationId, userId } = req.body;
     const group = await conversationId.findById(conversationId);
-    if(!group){
-      return res.status(404).json({message : "Group not found!"})
+    if (!group) {
+      return res.status(404).json({ message: "Group not found!" });
     }
-    if(group.groupAdmin.toString() !== req.user!._id.toString()){
-      return res.status(403).json({message : "only group admin can remove members!"})
+    if (group.groupAdmin.toString() !== req.user!._id.toString()) {
+      return res
+        .status(403)
+        .json({ message: "only group admin can remove members!" });
     }
-    group.participants = group.participants.filter((id)=>id.toString() !== userId);
+    group.participants = group.participants.filter(
+      (id) => id.toString() !== userId,
+    );
     await group.save();
-    const updatedGroup = await Conversation.findById(group._id).populate("participants","name username profilePicture").populate("groupAdmin","name username profilePicture")
-    return res.status(200).json(updatedGroup)
-  }catch(err){
-    return res.status(500).json({message : "Server Error!"})
+    const updatedGroup = await Conversation.findById(group._id)
+      .populate("participants", "name username profilePicture")
+      .populate("groupAdmin", "name username profilePicture");
+    return res.status(200).json(updatedGroup);
+  } catch (err) {
+    return res.status(500).json({ message: "Server Error!" });
   }
-}
+};
