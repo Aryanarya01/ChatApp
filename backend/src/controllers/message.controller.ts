@@ -43,16 +43,9 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
     });
 
     const io = getIO();
-    const recieverId = conversation.participants.find(
-      (id) => id.toString() !== req.user!._id.toString(),
-    );
-    if (!recieverId) {
-      return res.status(404).json({ message: "Reciever not found" });
-    }
-    const recieverSocketId = onlineUser.get(recieverId.toString());
-    if (recieverSocketId) {
-      io.to(recieverSocketId).emit("newMessage", populatedMessage);
-    }
+   for(const participant of conversation.participants){
+    
+   }
     return res.status(201).json(populatedMessage);
   } catch (err: any) {
     console.log(err);
