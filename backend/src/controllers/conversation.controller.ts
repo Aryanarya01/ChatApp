@@ -138,7 +138,7 @@ export const removeMemberFromGroup = async (
 ) => {
   try {
     const { conversationId, userId } = req.body;
-    const group = await conversationId.findById(conversationId);
+    const group = await Conversation.findById(conversationId);
     if (!group) {
       return res.status(404).json({ message: "Group not found!" });
     }
@@ -146,6 +146,10 @@ export const removeMemberFromGroup = async (
       return res
         .status(403)
         .json({ message: "only group admin can remove members!" });
+    }
+    const isMember = group.participants.includes(userId);
+    if(!isMember){
+      return res.status(404).json({message : "User is not in the group!"})
     }
     group.participants = group.participants.filter(
       (id) => id.toString() !== userId,
