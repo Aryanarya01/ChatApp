@@ -148,12 +148,15 @@ export const removeMemberFromGroup = async (
         .json({ message: "only group admin can remove members!" });
     }
     const isMember = group.participants.includes(userId);
-    if(!isMember){
-      return res.status(404).json({message : "User is not in the group!"})
+    if (!isMember) {
+      return res.status(404).json({ message: "User is not in the group!" });
     }
     group.participants = group.participants.filter(
       (id) => id.toString() !== userId,
     );
+    if(userId === req.user!._id.toString()){
+      return res.status(400).json({message : "Admin cannot remove himself"})
+    }
     await group.save();
     const updatedGroup = await Conversation.findById(group._id)
       .populate("participants", "name username profilePicture")
