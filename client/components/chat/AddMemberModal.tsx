@@ -29,11 +29,11 @@ const AddMemberModal = ({
       availableUsers.push(user);
     }
   }
-  const handelAddMember = async (usersId: string) => {
+  const handelAddMember = async (userId: string) => {
     try{
       const {data} = await clientServer.patch("/conversation/group/add-member",{
         conversationId : selectedConversation._id,
-        userId
+        userId,
     })
     }catch(err){
       console.log(err)
