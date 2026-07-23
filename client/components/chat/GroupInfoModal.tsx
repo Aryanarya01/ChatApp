@@ -5,8 +5,8 @@ interface GroupInfoModalProp {
   me: any;
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-    users : any[],
-  fetchConversations : ()=>void,
+  users: any[];
+  fetchConversations: () => void;
 }
 const GroupInfoModal = ({
   selectedConversation,
@@ -19,7 +19,7 @@ const GroupInfoModal = ({
   if (!open) {
     return null;
   }
-  const [openAddMember, setOpenAddMember] = useState(false)
+  const [openAddMember, setOpenAddMember] = useState(false);
   const isAdmin = selectedConversation.groupAdmin._id === me._id;
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center">
@@ -38,14 +38,19 @@ const GroupInfoModal = ({
       </div>
       {isAdmin && (
         <>
-          <button onClick={()=>setOpenAddMember(true)}>Add Member</button>
+          <button onClick={() => setOpenAddMember(true)}>Add Member</button>
           <button>Remove Member</button>
         </>
       )}
       <button>Leave Group</button>
-      <AddMemberModal open={openAddMember} setOpen={setOpenAddMember} selectedConversation={selectedConversation} users={users} fetchConversations={fetchConversations}/>
+      <AddMemberModal
+        open={openAddMember}
+        setOpen={setOpenAddMember}
+        selectedConversation={selectedConversation}
+        users={users}
+        fetchConversations={fetchConversations}
+      />
     </div>
-     
   );
 };
 
