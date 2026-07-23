@@ -1,3 +1,4 @@
+import clientServer from "@/lib/axios";
 import React from "react";
 
 interface AddMemberModalProps {
@@ -28,7 +29,16 @@ const AddMemberModal = ({
       availableUsers.push(user);
     }
   }
-  const handelAddMember = async (usersId: string) => {};
+  const handelAddMember = async (usersId: string) => {
+    try{
+      const {data} = await clientServer.patch("/conversation/group/add-member",{
+        conversationId : selectedConversation._id,
+        userId
+    })
+    }catch(err){
+      console.log(err)
+    }
+  };
   return (
     <div>
       <div className="bg-white p-5 rounded w-96">
