@@ -24,7 +24,6 @@ const GroupInfoModal = ({
   
   const isAdmin = selectedConversation.groupAdmin._id === me._id;
   return (
-    <>
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center">
       <div className="bg-white p-5 rounded w-96">
         <h2>{selectedConversation.groupName}</h2>
@@ -37,15 +36,7 @@ const GroupInfoModal = ({
             )}
           </div>
         ))}
-        <button onClick={() => setOpen(false)}>Close</button>
-         <AddMemberModal
-        open={openAddMember}
-        setOpen={setOpenAddMember}
-        selectedConversation={selectedConversation}
-        users={users}
-        fetchConversations={fetchConversations}
-      />
-      </div>
+    
       {isAdmin && (
         <>
           <button onClick={() => setOpenAddMember(true)}>Add Member</button>
@@ -54,10 +45,17 @@ const GroupInfoModal = ({
       )}
 
       <button>Leave Group</button>
-          
+              <button onClick={() => setOpen(false)}>Close</button>
+              </div>
+         <AddMemberModal
+        open={openAddMember}
+        setOpen={setOpenAddMember}
+        selectedConversation={selectedConversation}
+        users={users}
+        fetchConversations={fetchConversations}
+      />
     </div>
    
-      </>
   );
 };
 
