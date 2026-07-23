@@ -8,11 +8,11 @@ interface AddMemberModalProps {
   fetchConversations: () => void;
 }
 
-const AddMemberModal = () => {
+const AddMemberModal = ({open,setOpen,selectedConversation,users} : AddMemberModalProps) => {
     if(!open) return null;
   return (
     <div>
-        
+
     </div>
   );
 };
