@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import AddMemberModal from "./AddMemberModal";
 interface GroupInfoModalProp {
   selectedConversation: any;
   me: any;
@@ -10,10 +11,13 @@ const GroupInfoModal = ({
   me,
   open,
   setOpen,
+  users : any[],
+  fetchConversations : ()=>void,
 }: GroupInfoModalProp) => {
   if (!open) {
     return null;
   }
+  const [openAddMember, setOpenAddMember] = useState(false)
   const isAdmin = selectedConversation.groupAdmin._id === me._id;
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center">
@@ -32,12 +36,14 @@ const GroupInfoModal = ({
       </div>
       {isAdmin && (
         <>
-          <button>Add Member</button>
+          <button onClick={()=>setOpenAddMember(true)}>Add Member</button>
           <button>Remove Member</button>
         </>
       )}
       <button>Leave Group</button>
+      <AddMemberModal open={openAddMember} setOpen={setOpenAddMember} selectedConversation={selectedConversation} users={} fetchConversations={}/>
     </div>
+     
   );
 };
 
