@@ -43,7 +43,7 @@ const GroupInfoModal = ({
         </>
       )}
       <button>Leave Group</button>
-      <AddMemberModal open={openAddMember} setOpen={setOpenAddMember} selectedConversation={selectedConversation} users={} fetchConversations={}/>
+      <AddMemberModal open={openAddMember} setOpen={setOpenAddMember} selectedConversation={selectedConversation} users={users} fetchConversations={fetchConversations}/>
     </div>
      
   );
