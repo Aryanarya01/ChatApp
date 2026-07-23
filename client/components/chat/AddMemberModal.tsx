@@ -30,16 +30,19 @@ const AddMemberModal = ({
     }
   }
   const handelAddMember = async (userId: string) => {
-    try{
-      const {data} = await clientServer.patch("/conversation/group/add-member",{
-        conversationId : selectedConversation._id,
-        userId,
-    })
-    console.log(data)
-    await fetchConversations();
-      setOpen(false)
-    }catch(err){
-      console.log(err)
+    try {
+      const { data } = await clientServer.patch(
+        "/conversation/group/add-member",
+        {
+          conversationId: selectedConversation._id,
+          userId,
+        },
+      );
+      console.log(data);
+      await fetchConversations();
+      setOpen(false);
+    } catch (err) {
+      console.log(err);
     }
   };
   return (
