@@ -10,9 +10,11 @@ interface AddMemberModalProps {
 
 const AddMemberModal = () => {
     if(!open) return null;
-  return <div>
-    
-  </div>;
+  return (
+    <div>
+        
+    </div>
+  );
 };
 
 export default AddMemberModal;
