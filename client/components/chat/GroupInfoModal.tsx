@@ -25,12 +25,9 @@ const GroupInfoModal = ({
 
   const isAdmin =   AdminId.toString() === me._id.toString();
  
-  console.log("Me:", me?._id);
-console.log("Admin:", selectedConversation.groupAdmin);
-console.log(
-  "isAdmin:",
-  selectedConversation.groupAdmin?._id === me?._id
-);
+console.log("AdminId:", AdminId);
+console.log("Me:", me._id);
+console.log("isAdmin:", isAdmin);
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center">
       <div className="bg-white p-5 rounded w-96">
