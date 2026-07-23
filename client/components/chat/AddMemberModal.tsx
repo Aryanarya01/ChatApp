@@ -35,6 +35,7 @@ const AddMemberModal = ({
         conversationId : selectedConversation._id,
         userId,
     })
+    console.log(data)
     }catch(err){
       console.log(err)
     }
