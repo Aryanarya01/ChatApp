@@ -8,7 +8,7 @@ interface RemoveMemberModalProps {
     fetchConversations : ()=> void,
 }
 
-const RemoveMemberModal = () => {
+const RemoveMemberModal = ({open, setOpen, selectedConversation, fetchConversations}:RemoveMemberModalProps) => {
   return (
     <div>RemoveMemberModal</div>
   )
