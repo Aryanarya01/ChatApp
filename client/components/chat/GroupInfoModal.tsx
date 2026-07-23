@@ -22,6 +22,7 @@ const GroupInfoModal = ({
   const [openAddMember, setOpenAddMember] = useState(false);
   const isAdmin = selectedConversation.groupAdmin._id === me._id;
   return (
+    <>
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center">
       <div className="bg-white p-5 rounded w-400px">
         <h2>{selectedConversation.groupName}</h2>
@@ -43,14 +44,15 @@ const GroupInfoModal = ({
         </>
       )}
       <button>Leave Group</button>
-      <AddMemberModal
+    </div>
+    <AddMemberModal
         open={openAddMember}
         setOpen={setOpenAddMember}
         selectedConversation={selectedConversation}
         users={users}
         fetchConversations={fetchConversations}
       />
-    </div>
+      </>
   );
 };
 
