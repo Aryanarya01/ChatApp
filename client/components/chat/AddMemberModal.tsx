@@ -8,36 +8,40 @@ interface AddMemberModalProps {
   fetchConversations: () => void;
 }
 
-const AddMemberModal = ({open,setOpen,selectedConversation,users,fetchConversations} : AddMemberModalProps) => {
-    if(!open) return null;
-   const availableUsers = [];
-   for (const user of users){
-      let found = false;
-      for(const member of selectedConversation.participants){
-        if(member._id === user._id){
-          found = true;
-        }
+const AddMemberModal = ({
+  open,
+  setOpen,
+  selectedConversation,
+  users,
+  fetchConversations,
+}: AddMemberModalProps) => {
+  if (!open) return null;
+  const availableUsers = [];
+  for (const user of users) {
+    let found = false;
+    for (const member of selectedConversation.participants) {
+      if (member._id === user._id) {
+        found = true;
       }
-      if(!found){
-        availableUsers.push(user)
-      }
-   }
-    const handelAddMember = async(usersId : string)=>{
-
     }
+    if (!found) {
+      availableUsers.push(user);
+    }
+  }
+  const handelAddMember = async (usersId: string) => {};
   return (
     <div>
-        <div className="bg-white p-5 rounded w-96">
-            <h2 className="text-xl font-bold mb-4">Add Members</h2>
-            {
-              availableUsers.map((user : any)=>(
-                <div key={user._id}>
-                  <button onClick={()=>handelAddMember(user._id)}>{user.name}</button>
-                </div>
-              ))
-            }
-            <button onClick={()=>setOpen(false)}>Close</button>
-        </div>
+      <div className="bg-white p-5 rounded w-96">
+        <h2 className="text-xl font-bold mb-4">Add Members</h2>
+        {availableUsers.map((user: any) => (
+          <div key={user._id}>
+            <button onClick={() => handelAddMember(user._id)}>
+              {user.name}
+            </button>
+          </div>
+        ))}
+        <button onClick={() => setOpen(false)}>Close</button>
+      </div>
     </div>
   );
 };
