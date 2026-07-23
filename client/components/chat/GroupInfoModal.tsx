@@ -17,15 +17,16 @@ const GroupInfoModal = ({
   users,
   fetchConversations,
 }: GroupInfoModalProp) => {
+   const [openAddMember, setOpenAddMember] = useState(false);
   if (!open) {
     return null;
   }
-  const [openAddMember, setOpenAddMember] = useState(false);
+  
   const isAdmin = selectedConversation.groupAdmin._id === me._id;
   return (
     <>
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center">
-      <div className="bg-white p-5 rounded w-400px">
+      <div className="bg-white p-5 rounded w-96">
         <h2>{selectedConversation.groupName}</h2>
         <h3>Members</h3>
         {selectedConversation.participants.map((user: any) => (
