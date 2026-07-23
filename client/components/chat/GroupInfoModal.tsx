@@ -38,6 +38,13 @@ const GroupInfoModal = ({
           </div>
         ))}
         <button onClick={() => setOpen(false)}>Close</button>
+         <AddMemberModal
+        open={openAddMember}
+        setOpen={setOpenAddMember}
+        selectedConversation={selectedConversation}
+        users={users}
+        fetchConversations={fetchConversations}
+      />
       </div>
       {isAdmin && (
         <>
@@ -49,13 +56,7 @@ const GroupInfoModal = ({
       <button>Leave Group</button>
           
     </div>
-   <AddMemberModal
-        open={openAddMember}
-        setOpen={setOpenAddMember}
-        selectedConversation={selectedConversation}
-        users={users}
-        fetchConversations={fetchConversations}
-      />
+   
       </>
   );
 };
