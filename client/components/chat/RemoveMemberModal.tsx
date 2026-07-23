@@ -1,17 +1,18 @@
-
-
-import React from 'react'
+import React from "react";
 interface RemoveMemberModalProps {
-    open : boolean,
-    setOpen : React.Dispatch<React.SetStateAction<boolean>>;
-    selectedConversation : any,
-    fetchConversations : ()=> void,
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  selectedConversation: any;
+  fetchConversations: () => void;
 }
 
-const RemoveMemberModal = ({open, setOpen, selectedConversation, fetchConversations}:RemoveMemberModalProps) => {
-  return (
-    <div>RemoveMemberModal</div>
-  )
-}
+const RemoveMemberModal = ({
+  open,
+  setOpen,
+  selectedConversation,
+  fetchConversations,
+}: RemoveMemberModalProps) => {
+  return <div>RemoveMemberModal</div>;
+};
 
-export default RemoveMemberModal
+export default RemoveMemberModal;
