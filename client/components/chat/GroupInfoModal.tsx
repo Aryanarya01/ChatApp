@@ -43,9 +43,10 @@ const GroupInfoModal = ({
           <button>Remove Member</button>
         </>
       )}
+
       <button>Leave Group</button>
     </div>
-    <AddMemberModal
+     <AddMemberModal
         open={openAddMember}
         setOpen={setOpenAddMember}
         selectedConversation={selectedConversation}
