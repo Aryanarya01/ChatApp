@@ -5,14 +5,16 @@ interface GroupInfoModalProp {
   me: any;
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    users : any[],
+  fetchConversations : ()=>void,
 }
 const GroupInfoModal = ({
   selectedConversation,
   me,
   open,
   setOpen,
-  users : any[],
-  fetchConversations : ()=>void,
+  users,
+  fetchConversations,
 }: GroupInfoModalProp) => {
   if (!open) {
     return null;
