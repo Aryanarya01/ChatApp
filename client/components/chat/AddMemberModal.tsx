@@ -36,6 +36,8 @@ const AddMemberModal = ({
         userId,
     })
     console.log(data)
+    await fetchConversations();
+      setOpen(false)
     }catch(err){
       console.log(err)
     }
