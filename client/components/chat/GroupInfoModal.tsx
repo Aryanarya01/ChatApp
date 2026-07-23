@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AddMemberModal from "./AddMemberModal";
+ 
 interface GroupInfoModalProp {
   selectedConversation: any;
   me: any;
@@ -45,8 +46,9 @@ const GroupInfoModal = ({
       )}
 
       <button>Leave Group</button>
+          
     </div>
-     <AddMemberModal
+   <AddMemberModal
         open={openAddMember}
         setOpen={setOpenAddMember}
         selectedConversation={selectedConversation}
