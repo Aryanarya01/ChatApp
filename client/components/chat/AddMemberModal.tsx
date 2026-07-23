@@ -9,6 +9,7 @@ interface AddMemberModalProps {
 }
 
 const AddMemberModal = () => {
+    if(!open) return null;
   return <div>AddMemberModal</div>;
 };
 
