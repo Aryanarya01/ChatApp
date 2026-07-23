@@ -10,11 +10,20 @@ interface AddMemberModalProps {
 
 const AddMemberModal = ({open,setOpen,selectedConversation,users,fetchConversations} : AddMemberModalProps) => {
     if(!open) return null;
-    const availableUsers = users.filter((user)=>{
-      return !selectedConversation.participants.some((member : any)=> member._id === user._id)
-    })
+   const availableUsers = [];
+   for (const user of users){
+      let found = false;
+      for(const member of selectedConversation.participants){
+        if(member._id === user._id){
+          found = true;
+        }
+      }
+      if(!found){
+        availableUsers.push(user)
+      }
+   }
     const handelAddMember = async(usersId : string)=>{
-      
+
     }
   return (
     <div>
