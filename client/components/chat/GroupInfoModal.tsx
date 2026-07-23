@@ -21,8 +21,16 @@ const GroupInfoModal = ({
   if (!open) {
     return null;
   }
+  const AdminId =  selectedConversation.groupAdmin?._id || selectedConversation.groupAdmin;
 
-  const isAdmin = selectedConversation.groupAdmin._id === me._id;
+  const isAdmin =   AdminId.toString() === me._id.toString();
+ 
+  console.log("Me:", me?._id);
+console.log("Admin:", selectedConversation.groupAdmin);
+console.log(
+  "isAdmin:",
+  selectedConversation.groupAdmin?._id === me?._id
+);
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center">
       <div className="bg-white p-5 rounded w-96">
@@ -31,7 +39,7 @@ const GroupInfoModal = ({
         {selectedConversation.participants.map((user: any) => (
           <div key={user._id}>
             {user.name}
-            {selectedConversation.groupAdmin._id === user._id && (
+            {AdminId.toString() === user._id.toString() && (
               <span>(Admin)</span>
             )}
           </div>
