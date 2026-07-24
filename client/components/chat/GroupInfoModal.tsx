@@ -19,7 +19,7 @@ const GroupInfoModal = ({
 }: GroupInfoModalProp) => {
   const [openAddMember, setOpenAddMember] = useState(false);
   const [openRemoveMember, setOpenRemoveMember] = useState(false);
-  
+
   if (!open) {
     return null;
   }
@@ -47,7 +47,7 @@ console.log("isAdmin:", isAdmin);
         {isAdmin && (
           <>
             <button onClick={() => setOpenAddMember(true)}>Add Member</button>
-            <button>Remove Member</button>
+            <button onClick={()=> setOpenRemoveMember(true)}>Remove Member</button>
           </>
         )}
 
