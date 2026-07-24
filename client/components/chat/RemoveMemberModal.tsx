@@ -16,10 +16,13 @@ const RemoveMemberModal = ({
   if (!open) return null;
   const handelRemoveMember = async (userId: string) => {
     try {
-      const {data} = await clientServer.patch("/conversation/group/remove-member",{
-        conversationId : selectedConversation._id,
-        userId,
-      });
+      const { data } = await clientServer.patch(
+        "/conversation/group/remove-member",
+        {
+          conversationId: selectedConversation._id,
+          userId,
+        },
+      );
       console.log(data);
       await fetchConversations();
       setOpen(false);
