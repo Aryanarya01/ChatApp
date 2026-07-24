@@ -5,8 +5,6 @@ interface RemoveMemberModalProps {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   selectedConversation: any;
   fetchConversations: () => void;
-  setSelectedUser : React.Dispatch<React.SetStateAction<any>>;
-    setSelectedConversation :React.Dispatch<React.SetStateAction<any>>;
 }
 
 const RemoveMemberModal = ({
@@ -14,8 +12,6 @@ const RemoveMemberModal = ({
   setOpen,
   selectedConversation,
   fetchConversations,
-  setSelectedConversation,
-  setSelectedUser
 }: RemoveMemberModalProps) => {
   if (!open) return null;
   const AdminId =
