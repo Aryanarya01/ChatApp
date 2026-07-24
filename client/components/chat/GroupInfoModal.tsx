@@ -37,6 +37,7 @@ const GroupInfoModal = ({
       console.log(data);
       await fetchConversations();
       setOpen(false)
+      
     }catch(err : any){
       console.log(err)
     }
