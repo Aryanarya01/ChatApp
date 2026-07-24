@@ -41,6 +41,7 @@ const RemoveMemberModal = ({
             </button>
           </div>
         ))}
+        <button onClick={()=>setOpen(false)}>Close</button>
       </div>
     </div>
   );
