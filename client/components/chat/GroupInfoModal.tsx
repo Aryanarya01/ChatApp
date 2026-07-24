@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AddMemberModal from "./AddMemberModal";
 import RemoveMemberModal from "./RemoveMemberModal";
+import clientServer from "@/lib/axios";
 
 interface GroupInfoModalProp {
   selectedConversation: any;
@@ -27,7 +28,18 @@ const GroupInfoModal = ({
   const AdminId =  selectedConversation.groupAdmin?._id || selectedConversation.groupAdmin;
 
   const isAdmin =   AdminId.toString() === me._id.toString();
- 
+  
+  const handleLeaveGroup = async(userId : string)=>{
+    try{
+      const {data} = await clientServer.patch("conversation/group/leave-group",{
+        conversationId : selectedConversation._id,
+      });
+      
+    }catch(err : any){
+      console.log(err)
+    }
+  }
+
 console.log("AdminId:", AdminId);
 console.log("Me:", me._id);
 console.log("isAdmin:", isAdmin);
