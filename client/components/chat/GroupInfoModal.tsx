@@ -29,7 +29,7 @@ const GroupInfoModal = ({
 
   const isAdmin =   AdminId.toString() === me._id.toString();
   
-  const handleLeaveGroup = async(userId : string)=>{
+  const handleLeaveGroup = async()=>{
     try{
       const {data} = await clientServer.patch("conversation/group/leave-group",{
         conversationId : selectedConversation._id,
@@ -66,7 +66,7 @@ console.log("isAdmin:", isAdmin);
           </>
         )}
 
-        <button>Leave Group</button>
+        <button onClick={handleLeaveGroup}>Leave Group</button>
         <button onClick={() => setOpen(false)}>Close</button>
       </div>
       <AddMemberModal
