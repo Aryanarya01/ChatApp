@@ -1,3 +1,4 @@
+import clientServer from "@/lib/axios";
 import React from "react";
 interface RemoveMemberModalProps {
   open: boolean;
@@ -15,6 +16,11 @@ const RemoveMemberModal = ({
   if (!open) return null;
   const handelRemoveMember = async (userId: string) => {
     try {
+      const {data} = await clientServer.patch("/conversation/group/remove-member",{
+        conversationId : selectedConversation._id,
+        userId,
+      });
+      console.log(data)
     } catch (err) {
       console.log(err);
     }
