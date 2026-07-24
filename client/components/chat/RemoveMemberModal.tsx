@@ -14,8 +14,9 @@ const RemoveMemberModal = ({
   fetchConversations,
 }: RemoveMemberModalProps) => {
   if (!open) return null;
-  const AdminId = selectedConversation.groupAdmin?._id || selectedConversation.groupAdmin;
-  
+  const AdminId =
+    selectedConversation.groupAdmin?._id || selectedConversation.groupAdmin;
+
   const handelRemoveMember = async (userId: string) => {
     try {
       const { data } = await clientServer.patch(
@@ -38,16 +39,17 @@ const RemoveMemberModal = ({
         <h2>Remove Member</h2>
         {selectedConversation.participants.map((user: any) => (
           <div key={user._id}>
-             <span>{user.name}</span>
-             {
-              AdminId.toString() === user._id.toString() ? (
-                <span>(Admin)</span>
-              ):
-              <button onClick={()=>handelRemoveMember(user._id)}>Remove</button>
-             }
+            <span>{user.name}</span>
+            {AdminId.toString() === user._id.toString() ? (
+              <span>(Admin)</span>
+            ) : (
+              <button onClick={() => handelRemoveMember(user._id)}>
+                Remove
+              </button>
+            )}
           </div>
         ))}
-        <button onClick={()=>setOpen(false)}>Close</button>
+        <button onClick={() => setOpen(false)}>Close</button>
       </div>
     </div>
   );
