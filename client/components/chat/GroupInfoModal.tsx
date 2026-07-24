@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AddMemberModal from "./AddMemberModal";
+import RemoveMemberModal from "./RemoveMemberModal";
 
 interface GroupInfoModalProp {
   selectedConversation: any;
@@ -61,6 +62,10 @@ console.log("isAdmin:", isAdmin);
         users={users}
         fetchConversations={fetchConversations}
       />
+      <RemoveMemberModal  open={openRemoveMember}
+  setOpen={setOpenRemoveMember}
+  selectedConversation={selectedConversation}
+  fetchConversations={fetchConversations}/>
     </div>
   );
 };
