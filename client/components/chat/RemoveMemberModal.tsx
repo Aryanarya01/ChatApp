@@ -38,9 +38,13 @@ const RemoveMemberModal = ({
         <h2>Remove Member</h2>
         {selectedConversation.participants.map((user: any) => (
           <div key={user._id}>
-            <button onClick={() => handelRemoveMember(user._id)}>
-              {user.name}
-            </button>
+             <span>{user.name}</span>
+             {
+              AdminId.toString() === user._id.toString() ? (
+                <span>(Admin)</span>
+              ):
+              <button onClick={()=>handelRemoveMember(user._id)}>Remove</button>
+             }
           </div>
         ))}
         <button onClick={()=>setOpen(false)}>Close</button>
