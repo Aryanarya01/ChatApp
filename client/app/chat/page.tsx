@@ -193,7 +193,7 @@ const page = () => {
               setImage={setImage}
               image={image}
             />
-            <GroupInfoModal me={me} selectedConversation={selectedConversation} open={openGroupInfo} setOpen={setOpenGroupInfo} fetchConversations={fetchConversations} users={users} />
+            <GroupInfoModal me={me} selectedConversation={selectedConversation} open={openGroupInfo} setOpen={setOpenGroupInfo} fetchConversations={fetchConversations} users={users} setSelectedConversation={setSelectedConversation} setSelectedUser={setSelectedUser} />
           </>
         ) : (
           <div className="flex flex-1 items-center justify-center">

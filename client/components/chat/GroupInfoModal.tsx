@@ -10,6 +10,8 @@ interface GroupInfoModalProp {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   users: any[];
   fetchConversations: () => void;
+  setSelectedUser : React.Dispatch<React.SetStateAction<any>>;
+  setSelectedConversation :React.Dispatch<React.SetStateAction<any>>;
 }
 const GroupInfoModal = ({
   selectedConversation,
@@ -18,6 +20,8 @@ const GroupInfoModal = ({
   setOpen,
   users,
   fetchConversations,
+  setSelectedUser,
+  setSelectedConversation
 }: GroupInfoModalProp) => {
   const [openAddMember, setOpenAddMember] = useState(false);
   const [openRemoveMember, setOpenRemoveMember] = useState(false);
@@ -36,8 +40,10 @@ const GroupInfoModal = ({
       });
       console.log(data);
       await fetchConversations();
+       
+      setSelectedConversation(null),
+      setSelectedUser(null),
       setOpen(false)
-      
     }catch(err : any){
       console.log(err)
     }
