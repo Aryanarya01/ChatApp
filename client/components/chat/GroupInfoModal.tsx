@@ -34,7 +34,9 @@ const GroupInfoModal = ({
       const {data} = await clientServer.patch("conversation/group/leave-group",{
         conversationId : selectedConversation._id,
       });
-      
+      console.log(data);
+      await fetchConversations();
+      setOpen(false)
     }catch(err : any){
       console.log(err)
     }
