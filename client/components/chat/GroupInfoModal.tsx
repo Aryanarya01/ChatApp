@@ -10,8 +10,8 @@ interface GroupInfoModalProp {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   users: any[];
   fetchConversations: () => void;
-  setSelectedUser : React.Dispatch<React.SetStateAction<any>>;
-  setSelectedConversation :React.Dispatch<React.SetStateAction<any>>;
+  setSelectedUser: React.Dispatch<React.SetStateAction<any>>;
+  setSelectedConversation: React.Dispatch<React.SetStateAction<any>>;
 }
 const GroupInfoModal = ({
   selectedConversation,
@@ -21,7 +21,7 @@ const GroupInfoModal = ({
   users,
   fetchConversations,
   setSelectedUser,
-  setSelectedConversation
+  setSelectedConversation,
 }: GroupInfoModalProp) => {
   const [openAddMember, setOpenAddMember] = useState(false);
   const [openRemoveMember, setOpenRemoveMember] = useState(false);
@@ -29,29 +29,31 @@ const GroupInfoModal = ({
   if (!open) {
     return null;
   }
-  const AdminId =  selectedConversation.groupAdmin?._id || selectedConversation.groupAdmin;
+  const AdminId =
+    selectedConversation.groupAdmin?._id || selectedConversation.groupAdmin;
 
-  const isAdmin =   AdminId.toString() === me._id.toString();
-  
-  const handleLeaveGroup = async()=>{
-    try{
-      const {data} = await clientServer.patch("conversation/group/leave-group",{
-        conversationId : selectedConversation._id,
-      });
+  const isAdmin = AdminId.toString() === me._id.toString();
+
+  const handleLeaveGroup = async () => {
+    try {
+      const { data } = await clientServer.patch(
+        "conversation/group/leave-group",
+        {
+          conversationId: selectedConversation._id,
+        },
+      );
       console.log(data);
       await fetchConversations();
-       
-      setSelectedConversation(null),
-      setSelectedUser(null),
-      setOpen(false)
-    }catch(err : any){
-      console.log(err)
-    }
-  }
 
-console.log("AdminId:", AdminId);
-console.log("Me:", me._id);
-console.log("isAdmin:", isAdmin);
+      (setSelectedConversation(null), setSelectedUser(null), setOpen(false));
+    } catch (err: any) {
+      console.log(err);
+    }
+  };
+
+  console.log("AdminId:", AdminId);
+  console.log("Me:", me._id);
+  console.log("isAdmin:", isAdmin);
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center">
       <div className="bg-white p-5 rounded w-96">
@@ -60,16 +62,16 @@ console.log("isAdmin:", isAdmin);
         {selectedConversation.participants.map((user: any) => (
           <div key={user._id}>
             {user.name}
-            {AdminId.toString() === user._id.toString() && (
-              <span>(Admin)</span>
-            )}
+            {AdminId.toString() === user._id.toString() && <span>(Admin)</span>}
           </div>
         ))}
 
         {isAdmin && (
           <>
             <button onClick={() => setOpenAddMember(true)}>Add Member</button>
-            <button onClick={()=> setOpenRemoveMember(true)}>Remove Member</button>
+            <button onClick={() => setOpenRemoveMember(true)}>
+              Remove Member
+            </button>
           </>
         )}
 
@@ -83,10 +85,12 @@ console.log("isAdmin:", isAdmin);
         users={users}
         fetchConversations={fetchConversations}
       />
-      <RemoveMemberModal  open={openRemoveMember}
-  setOpen={setOpenRemoveMember}
-  selectedConversation={selectedConversation}
-  fetchConversations={fetchConversations}/>
+      <RemoveMemberModal
+        open={openRemoveMember}
+        setOpen={setOpenRemoveMember}
+        selectedConversation={selectedConversation}
+        fetchConversations={fetchConversations}
+      />
     </div>
   );
 };
