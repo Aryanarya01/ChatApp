@@ -20,7 +20,9 @@ const RemoveMemberModal = ({
         conversationId : selectedConversation._id,
         userId,
       });
-      console.log(data)
+      console.log(data);
+      await fetchConversations();
+      setOpen(false);
     } catch (err) {
       console.log(err);
     }
