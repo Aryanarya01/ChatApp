@@ -18,6 +18,8 @@ const GroupInfoModal = ({
   fetchConversations,
 }: GroupInfoModalProp) => {
   const [openAddMember, setOpenAddMember] = useState(false);
+  const [openRemoveMember, setOpenRemoveMember] = useState(false);
+  
   if (!open) {
     return null;
   }

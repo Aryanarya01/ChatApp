@@ -15,7 +15,7 @@ const RemoveMemberModal = ({
   return(
     <div>
       <div>
-        
+        <h2>Remove Member</h2>
       </div>
     </div>
   );
