@@ -14,6 +14,8 @@ const RemoveMemberModal = ({
   fetchConversations,
 }: RemoveMemberModalProps) => {
   if (!open) return null;
+  const AdminId = selectedConversation.groupAdmin?._id || selectedConversation.groupAdmin;
+  
   const handelRemoveMember = async (userId: string) => {
     try {
       const { data } = await clientServer.patch(
