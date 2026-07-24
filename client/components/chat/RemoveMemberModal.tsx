@@ -12,7 +12,13 @@ const RemoveMemberModal = ({
   selectedConversation,
   fetchConversations,
 }: RemoveMemberModalProps) => {
-  return <div>RemoveMemberModal</div>;
+  return(
+    <div>
+      <div>
+        
+      </div>
+    </div>
+  );
 };
 
 export default RemoveMemberModal;
