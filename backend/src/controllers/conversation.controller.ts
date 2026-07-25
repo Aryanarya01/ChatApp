@@ -207,6 +207,7 @@ export const renameGroup = async (req: AuthRequest, res: Response) => {
     const updatedGroup = await Conversation.findById(group._id)
       .populate("participants", "name username profilePicture")
       .populate("groupAdmin", "name username profilePicture");
+      return res.status(200).json(updatedGroup);
   } catch (err) {
     return res.status(500).json({ message: "Server Error!" });
   }
