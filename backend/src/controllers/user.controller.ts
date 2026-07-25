@@ -118,7 +118,7 @@ export const getAllUser = async (req: AuthRequest, res: Response) => {
 
 export const updateProfilePicture = async(req:AuthRequest, res:Response)=>{
   try{
-
+    const 
   }catch(err){
     return res.status(500).json({message : "Server Error!"});
   }
