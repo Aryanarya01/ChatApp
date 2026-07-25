@@ -25,6 +25,9 @@ const GroupInfoModal = ({
 }: GroupInfoModalProp) => {
   const [openAddMember, setOpenAddMember] = useState(false);
   const [openRemoveMember, setOpenRemoveMember] = useState(false);
+  const [editingName, setEditingName] = useState(false);
+  const [groupName, setGroupName] = useState(selectedConversation.groupName);
+
 
   if (!open) {
     return null;
@@ -59,7 +62,9 @@ const GroupInfoModal = ({
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center">
       <div className="bg-white p-5 rounded w-96">
-        <h2>{selectedConversation.groupName}</h2>
+         {
+          
+         }
         <h3>Members</h3>
         {selectedConversation.participants.map((user: any) => (
           <div key={user._id}>
