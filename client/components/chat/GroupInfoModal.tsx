@@ -86,7 +86,7 @@ const GroupInfoModal = ({
           <button onClick={handleRenameGroup}>Save</button>
           </>
         ) : (
-           <><h2>{selectedConversation.groupName}</h2>
+           <><h2>{groupName}</h2>
            <button onClick={()=>setEditingName(true)}>Rename</button>
            </>
         )}
