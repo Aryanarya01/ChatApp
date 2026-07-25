@@ -53,6 +53,12 @@ const GroupInfoModal = ({
     }
   };
 
+  const handleRenameGroup = async()=>{
+    try{
+
+    }catch(err:any){}
+  }
+
   console.log("AdminId:", AdminId);
   console.log("Me:", me._id);
   console.log("isAdmin:", isAdmin);
@@ -60,16 +66,19 @@ const GroupInfoModal = ({
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center">
       <div className="bg-white p-5 rounded w-96">
         {editingName ? (
+          <> 
           <input
             value={groupName}
             onChange={(e) => setGroupName(e.target.value)}
           />
+          <button onClick={handleRenameGroup}>Save</button>
+          </>
         ) : (
            <><h2>{selectedConversation.groupName}</h2>
            <button onClick={()=>setEditingName(true)}>Rename</button>
            </>
         )}
-      
+        
         <h3>Members</h3>
         {selectedConversation.participants.map((user: any) => (
           <div key={user._id}>
