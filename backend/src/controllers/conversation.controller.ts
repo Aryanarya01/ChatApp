@@ -187,24 +187,27 @@ export const leaveGroup = async (req: AuthRequest, res: Response) => {
   }
 };
 
-
-export const renameGroup = async(req:AuthRequest, res: Response)=>{
-  try{
-    const {conversationId, groupName} = req.body;
-    if(!groupName){
-      return res.status(400).json({message : "GroupName is required!"})
+export const renameGroup = async (req: AuthRequest, res: Response) => {
+  try {
+    const { conversationId, groupName } = req.body;
+    if (!groupName) {
+      return res.status(400).json({ message: "GroupName is required!" });
     }
     const group = await Conversation.findById(conversationId);
-    if(!group){
-      return res.status(404).json({message : "Group not found!"});
+    if (!group) {
+      return res.status(404).json({ message: "Group not found!" });
     }
-      if(group.groupAdmin.toString() !== req.user!._id.toString()){
-        return res.status(403).json({message : "Only group Admin can rename the group!"})
-      }
-      group.groupName = groupName;
-      await group.save();
-      const updatedGroup = await Conversation.findById(group._id).populate("participants","name username profilePicture").populate("groupAdmin","name username profilePicture")
-  }catch(err){
-    return res.status(500).json({message : "Server Error!"});
+    if (group.groupAdmin.toString() !== req.user!._id.toString()) {
+      return res
+        .status(403)
+        .json({ message: "Only group Admin can rename the group!" });
+    }
+    group.groupName = groupName;
+    await group.save();
+    const updatedGroup = await Conversation.findById(group._id)
+      .populate("participants", "name username profilePicture")
+      .populate("groupAdmin", "name username profilePicture");
+  } catch (err) {
+    return res.status(500).json({ message: "Server Error!" });
   }
-}
+};
