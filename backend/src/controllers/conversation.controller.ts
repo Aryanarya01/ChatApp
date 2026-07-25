@@ -190,11 +190,15 @@ export const leaveGroup = async (req: AuthRequest, res: Response) => {
 
 export const renameGroup = async(req:AuthRequest, res: Response)=>{
   try{
-    const {conversationId} = req.body;
+    const {conversationId, groupName} = req.body;
+    if(!groupName){
+      return res.status(400).json({message : "GroupName is required!"})
+    }
     const group = Conversation.findById(conversationId);
     if(!group){
-      return
+      return res.status(404).json({message : "Group not found!"});
     }
+      cnost 
   }catch(err){
     return res.status(500).json({message : "Server Error!"});
   }
