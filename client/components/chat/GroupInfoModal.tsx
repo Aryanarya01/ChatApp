@@ -47,7 +47,9 @@ const GroupInfoModal = ({
       console.log(data);
       await fetchConversations();
 
-      setSelectedConversation(null), setSelectedUser(null), setOpen(false);
+      setSelectedConversation(null),
+       setSelectedUser(null),
+        setOpen(false);
     } catch (err: any) {
       console.log(err);
     }
