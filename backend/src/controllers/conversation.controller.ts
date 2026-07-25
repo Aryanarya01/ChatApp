@@ -186,3 +186,16 @@ export const leaveGroup = async (req: AuthRequest, res: Response) => {
     return res.status(500).json({ message: "Server Error!" });
   }
 };
+
+
+export const renameGroup = async(req:AuthRequest, res: Response)=>{
+  try{
+    const {conversationId} = req.body;
+    const group = Conversation.findById(conversationId);
+    if(!group){
+      return
+    }
+  }catch(err){
+    return res.status(500).json({message : "Server Error!"});
+  }
+}
