@@ -28,7 +28,6 @@ const GroupInfoModal = ({
   const [editingName, setEditingName] = useState(false);
   const [groupName, setGroupName] = useState(selectedConversation.groupName);
 
-
   if (!open) {
     return null;
   }
@@ -48,9 +47,7 @@ const GroupInfoModal = ({
       console.log(data);
       await fetchConversations();
 
-      setSelectedConversation(null),
-       setSelectedUser(null),
-        setOpen(false);
+      (setSelectedConversation(null), setSelectedUser(null), setOpen(false));
     } catch (err: any) {
       console.log(err);
     }
@@ -62,14 +59,14 @@ const GroupInfoModal = ({
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center">
       <div className="bg-white p-5 rounded w-96">
-         {
-          editingName ? (
-            <input value={groupName} onChange={(e)=>setGroupName(e.target.value)} />
-          ):
-          (
-            <h2>{selectedConversation.groupName}</h2>
-          )
-         }
+        {editingName ? (
+          <input
+            value={groupName}
+            onChange={(e) => setGroupName(e.target.value)}
+          />
+        ) : (
+          <h2>{selectedConversation.groupName}</h2>
+        )}
         <h3>Members</h3>
         {selectedConversation.participants.map((user: any) => (
           <div key={user._id}>
