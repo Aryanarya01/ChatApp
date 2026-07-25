@@ -65,8 +65,11 @@ const GroupInfoModal = ({
             onChange={(e) => setGroupName(e.target.value)}
           />
         ) : (
-          <h2>{selectedConversation.groupName}</h2>
+           <><h2>{selectedConversation.groupName}</h2>
+           <button onClick={()=>setEditingName(true)}>Rename</button>
+           </>
         )}
+      
         <h3>Members</h3>
         {selectedConversation.participants.map((user: any) => (
           <div key={user._id}>
