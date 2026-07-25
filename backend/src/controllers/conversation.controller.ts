@@ -194,11 +194,16 @@ export const renameGroup = async(req:AuthRequest, res: Response)=>{
     if(!groupName){
       return res.status(400).json({message : "GroupName is required!"})
     }
-    const group = Conversation.findById(conversationId);
+    const group = await Conversation.findById(conversationId);
     if(!group){
       return res.status(404).json({message : "Group not found!"});
     }
-      cnost 
+      if(group.groupAdmin.toString() !== req.user!._id.toString()){
+        return res.status(403).json({message : "Only group Admin can rename the group!"})
+      }
+      group.groupName = groupName;
+      await group.save();
+
   }catch(err){
     return res.status(500).json({message : "Server Error!"});
   }
