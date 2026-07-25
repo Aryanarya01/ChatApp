@@ -102,7 +102,7 @@ const page = () => {
         );
         setMessage(data);
 
-        await clientServer.patch(`messages/seen/${selectedConversation._id}`);
+        await clientServer.patch(`/messages/seen/${selectedConversation._id}`);
       } catch (err: any) {
         console.log(err.response?.data);
       }

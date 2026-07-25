@@ -39,7 +39,7 @@ const GroupInfoModal = ({
   const handleLeaveGroup = async () => {
     try {
       const { data } = await clientServer.patch(
-        "conversation/group/leave-group",
+        "/conversation/group/leave-group",
         {
           conversationId: selectedConversation._id,
         },
@@ -47,7 +47,7 @@ const GroupInfoModal = ({
       console.log(data);
       await fetchConversations();
 
-      (setSelectedConversation(null), setSelectedUser(null), setOpen(false));
+      setSelectedConversation(null), setSelectedUser(null), setOpen(false);
     } catch (err: any) {
       console.log(err);
     }
@@ -55,8 +55,18 @@ const GroupInfoModal = ({
 
   const handleRenameGroup = async()=>{
     try{
-
-    }catch(err:any){}
+      const {data} = await clientServer.patch("/conversation/group/rename",{
+        conversationId : selectedConversation._id,
+        groupName
+      });
+      console.log(data);
+      setGroupName(data.groupName)
+       await fetchConversations()
+      setEditingName(false)
+      
+    }catch(err:any){
+      console.log(err)
+    }
   }
 
   console.log("AdminId:", AdminId);
