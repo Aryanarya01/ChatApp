@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 import generateToken from "../utils/generateToken.js";
 import type { AuthRequest } from "../middleware/protect.js";
 import cloudinary from "../lib/cloudinary.js";
-import fs from "fs"
+import fs from "fs";
 export const register = async (req: Request, res: Response) => {
   try {
     const { name, username, email, password } = req.body;
@@ -114,26 +114,23 @@ export const getAllUser = async (req: AuthRequest, res: Response) => {
   }
 };
 
-
-
-
-export const updateProfilePicture = async(req:AuthRequest, res:Response)=>{
-  try{
-    if(!req.file){
-      return res.status(400).json({message : "Please upload an image"})
+export const updateProfilePicture = async (req: AuthRequest, res: Response) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: "Please upload an image" });
     }
     const user = await User.findById(req.user!._id);
-    if(!user){
-      return res.status(404).json({message : "User not found!"})
+    if (!user) {
+      return res.status(404).json({ message: "User not found!" });
     }
     const result = await cloudinary.uploader.upload(req.file.path);
     fs.unlinkSync(req.file.path);
     user.profilePicture = result.secure_url;
     await user.save();
-    return res.status(200).json({message : "ProfilePicture updated successfully!",
-      user,
-    })
-  }catch(err){
-    return res.status(500).json({message : "Server Error!"});
+    return res
+      .status(200)
+      .json({ message: "ProfilePicture updated successfully!", user });
+  } catch (err) {
+    return res.status(500).json({ message: "Server Error!" });
   }
-}
+};
