@@ -131,6 +131,7 @@ export const updateProfilePicture = async (req: AuthRequest, res: Response) => {
       .status(200)
       .json({ message: "ProfilePicture updated successfully!", user });
   } catch (err) {
+    console.log("PROFILE PICTURE Error",err)
     return res.status(500).json({ message: "Server Error!" });
   }
 };
