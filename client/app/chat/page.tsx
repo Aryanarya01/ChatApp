@@ -22,7 +22,7 @@ const page = () => {
   const [image, setImage] = useState<File | null>(null);
   const [openGroupModal, setOpenGroupModal] = useState(false);
   const [openGroupInfo, setOpenGroupInfo] = useState(false);
-
+  const [openProfile, setOpenProfile] = useState(false)
 
   const messageEndRef = useRef<HTMLDivElement>(null);
 
