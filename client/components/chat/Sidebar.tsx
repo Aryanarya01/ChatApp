@@ -30,10 +30,14 @@ const Sidebar = ({
         >
           + New Group
         </button>
-        
+
         <h2 className="text-xl font-bold mb-4">Chat page..</h2>
- <div className="border-t mt-4 pt-4 flex items-center gap-3 mb-4">
-          <img className="w-10 h-10 rounded-full object-cover" src={me?.profilePicture || "/avatar.png"} alt="Profile" />
+        <div className="border-t mt-4 pt-4 flex items-center gap-3 mb-4">
+          <img
+            className="w-10 h-10 rounded-full object-cover"
+            src={me?.profilePicture || "/avatar.png"}
+            alt="Profile"
+          />
           <div>
             <p className="font-semibold">{me?.name}</p>
             <p className="text-sm text-gray-500">{me?.email}</p>
@@ -62,7 +66,9 @@ const Sidebar = ({
               >
                 <h4>{conv.isGroup ? conv.groupName : otherUser?.name}</h4>
                 <div className="flex flex-row items-end gap-1">
-                  {!conv.isGroup && onlineUsers.includes(otherUser?._id) && <span>🟢</span>}
+                  {!conv.isGroup && onlineUsers.includes(otherUser?._id) && (
+                    <span>🟢</span>
+                  )}
                   {conv.unreadCount > 0 && (
                     <span className="bg-green-500 text-white text-xs rounded-full px-2 py-1">
                       {conv.unreadCount}
@@ -77,7 +83,6 @@ const Sidebar = ({
             </div>
           );
         })}
-        
       </div>
     </>
   );
