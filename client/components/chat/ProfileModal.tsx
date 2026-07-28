@@ -17,9 +17,9 @@ const ProfileModal = ({ me, open, setOpen }: ProfileModalProps) => {
           alt="Profile"
           className="w-24 h-24 rounded-full object-cover mx-auto"
         />
-        <h3>{me?.name}</h3>
-        <p>{me?.email}</p>
-        <button onClick={() => setOpen(false)}>Close</button>
+        <h3 className="text-center mt-3 font-semibold">{me?.name}</h3>
+        <p className="text-center text-gray-500">{me?.email}</p>
+        <button className="mt-5 w-full bg-red-500 text-white p-2 rounded" onClick={() => setOpen(false)}>Close</button>
       </div>
     </div>
   );
