@@ -28,7 +28,15 @@ const Sidebar = ({
   return (
     <>
       <div className="w-1/4 border-r p-4">
-      
+        <button
+          className="w-full bg-blue-500 text-white p-2 rounded mb-3"
+          onClick={() => setOpenGroupModal(true)}
+        >
+          + New Group
+        </button>
+
+        <h2 className="text-xl font-bold mb-4">Chat page..</h2>
+
         {/* Profile */}
         <div
           className="border-t mt-4 pt-4 flex items-center gap-3 mb-4 cursor-pointer hover:bg-gray-100 p-2 rounded"
@@ -44,15 +52,6 @@ const Sidebar = ({
             <p className="text-sm text-gray-500">{me?.email}</p>
           </div>
         </div>
-        <button
-          className="w-full bg-blue-500 text-white p-2 rounded mb-3"
-          onClick={() => setOpenGroupModal(true)}
-        >
-          + New Group
-        </button>
-
-        <h2 className="text-xl font-bold mb-4">Chat page..</h2>
- 
 
         <hr />
         {/* conversation List */}
@@ -95,7 +94,6 @@ const Sidebar = ({
             </div>
           );
         })}
-        
       </div>
     </>
   );
