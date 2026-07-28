@@ -37,6 +37,7 @@ const Sidebar = ({
 
         <h2 className="text-xl font-bold mb-4">Chat page..</h2>
 
+        {/* Profile */}
         <div className="border-t mt-4 pt-4 flex items-center gap-3 mb-4">
           <img
             className="w-10 h-10 rounded-full object-cover"
@@ -49,6 +50,7 @@ const Sidebar = ({
           </div>
         </div>
         <hr />
+        {/* conversation List */}
         {conversation.map((conv: any) => {
           const otherUser = conv.participants.find(
             (p: any) => p._id !== me?._id,
