@@ -69,11 +69,11 @@ const Sidebar = ({
             </div>
           );
         })}
-        <div>
-          <img src={me?.profilePicture || "/avatar.png"} alt="Profile" />
+        <div className="border-t mt-4 pt-4 flex items-center gap-3">
+          <img className="w-10 h-10 rounded-full object-cover" src={me?.profilePicture || "/avatar.png"} alt="Profile" />
           <div>
-            <p>{me?.name}</p>
-            <p></p>
+            <p className="font-semibold">{me?.name}</p>
+            <p className="text-sm text-gray-500">{me?.email}</p>
           </div>
         </div>
       </div>
