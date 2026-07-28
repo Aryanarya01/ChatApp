@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 interface ProfileModalProps {
   open: boolean;
@@ -7,6 +7,7 @@ interface ProfileModalProps {
 }
 
 const ProfileModal = ({ me, open, setOpen }: ProfileModalProps) => {
+  const [image, setImage] = useState<File | null>(null)
   if (!open) return null;
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center">
