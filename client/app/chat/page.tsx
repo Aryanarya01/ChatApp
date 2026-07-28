@@ -159,6 +159,7 @@ const page = () => {
         setSelectedUser={setSelectedUser}
         openGroupModal={openGroupModal}
         setOpenGroupModal={setOpenGroupModal}
+        
       />
       {openGroupModal && (
         <CreateGroupModal
