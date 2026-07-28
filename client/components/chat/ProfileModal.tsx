@@ -6,9 +6,16 @@ interface ProfileModalProps {
   me : any
 }
 
-const ProfileModal = () => {
+const ProfileModal = ({me,open,setOpen}:ProfileModalProps) => {
+  if(!open) return null;
   return (
-    <div>ProfileModal</div>
+    <div>
+      <div>
+        <h2>My Profile</h2>
+        <img src={me?.profilePicture || "/avatar.png"}  alt="Profile" className='w-24 h-24 rounded-full object-cover mx-auto' />
+        
+      </div>
+    </div>
   )
 }
 
