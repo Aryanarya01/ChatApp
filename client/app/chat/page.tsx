@@ -22,10 +22,9 @@ const page = () => {
   const [image, setImage] = useState<File | null>(null);
   const [openGroupModal, setOpenGroupModal] = useState(false);
   const [openGroupInfo, setOpenGroupInfo] = useState(false);
-  const [openProfile, setOpenProfile] = useState(false)
   const [openProfileModel, setOpenProfileModel] = useState(false);
 
-  
+
   const messageEndRef = useRef<HTMLDivElement>(null);
 
   const typingTimeout = useRef<NodeJS.Timeout | null>(null);
@@ -161,7 +160,8 @@ const page = () => {
         setSelectedUser={setSelectedUser}
         openGroupModal={openGroupModal}
         setOpenGroupModal={setOpenGroupModal}
-        
+        openProfileModel = {openProfileModel}
+        setOpenProfileModel = {setOpenProfileModel}
       />
       {openGroupModal && (
         <CreateGroupModal

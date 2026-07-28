@@ -9,6 +9,8 @@ interface SidebarProps {
   setSelectedUser: any;
   openGroupModal: boolean;
   setOpenGroupModal: React.Dispatch<React.SetStateAction<boolean>>;
+  openProfileModel : boolean,
+  setOpenProfileModel : React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Sidebar = ({
