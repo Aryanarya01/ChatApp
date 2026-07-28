@@ -70,9 +70,10 @@ const Sidebar = ({
           );
         })}
         <div>
-          <img src={me.profilePicture || "/avatar.png"} alt="Profile" />
+          <img src={me?.profilePicture || "/avatar.png"} alt="Profile" />
           <div>
             <p>{me?.name}</p>
+            <p></p>
           </div>
         </div>
       </div>
