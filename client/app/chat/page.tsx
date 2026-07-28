@@ -4,6 +4,7 @@ import CreateGroupModal from "@/components/chat/CreateGroupModal";
 import GroupInfoModal from "@/components/chat/GroupInfoModal";
 import MessageInput from "@/components/chat/MessageInput";
 import MessageList from "@/components/chat/MessageList";
+import ProfileModal from "@/components/chat/ProfileModal";
 import Sidebar from "@/components/chat/Sidebar";
 import clientServer from "@/lib/axios";
 import { socket } from "@/lib/socket";
@@ -197,6 +198,7 @@ const page = () => {
               image={image}
             />
             <GroupInfoModal me={me} selectedConversation={selectedConversation} open={openGroupInfo} setOpen={setOpenGroupInfo} fetchConversations={fetchConversations} users={users} setSelectedConversation={setSelectedConversation} setSelectedUser={setSelectedUser} />
+            <ProfileModal open={openProfileModel} setOpen={setOpenProfileModel} me={me}/>
           </>
         ) : (
           <div className="flex flex-1 items-center justify-center">
