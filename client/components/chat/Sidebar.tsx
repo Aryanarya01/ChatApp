@@ -22,6 +22,8 @@ const Sidebar = ({
   setSelectedUser,
   openGroupModal,
   setOpenGroupModal,
+  openProfileModel,
+  setOpenProfileModel
 }: SidebarProps) => {
   return (
     <>
