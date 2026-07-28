@@ -32,13 +32,14 @@ const Sidebar = ({
         </button>
 
         <h2 className="text-xl font-bold mb-4">Chat page..</h2>
+
         <div className="border-t mt-4 pt-4 flex items-center gap-3 mb-4">
           <img
             className="w-10 h-10 rounded-full object-cover"
             src={me?.profilePicture || "/avatar.png"}
             alt="Profile"
           />
-          <div>
+          <div className="ml-5">
             <p className="font-semibold">{me?.name}</p>
             <p className="text-sm text-gray-500">{me?.email}</p>
           </div>
