@@ -49,6 +49,7 @@ const ProfileModal = ({ me, open, setOpen }: ProfileModalProps) => {
             }
           }}
         />
+        <button onClick={handleUploadImage}>Upload</button>
         <h3 className="text-center mt-3 font-semibold">{me?.name}</h3>
         <p className="text-center text-gray-500">{me?.email}</p>
         <button
