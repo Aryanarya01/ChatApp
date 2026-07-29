@@ -5,9 +5,10 @@ interface ProfileModalProps {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   me: any;
+  setMe : any
 }
 
-const ProfileModal = ({ me, open, setOpen }: ProfileModalProps) => {
+const ProfileModal = ({ me, open, setOpen,setMe }: ProfileModalProps) => {
   const [image, setImage] = useState<File | null>(null);
 
   const handleUploadImage = async () => {
@@ -25,6 +26,11 @@ const ProfileModal = ({ me, open, setOpen }: ProfileModalProps) => {
         },
       );
       console.log(data);
+        // Update the UI
+    setMe(data.user);
+
+    // Close the modal
+    setOpen(false);
     } catch (err: any) {
       console.log(err);
     }
@@ -49,7 +55,7 @@ const ProfileModal = ({ me, open, setOpen }: ProfileModalProps) => {
             }
           }}
         />
-        <button onClick={handleUploadImage}>Upload</button>
+        <button className="bg-green-500" onClick={handleUploadImage}>Upload</button>
         <h3 className="text-center mt-3 font-semibold">{me?.name}</h3>
         <p className="text-center text-gray-500">{me?.email}</p>
         <button
