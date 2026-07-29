@@ -9,6 +9,14 @@ interface ProfileModalProps {
 const ProfileModal = ({ me, open, setOpen }: ProfileModalProps) => {
   const [image, setImage] = useState<File | null>(null);
 
+  const handleUploadImage = async()=>{
+    try{
+
+    }catch(err:any){
+      console.log(err)
+    }
+  }
+
   if (!open) return null;
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center">
