@@ -1,3 +1,4 @@
+import clientServer from "@/lib/axios";
 import React, { useState } from "react";
 
 interface ProfileModalProps {
@@ -14,7 +15,12 @@ const ProfileModal = ({ me, open, setOpen }: ProfileModalProps) => {
       if(!image) return;
       const formdata = new FormData();
       formdata.append("image",image);
-      
+      const {data} = await clientServer.patch("/auth/profile-picture",formdata,{
+        headers:{
+          "Content-Type" : "multipart/form-data"
+        },
+      });
+      console.log(data)
     }catch(err:any){
       console.log(err)
     }
