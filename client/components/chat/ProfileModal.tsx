@@ -11,7 +11,10 @@ const ProfileModal = ({ me, open, setOpen }: ProfileModalProps) => {
 
   const handleUploadImage = async()=>{
     try{
-
+      if(!image) return;
+      const formdata = new FormData();
+      formdata.append("image",image);
+      
     }catch(err:any){
       console.log(err)
     }
