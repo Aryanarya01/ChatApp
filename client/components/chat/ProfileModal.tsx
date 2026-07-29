@@ -10,21 +10,25 @@ interface ProfileModalProps {
 const ProfileModal = ({ me, open, setOpen }: ProfileModalProps) => {
   const [image, setImage] = useState<File | null>(null);
 
-  const handleUploadImage = async()=>{
-    try{
-      if(!image) return;
+  const handleUploadImage = async () => {
+    try {
+      if (!image) return;
       const formdata = new FormData();
-      formdata.append("image",image);
-      const {data} = await clientServer.patch("/auth/profile-picture",formdata,{
-        headers:{
-          "Content-Type" : "multipart/form-data"
+      formdata.append("image", image);
+      const { data } = await clientServer.patch(
+        "/auth/profile-picture",
+        formdata,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         },
-      });
-      console.log(data)
-    }catch(err:any){
-      console.log(err)
+      );
+      console.log(data);
+    } catch (err: any) {
+      console.log(err);
     }
-  }
+  };
 
   if (!open) return null;
   return (
@@ -36,14 +40,23 @@ const ProfileModal = ({ me, open, setOpen }: ProfileModalProps) => {
           alt="Profile"
           className="w-24 h-24 rounded-full object-cover mx-auto"
         />
-        <input type="file" accept="image/*" onChange={(e)=>{
-          if(e.target.files){
-            setImage(e.target.files[0])
-          }
-        }}/>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => {
+            if (e.target.files) {
+              setImage(e.target.files[0]);
+            }
+          }}
+        />
         <h3 className="text-center mt-3 font-semibold">{me?.name}</h3>
         <p className="text-center text-gray-500">{me?.email}</p>
-        <button className="mt-5 w-full bg-red-500 text-white p-2 rounded" onClick={() => setOpen(false)}>Close</button>
+        <button
+          className="mt-5 w-full bg-red-500 text-white p-2 rounded"
+          onClick={() => setOpen(false)}
+        >
+          Close
+        </button>
       </div>
     </div>
   );
