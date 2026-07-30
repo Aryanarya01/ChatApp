@@ -26,8 +26,8 @@ const Sidebar = ({
   setOpenProfileModel,
 }: SidebarProps) => {
   return (
-    
-      <div className="w-1/4 border-r p-4">
+    <>
+      <div className="w-1/3 border-r p-4">
         <button
           className="w-full bg-blue-500 text-white p-2 rounded mb-3"
           onClick={() => setOpenGroupModal(true)}
@@ -37,7 +37,22 @@ const Sidebar = ({
 
         <h2 className="text-xl font-bold mb-4">Chat page..</h2>
 
-        
+        {/* Profile */}
+        <div
+          className="border-t mt-4 pt-4 flex items-center gap-3 mb-4 cursor-pointer hover:bg-gray-100 p-2 rounded"
+          onClick={() => setOpenProfileModel(true)}
+        >
+          <img
+            className="w-10 h-10 rounded-full object-cover"
+            src={me?.profilePicture || "/avatar.png"}
+            alt="Profile"
+          />
+          <div className="ml-5">
+            <p className="font-semibold">{me?.name}</p>
+            <p className="text-sm text-gray-500">{me?.email}</p>
+          </div>
+        </div>
+
         <hr />
         {/* conversation List */}
         {conversation.map((conv: any) => {
@@ -79,11 +94,8 @@ const Sidebar = ({
             </div>
           );
         })}
-        
-       
-   
-
-   </div>
+      </div>
+    </>
   );
 };
 
