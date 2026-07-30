@@ -123,9 +123,28 @@ export const updateProfilePicture = async (req: AuthRequest, res: Response) => {
     if (!user) {
       return res.status(404).json({ message: "User not found!" });
     }
-    user.profilePicture = req.file.filename;
+      console.log("Uploading:", req.file.path);
+
+  const result = await cloudinary.uploader.upload(req.file.path);
+
+  console.log(result);
+
+
+  if (fs.existsSync(req.file.path)) {
+  fs.unlinkSync(req.file.path);
+}
+    user.profilePicture = result.secure_url;
     await user.save();
-  }catch(err){
-    return res.status(500).json({message : "Server Error"})
-  }
+    return res
+      .status(200)
+      .json({ message: "ProfilePicture updated successfully!", user });
+  } catch (err: any) {
+  console.error("FULL ERROR:");
+  console.dir(err, { depth: null });
+
+  return res.status(500).json({
+    message: err.message,
+    error: err,
+  });
+}
 };

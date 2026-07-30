@@ -1,6 +1,6 @@
 import { Router } from "express";
 import express from "express";
-import { getAllUser, getMe, login, logout, register, updateProfilePicture,   } from "../controllers/user.controller.js";
+import { getAllUser, getMe, login, logout, register, updateProfilePicture } from "../controllers/user.controller.js";
 import Protect from "../middleware/protect.js";
 import upload from "../middleware/upload.js";
 
