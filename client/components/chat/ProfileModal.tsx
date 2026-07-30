@@ -22,7 +22,11 @@ const ProfileModal = ({ me, open, setOpen,setMe }: ProfileModalProps) => {
         
       );
       console.log(data);
-  
+        // Update the UI
+    setMe(data.user);
+
+    // Close the modal
+    setOpen(false);
     } catch (err: any) {
       console.log(err);
     }

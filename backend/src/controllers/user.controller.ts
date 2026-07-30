@@ -116,22 +116,39 @@ export const getAllUser = async (req: AuthRequest, res: Response) => {
  
 export const updateProfilePicture = async (req: AuthRequest, res: Response) => {
   try {
-    console.log(req.file);
-
-    if (!req.file) {
-      return res.status(400).json({
-        message: "No file received",
-      });
-    }
-
-    return res.status(200).json({
-      message: "File received successfully",
-      file: req.file,
-    });
-  } catch (err) {
-    console.log(err);
-    return res.status(500).json({
-      message: "Server Error",
-    });
+  if (!req.file) {
+    return res.status(400).json({ message: "No file" });
   }
+
+  console.log("Uploading:", req.file.path);
+
+  const result = await cloudinary.uploader.upload(req.file.path);
+
+const user = await User.findById(req.user!._id);
+
+if (!user) {
+  return res.status(404).json({
+    message: "User not found",
+  });
+}
+
+user.profilePicture = result.secure_url;
+await user.save();
+ 
+
+if (fs.existsSync(req.file.path)) {
+  fs.unlinkSync(req.file.path);
+}
+return res.status(200).json({
+  message: "Profile picture updated",
+  user,
+});
+} catch (err: any) {
+  console.log("========== CLOUDINARY ERROR ==========");
+  console.dir(err, { depth: null });
+
+  return res.status(500).json({
+    message: err.message,
+  });
+}
 };
