@@ -15,22 +15,14 @@ const ProfileModal = ({ me, open, setOpen,setMe }: ProfileModalProps) => {
     try {
       if (!image) return;
       const formdata = new FormData();
-      formdata.append("image", image);
+      formdata.append("image", image!);
       const { data } = await clientServer.patch(
         "/auth/profile-picture",
         formdata,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        },
+        
       );
       console.log(data);
-        // Update the UI
-    setMe(data.user);
-
-    // Close the modal
-    setOpen(false);
+  
     } catch (err: any) {
       console.log(err);
     }
