@@ -123,11 +123,13 @@ export const updateProfilePicture = async (req: AuthRequest, res: Response) => {
     if (!user) {
       return res.status(404).json({ message: "User not found!" });
     }
-    const result = await cloudinary.uploader.upload(req.file.path, {
-  resource_type: "image",
-});
+      console.log("Uploading:", req.file.path);
 
-console.log(result);
+  const result = await cloudinary.uploader.upload(req.file.path);
+
+  console.log(result);
+
+
   if (fs.existsSync(req.file.path)) {
   fs.unlinkSync(req.file.path);
 }
