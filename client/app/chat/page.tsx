@@ -198,7 +198,7 @@ const page = () => {
               image={image}
             />
             <GroupInfoModal me={me} selectedConversation={selectedConversation} open={openGroupInfo} setOpen={setOpenGroupInfo} fetchConversations={fetchConversations} users={users} setSelectedConversation={setSelectedConversation} setSelectedUser={setSelectedUser} />
-            <ProfileModal open={openProfileModel} setOpen={setOpenProfileModel} me={me} setMe={setMe}/>
+             
           </>
         ) : (
           <div className="flex flex-1 items-center justify-center">
@@ -207,6 +207,7 @@ const page = () => {
             </h2>
           </div>
         )}
+        {openProfileModel && (<ProfileModal open={openProfileModel} setOpen={setOpenProfileModel} me={me} setMe={setMe}/>)}
       </div>
     </div>
   );
