@@ -138,13 +138,20 @@ export const updateProfilePicture = async (req: AuthRequest, res: Response) => {
     return res
       .status(200)
       .json({ message: "ProfilePicture updated successfully!", user });
-  } catch (err: any) {
-  console.error("FULL ERROR:");
-  console.dir(err, { depth: null });
+   } catch (err: any) {
+  console.error("========== ERROR ==========");
+  console.error(err);
+
+  if (err.response) {
+    console.error(err.response);
+  }
+
+  if (err.error) {
+    console.error(err.error);
+  }
 
   return res.status(500).json({
     message: err.message,
-    error: err,
   });
 }
 };
