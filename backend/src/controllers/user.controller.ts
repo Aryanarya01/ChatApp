@@ -123,38 +123,9 @@ export const updateProfilePicture = async (req: AuthRequest, res: Response) => {
     if (!user) {
       return res.status(404).json({ message: "User not found!" });
     }
-      console.log("Uploading:", req.file.path);
-
-  const result = await cloudinary.uploader.upload(req.file.path, {
-  folder: "chatapp",
-  resource_type: "image",
-});
-
-console.log(result);
-
-
-  if (fs.existsSync(req.file.path)) {
-  fs.unlinkSync(req.file.path);
-}
-    user.profilePicture = result.secure_url;
+    user.profilePicture = req.file.filename;
     await user.save();
-    return res
-      .status(200)
-      .json({ message: "ProfilePicture updated successfully!", user });
-   } catch (err: any) {
-  console.error("========== ERROR ==========");
-  console.error(err);
-
-  if (err.response) {
-    console.error(err.response);
+  }catch(err){
+    return res.status(500).json({message : "Server Error"})
   }
-
-  if (err.error) {
-    console.error(err.error);
-  }
-
-  return res.status(500).json({
-    message: err.message,
-  });
-}
 };
