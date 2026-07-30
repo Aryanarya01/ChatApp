@@ -125,9 +125,12 @@ export const updateProfilePicture = async (req: AuthRequest, res: Response) => {
     }
       console.log("Uploading:", req.file.path);
 
-  const result = await cloudinary.uploader.upload(req.file.path);
+  const result = await cloudinary.uploader.upload(req.file.path, {
+  folder: "chatapp",
+  resource_type: "image",
+});
 
-  console.log(result);
+console.log(result);
 
 
   if (fs.existsSync(req.file.path)) {
