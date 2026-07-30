@@ -27,7 +27,7 @@ const Sidebar = ({
 }: SidebarProps) => {
   return (
     <>
-      <div className="w-1/3 border-r p-4">
+      <div className="w-1/4 border-r p-4">
         <button
           className="w-full bg-blue-500 text-white p-2 rounded mb-3"
           onClick={() => setOpenGroupModal(true)}
@@ -75,6 +75,7 @@ const Sidebar = ({
                 }}
                 className="flex justify-between items-center"
               >
+                <img src={conv.isGroup ? conv.groupProfilePicture || "/group.png" :  otherUser?.profilePicture || "/avatar.png"} alt="" />
                 <h4>{conv.isGroup ? conv.groupName : otherUser?.name}</h4>
                 <div className="flex flex-row items-end gap-1">
                   {!conv.isGroup && onlineUsers.includes(otherUser?._id) && (
