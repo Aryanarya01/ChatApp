@@ -75,7 +75,7 @@ const Sidebar = ({
                 }}
                 className="flex justify-between items-center"
               >
-                <img src={conv.isGroup ? conv.groupProfilePicture || "/group.png" :  otherUser?.profilePicture || "/avatar.png"} alt="" />
+                <img className="w-10 h-10 rounded-full object-cover" src={conv.isGroup ? conv.groupProfilePicture || "/group.png" :  otherUser?.profilePicture || "/avatar.png"} alt="" />
                 <h4>{conv.isGroup ? conv.groupName : otherUser?.name}</h4>
                 <div className="flex flex-row items-end gap-1">
                   {!conv.isGroup && onlineUsers.includes(otherUser?._id) && (
