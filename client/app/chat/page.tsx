@@ -150,7 +150,7 @@ const page = () => {
   }, []);
 
   return (
-    <div className="flex h-screen bg=[#071320] overflow-hidden">
+    <div className="flex h-screen bg-[#071320] overflow-hidden">
       {/* Sidebar */}
       <Sidebar
         conversation={conversation}
@@ -173,9 +173,12 @@ const page = () => {
       )}
 
       {/* right side */}
-      <div className="flex flex-col flex-1 relative bg-[url('/ocean.jpg')]">
+      <div className="flex flex-col flex-1 relative bg-[url('/ocean.jpg')] bg-cover bg-center">
+      <div className="absolute inset-0 bg-[#071320]/70 backdrop-blur-sm"></div>
+          <div className="relative flex flex-col flex-1 z-10">
         {selectedConversation ? (
           <>
+           
             {/* chatHeader */}
             <ChatHeader selectedUser={selectedUser} isTyping={isTyping} selectedConversation={selectedConversation} setOpenGroupInfo={setOpenGroupInfo}/>
 
@@ -198,17 +201,19 @@ const page = () => {
               image={image}
             />
             <GroupInfoModal me={me} selectedConversation={selectedConversation} open={openGroupInfo} setOpen={setOpenGroupInfo} fetchConversations={fetchConversations} users={users} setSelectedConversation={setSelectedConversation} setSelectedUser={setSelectedUser} />
-             
+              
           </>
+         
         ) : (
           <div className="flex flex-1 items-center justify-center">
-            <h2 className="text-gray-500 text-xl">
-              Select a user to start chatting
-            </h2>
+            <h2 className="text-2xl text-slate-300 font-medium">
+          🌊 Select a conversation to start chatting
+        </h2>
           </div>
         )}
         {openProfileModel && (<ProfileModal open={openProfileModel} setOpen={setOpenProfileModel} me={me} setMe={setMe}/>)}
       </div>
+    </div>
     </div>
   );
 };
