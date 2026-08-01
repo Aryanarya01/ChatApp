@@ -173,7 +173,7 @@ const page = () => {
       )}
 
       {/* right side */}
-      <div className="flex flex-col flex-1">
+      <div className="flex flex-col flex-1 relative bg-[url('/ocean.jpg')]">
         {selectedConversation ? (
           <>
             {/* chatHeader */}
