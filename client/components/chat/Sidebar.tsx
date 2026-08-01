@@ -27,33 +27,38 @@ const Sidebar = ({
 }: SidebarProps) => {
   return (
     <>
-      <div className="w-1/4 border-r p-4">
-        <button
-          className="w-full bg-blue-500 text-white p-2 rounded mb-3"
-          onClick={() => setOpenGroupModal(true)}
-        >
-          + New Group
-        </button>
+      <div className="w-[340px] bg-[#091827]/97 backdrop-blur-xl border-r border-white/10 flex flex-col">
 
-        <h2 className="text-xl font-bold mb-4">Chat page..</h2>
+        <div className="p-5 border-b border-white/10">
+        <h1 className="text-2xl font-bold text-white mb-5">🌊 ZenChat</h1>
+          <button
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold py-3"
+            onClick={() => setOpenGroupModal(true)}
+          >
+            + New Group
+          </button>
+        </div>
+
+         
 
         {/* Profile */}
         <div
-          className="border-t mt-4 pt-4 flex items-center gap-3 mb-4 cursor-pointer hover:bg-gray-100 p-2 rounded"
+          className="mx-4 mt-5 mb-4 p-3 rounded-2xl bg-white/5 hover:bg-white/10 transition cursor-pointer flex items-center gap-3"
           onClick={() => setOpenProfileModel(true)}
         >
           <img
-            className="w-10 h-10 rounded-full object-cover"
+            className="w-12 h-12 rounded-full object-cover border-2 border-blue-500"
             src={me?.profilePicture || "/avatar.png"}
             alt="Profile"
           />
           <div className="ml-5">
-            <p className="font-semibold">{me?.name}</p>
-            <p className="text-sm text-gray-500">{me?.email}</p>
+            <p className="font-semibold text-white">{me?.name}</p>
+            <p className="text-sm text-slate-400 truncate">{me?.email}</p>
           </div>
         </div>
 
-        <hr />
+        <div className="border-b border-white/10 mx-4 mb-4"></div>
+        <div className="flex-1 overflow-y-auto px-3 pb-4">
         {/* conversation List */}
         {conversation.map((conv: any) => {
           const otherUser = conv.participants.find(
@@ -95,6 +100,7 @@ const Sidebar = ({
             </div>
           );
         })}
+        </div>
       </div>
     </>
   );
