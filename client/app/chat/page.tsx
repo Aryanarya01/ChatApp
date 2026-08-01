@@ -150,7 +150,7 @@ const page = () => {
   }, []);
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen bg=[#071320] overflow-hidden">
       {/* Sidebar */}
       <Sidebar
         conversation={conversation}
