@@ -64,7 +64,7 @@ const Sidebar = ({
             return (
               <div
                 key={conv._id}
-                className={`p-3 cursor-pointer mb-2 transition-all duration-600 ${selectedConversation?._id === conv._id ? "bg-white/10 border border-cyan-400/40 shadow-[0_0_20px_rgba(34,211,238,0.18)]"
+                className={`p-4 cursor-pointer mb-2 rounded-2xl transition-all duration-300 ${selectedConversation?._id === conv._id ? "bg-white/10 border border-cyan-400/40 shadow-[0_0_20px_rgba(34,211,238,0.18)]"
   : "hover:bg-white/5 border border-transparent"}`}
               >
                 <div
