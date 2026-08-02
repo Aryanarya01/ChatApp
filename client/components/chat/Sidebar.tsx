@@ -27,16 +27,30 @@ const Sidebar = ({
 }: SidebarProps) => {
   return (
     <>
-      <div className="w-[340px] bg-[#091827]/97 backdrop-blur-xl border-r border-white/10 flex flex-col">
+      <div className="w-[340px] bg-[#08131F]/95 backdrop-blur-xl border-r border-white/10 flex flex-col">
         <div className="p-5 border-b border-white/10">
-          <h1 className="text-2xl font-bold text-white mb-5">🌊 ZenChat</h1>
-          <button
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold py-3"
-            onClick={() => setOpenGroupModal(true)}
-          >
-            + New Group
-          </button>
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-2xl font-bold text-white">ZenChat</h1>
+               <p className="text-slate-400 text-sm">
+                      Stay connected
+                    </p>
+            </div>
+            <button
+              className="w-11 h-11 bg-cyan-500 hover:bg-cyan-400 transition text-white rounded-xl text-2xl"
+              onClick={() => setOpenGroupModal(true)}
+            >
+              +
+            </button>
+          </div>
         </div>
+        <div className="px-4 py-4">
+  <input
+    type="text"
+    placeholder="Search chats..."
+    className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 outline-none focus:border-cyan-400"
+  />
+</div>
 
         {/* Profile */}
         <div
@@ -44,7 +58,7 @@ const Sidebar = ({
           onClick={() => setOpenProfileModel(true)}
         >
           <img
-            className="w-12 h-12 rounded-full object-cover border-2 border-blue-500"
+            className="w-12 h-12 rounded-full object-cover ring-2 ring-white/10"
             src={me?.profilePicture || "/avatar.png"}
             alt="Profile"
           />
