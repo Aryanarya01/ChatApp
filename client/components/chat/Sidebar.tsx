@@ -76,7 +76,7 @@ const Sidebar = ({
             return (
               <div
                 key={conv._id}
-                className={`p-4 cursor-pointer mb-2 rounded-2xl transition-all duration-300 ${
+                className={`p-4 cursor-pointer mb-2 rounded-2xl transition-all hover:scale-[1.02] duration-300 ${
                   selectedConversation?._id === conv._id
                     ? "bg-white/10 border border-cyan-400/40 shadow-[0_0_20px_rgba(34,211,238,0.18)]"
                     : "hover:bg-white/5 border border-transparent"
@@ -109,7 +109,7 @@ ${
                       alt=""
                     />
 
-                    <div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_12px_#34d399]">
                       <h4 className="font-semibold text-white">
                         {conv.isGroup ? conv.groupName : otherUser?.name}
                       </h4>
