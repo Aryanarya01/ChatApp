@@ -113,7 +113,10 @@ ${
                       <h4 className="font-semibold text-white">
                         {conv.isGroup ? conv.groupName : otherUser?.name}
                       </h4>
-                      <div className="flex items-center gap-2 mt-1">
+
+
+                      {/* online */}
+                      {/* <div className="flex items-center gap-2 mt-1">
                         {!conv.isGroup &&
                           onlineUsers.includes(otherUser?._id) && (
                             <span className="w-2.5 h-2.5 rounded-full bg-green-500"></span>
@@ -121,7 +124,30 @@ ${
                         <span className="text-xs text-slate-400">
                           {conv.isGroup ? "Group" : "Online"}
                         </span>
-                      </div>
+                      </div> */}
+<div className="flex items-center gap-2 mt-1">
+  {!conv.isGroup && (
+    <>
+      <span
+        className={`w-2.5 h-2.5 rounded-full ${
+          onlineUsers.includes(otherUser?._id)
+            ? "bg-emerald-400 shadow-[0_0_10px_#34d399]"
+            : "bg-gray-500"
+        }`}
+      ></span>
+
+      <span className="text-xs text-slate-400">
+        {onlineUsers.includes(otherUser?._id) ? "Online" : "Offline"}
+      </span>
+    </>
+  )}
+
+  {conv.isGroup && (
+    <span className="text-xs text-slate-400">Group</span>
+  )}
+</div>
+
+                      
                     </div>
                   </div>
 
