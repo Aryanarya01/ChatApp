@@ -52,11 +52,11 @@ const Sidebar = ({
 
         {/* Profile */}
         <div
-          className="mx-4 mt-5 mb-4 p-3 rounded-2xl bg-white/5 hover:bg-white/10 transition cursor-pointer flex items-center gap-3"
+          className="mx-4 mb-4 p-3 rounded-2xl bg-white/5 hover:bg-white/10 transition cursor-pointer flex items-center gap-3"
           onClick={() => setOpenProfileModel(true)}
         >
           <img
-            className="w-12 h-12 rounded-full object-cover ring-2 ring-white/10"
+            className="w-14 h-14 rounded-full object-cover ring-2 ring-cyan-400"
             src={me?.profilePicture || "/avatar.png"}
             alt="Profile"
           />
@@ -127,7 +127,7 @@ ${
 
                   {/* right */}
                   {conv.unreadCount > 0 && (
-                    <span className="min-w-6 h-6 flex items-center justify-center rounded-full bg-blue-600 text-xs font-semibold text-white px-2">
+                    <span className="min-w-6 h-6 rounded-full bg-cyan-500 text-xs flex items-center justify-center text-white">
                       {conv.unreadCount}
                     </span>
                   )}
