@@ -32,9 +32,7 @@ const Sidebar = ({
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-white">ZenChat</h1>
-               <p className="text-slate-400 text-sm">
-                      Stay connected
-                    </p>
+              <p className="text-slate-400 text-sm">Stay connected</p>
             </div>
             <button
               className="w-11 h-11 bg-cyan-500 hover:bg-cyan-400 transition text-white rounded-xl text-2xl"
@@ -45,12 +43,12 @@ const Sidebar = ({
           </div>
         </div>
         <div className="px-4 py-4">
-  <input
-    type="text"
-    placeholder="Search chats..."
-    className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 outline-none focus:border-cyan-400"
-  />
-</div>
+          <input
+            type="text"
+            placeholder="Search chats..."
+            className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 outline-none focus:border-cyan-400"
+          />
+        </div>
 
         {/* Profile */}
         <div
@@ -99,9 +97,9 @@ const Sidebar = ({
                     <img
                       className={`w-12 h-12 rounded-full object-cover transition
 ${
-selectedConversation?._id===conv._id
-?"ring-2 ring-cyan-400"
-:"ring-2 ring-white/10"
+  selectedConversation?._id === conv._id
+    ? "ring-2 ring-cyan-400"
+    : "ring-2 ring-white/10"
 }`}
                       src={
                         conv.isGroup
