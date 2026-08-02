@@ -109,7 +109,7 @@ ${
                       alt=""
                     />
 
-                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_12px_#34d399]">
+                    <div>
                       <h4 className="font-semibold text-white">
                         {conv.isGroup ? conv.groupName : otherUser?.name}
                       </h4>
