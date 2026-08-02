@@ -83,7 +83,12 @@ const Sidebar = ({
                 >
                   <div className="flex items-center gap-3">
                     <img
-                      className="w-12 h-12 rounded-full object-cover border-2 border-blue-500"
+                      className={`w-12 h-12 rounded-full object-cover transition
+${
+selectedConversation?._id===conv._id
+?"ring-2 ring-cyan-400"
+:"ring-2 ring-white/10"
+}`}
                       src={
                         conv.isGroup
                           ? conv.groupProfilePicture || "/group.png"
