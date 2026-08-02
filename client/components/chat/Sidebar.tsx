@@ -64,8 +64,11 @@ const Sidebar = ({
             return (
               <div
                 key={conv._id}
-                className={`p-4 cursor-pointer mb-2 rounded-2xl transition-all duration-300 ${selectedConversation?._id === conv._id ? "bg-white/10 border border-cyan-400/40 shadow-[0_0_20px_rgba(34,211,238,0.18)]"
-  : "hover:bg-white/5 border border-transparent"}`}
+                className={`p-4 cursor-pointer mb-2 rounded-2xl transition-all duration-300 ${
+                  selectedConversation?._id === conv._id
+                    ? "bg-white/10 border border-cyan-400/40 shadow-[0_0_20px_rgba(34,211,238,0.18)]"
+                    : "hover:bg-white/5 border border-transparent"
+                }`}
               >
                 <div
                   onClick={() => {
@@ -79,34 +82,38 @@ const Sidebar = ({
                   className="flex items-center justify-between"
                 >
                   <div className="flex items-center gap-3">
-                  <img
-                    className="w-12 h-12 rounded-full object-cover border-2 border-blue-500"
-                    src={
-                      conv.isGroup
-                        ? conv.groupProfilePicture || "/group.png"
-                        : otherUser?.profilePicture || "/avatar.png"
-                    }
-                    alt=""
-                  />
-                
-                  <div>
-                       <h4 className="font-semibold text-white">{conv.isGroup ? conv.groupName : otherUser?.name}</h4>
-                       <div className="flex items-center gap-2 mt-1">
-                    {!conv.isGroup && onlineUsers.includes(otherUser?._id) && (
-                      <span className="w-2.5 h-2.5 rounded-full bg-green-500"></span>
-                    )}
-                    <span className="text-xs text-slate-400">{conv.isGroup ? "Group" : "Online"}</span>
-                    </div>
-                    </div>
-                    </div>
+                    <img
+                      className="w-12 h-12 rounded-full object-cover border-2 border-blue-500"
+                      src={
+                        conv.isGroup
+                          ? conv.groupProfilePicture || "/group.png"
+                          : otherUser?.profilePicture || "/avatar.png"
+                      }
+                      alt=""
+                    />
 
-                    {/* right */}
-                    {conv.unreadCount > 0 && (
-                      <span className="min-w-6 h-6 flex items-center justify-center rounded-full bg-blue-600 text-xs font-semibold text-white px-2">
-                        {conv.unreadCount}
-                      </span>
-                    )}
-                  
+                    <div>
+                      <h4 className="font-semibold text-white">
+                        {conv.isGroup ? conv.groupName : otherUser?.name}
+                      </h4>
+                      <div className="flex items-center gap-2 mt-1">
+                        {!conv.isGroup &&
+                          onlineUsers.includes(otherUser?._id) && (
+                            <span className="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+                          )}
+                        <span className="text-xs text-slate-400">
+                          {conv.isGroup ? "Group" : "Online"}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* right */}
+                  {conv.unreadCount > 0 && (
+                    <span className="min-w-6 h-6 flex items-center justify-center rounded-full bg-blue-600 text-xs font-semibold text-white px-2">
+                      {conv.unreadCount}
+                    </span>
+                  )}
                 </div>
 
                 <p className="text-sm text-slate-400 mt-2 truncate pl-[60px]">
