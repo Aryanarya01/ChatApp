@@ -172,8 +172,8 @@ const page = () => {
       )}
 
       {/* right side */}
-      <div className="flex flex-col flex-1 relative bg-[url('/ocean.jpg')] bg-cover bg-center">
-        <div className="absolute inset-0 bg-[#071320]/70 backdrop-blur-sm"></div>
+      <div className="flex flex-col flex-1 relative bg-[url('/ocean.png')] bg-cover bg-center">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#071320]/45 via-[#071320]/60 to-[#071320]/80"></div>
         <div className="relative flex flex-col flex-1 z-10">
           {selectedConversation ? (
             <>
