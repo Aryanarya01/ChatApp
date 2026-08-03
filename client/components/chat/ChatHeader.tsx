@@ -35,12 +35,12 @@ const ChatHeader = ({
           className="w-12 h-12 rounded-full object-cover ring-2 ring-cyan-400"
         />
         <div>
-          <h2>
-            {" "}
+          <h2 className="text-lg font-semibold text-white">
             {selectedConversation?.isGroup
               ? selectedConversation.groupName
               : selectedUser.name}
           </h2>
+          
         </div>
       </div>
       {isTyping && <p className="text-sm text-gray-500">Typing...</p>}
