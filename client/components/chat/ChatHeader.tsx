@@ -38,12 +38,23 @@ const ChatHeader = ({
           <h2 className="text-lg font-semibold text-white">
             {selectedConversation?.isGroup
               ? selectedConversation.groupName
-              : selectedUser.name}
+              : selectedUser?.name}
           </h2>
-          
+
+          <div >
+              {selectedConversation?.isGroup && (
+                <>
+                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_10px_#34d399]"></span>
+                 <span className="text-sm text-slate-400">{isTyping ? "Typing" : "Online"}</span>
+                </>
+              )}
+              {selectedConversation?.isGroup && (
+                <span className="">Group Conversation</span>
+              )}
+          </div>
         </div>
       </div>
-      {isTyping && <p className="text-sm text-gray-500">Typing...</p>}
+       
     </div>
   );
 };
