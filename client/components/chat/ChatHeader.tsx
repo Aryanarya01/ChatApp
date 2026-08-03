@@ -41,7 +41,7 @@ const ChatHeader = ({
               : selectedUser?.name}
           </h2>
 
-          <div >
+          <div className="flex items-center gap-2 mt-1" >
               {selectedConversation?.isGroup && (
                 <>
                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_10px_#34d399]"></span>
@@ -49,7 +49,7 @@ const ChatHeader = ({
                 </>
               )}
               {selectedConversation?.isGroup && (
-                <span className="">Group Conversation</span>
+                <span className="text-sm text-slate-400">Group Conversation</span>
               )}
           </div>
         </div>
