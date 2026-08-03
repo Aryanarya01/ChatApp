@@ -46,7 +46,16 @@ const MessageList = ({ message, me, messageEndRef }: MessageListProps) => {
       const isMe = mess.sender?._id === me?._id;
       return(
         <div key={mess._id} className={`flex ${isMe ? "justify-end" : "justify-start"}`}>
-          
+            {/* other user avatar */}
+            {!isMe && (
+              <img src={mess.sender?.profilePicture || "/avatar.png"} 
+                className="w-10 h-10 rounded-full object-cover mr-3 self-end ring-2 ring-white/10"
+              />
+            )}
+
+            <div>
+              
+            </div>
         </div>
       )
     })}
