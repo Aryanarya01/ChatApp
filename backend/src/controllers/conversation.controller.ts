@@ -117,7 +117,7 @@ export const addMemberToGroup = async (req: AuthRequest, res: Response) => {
         .status(403)
         .json({ message: "Only group admin can add members" });
     }
-    const alreadyMember = group.participants.includes(userId);
+    const alreadyMember = group.participants.some((id)=>id.toString()=== userId);
     if (alreadyMember) {
       return res.status(400).json({ message: "User already in the group!" });
     }
