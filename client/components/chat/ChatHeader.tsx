@@ -62,7 +62,7 @@ const ChatHeader = ({
        <div className="flex items-center gap-3">
         <button className="w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 transition text-xl">📞</button>
         <button className="w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 transition text-xl">🎥</button>
-        <button className="w-10 h-10 rounded-xl bg-white/5 hover: bg-white">ℹ️</button>
+        <button className="w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 transition text-xl">ℹ️</button>
        </div>
     </div>
   );
