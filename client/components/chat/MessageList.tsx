@@ -8,8 +8,8 @@ interface MessageListProps {
 
 const MessageList = ({ message, me, messageEndRef }: MessageListProps) => {
   return (
-    <div className="flex-1 overflow-y-auto p-4">
-      <div className="flex flex-col gap-3 w-full">
+    <div className="flex-1 overflow-y-auto px-8 py-6">
+      <div className="flex flex-col gap-5">
         {message.map((mess: any) => (
           <div
             key={mess._id}
