@@ -14,7 +14,11 @@ const ChatHeader = ({
   setOpenGroupInfo
 }: chatHeaderProps) => {
   return (
-    <div className="border-b p-4">
+    <div className="h-20 border-b border-white/10 bg-white/5 backdrop-blur-md px-6 flex items-center justify-between">
+      {/* left */}
+      <div>
+
+      </div>
       <h2 className="text-xl font-semibold" onClick={()=>{
         if(selectedConversation?.isGroup){
           setOpenGroupInfo(true)
