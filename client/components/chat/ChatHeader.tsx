@@ -22,9 +22,17 @@ const ChatHeader = ({
           setOpenGroupInfo(true)
         }
       }}>
-        {selectedConversation?.isGroup
+        <img src={selectedConversation?.isGroup 
+          ? selectedConversation.groupImage || "/group.png"
+          : selectedUser?.profilePicture || "/avatar.png"
+        } alt=""
+          className="w-12 h-12 rounded-full object-cover ring-2 ring-cyan-400"
+          />
+        <div>
+        <h2> {selectedConversation?.isGroup
           ? selectedConversation.groupName
-          : selectedUser.name}
+          : selectedUser.name}</h2>
+        </div>  
       </div>
       {isTyping && <p className="text-sm text-gray-500">Typing...</p>}
     </div>
