@@ -17,7 +17,7 @@ const ChatHeader = ({
     <div className="h-20 border-b border-white/10 bg-white/5 backdrop-blur-md px-6 flex items-center justify-between">
 
 
-      
+
       {/* left */}
       <div
         className={`flex items-center gap-4 ${selectedConversation.isGroup ? "cursor-pointer" : ""}`}
@@ -57,6 +57,13 @@ const ChatHeader = ({
         </div>
       </div>
        
+       {/* Right */}
+
+       <div className="flex items-center gap-3">
+        <button className="w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 transition text-xl">📞</button>
+        <button className="w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 transition text-xl">🎥</button>
+        <button className="w-10 h-10 rounded-xl bg-white/5 hover: bg-white">ℹ️</button>
+       </div>
     </div>
   );
 };
