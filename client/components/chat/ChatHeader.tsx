@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Phone, Video, Info } from "lucide-react";
 interface chatHeaderProps {
   selectedUser: any;
   isTyping: Boolean;
