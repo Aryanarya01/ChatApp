@@ -218,25 +218,27 @@ const page = () => {
             <div className="flex flex-1 items-center justify-center px-8">
               <div className="w-full max-w-xl rounded-[36px] border border-cyan-400/20 bg-[#08131F]/55 backdrop-blur-2xl p-10 shadow-[0_0_40px_rgba(0,0,0,0.45)]">
                 {/* logo */}
-                <img src="/wave-logo.png" alt="ZenChat" />
+                <img className="w-36 mx-auto mb-8" src="/wave-logo.png" alt="ZenChat" />
                 {/* heading */}
-                <h1>
-                  Welcome to <span>ZenChat</span>
+                <h1 className="text-center text-5xl font-bold text-white">
+                  Welcome to <span className="text-cyan-400">ZenChat</span>
                 </h1>
 
-                <p>Connect. Chat. Stay Calm.</p>
-                <div>
+                <p className="mt-4 text-center text-xl text-slate-300">Connect. Chat. Stay Calm.</p>
+                {/* divider */}
+                <div className="flex items-center justify-center my-8">
                   <div className="w-20 h-px bg-cyan-400/30"></div>
                   <div className="mx-4 text-cyan-400 text-xl">🌊</div>
                   <div className="w-20 h-px bg-cyan-400/30"></div>
                 </div>
-                <p>
+                {/* description */}
+                <p className="text-center text-slate-400 leading-8 text-lg">
                   A peaceful place to connect with your friends, build
                   meaningful conversations and enjoy a distraction-free
                   messaging experience.
                 </p>
-                <div>
-                  <button> Select a Conversation</button>
+                <div className="mt-10 flex justify-center">
+                  <button className="rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 px-10 py-4 text-lg font-semibold text-white shadow-lg hover:scale-105 transition"> Select a Conversation</button>
                 </div>
                 <p className="mt-8 text-center text-sm text-slate-500">
                   🔒 Your privacy is our priority
