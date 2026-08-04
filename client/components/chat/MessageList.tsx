@@ -41,7 +41,7 @@ const MessageList = ({ message, me, messageEndRef }: MessageListProps) => {
   // );
   return(
     <div className="flex-1 overflow-y-auto px-8 py-6">
-  //     <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5">
     {message.map((mess :any)=>{
       const isMe = mess.sender?._id === me?._id;
       return(
@@ -53,24 +53,50 @@ const MessageList = ({ message, me, messageEndRef }: MessageListProps) => {
               />
             )}
 
-            <div className={`max-w-[68%] rounded-[28px] px-5 py-4 transition-all duration-300 hover:scale-[1.02]
+            <div className={`max-w-[68%] overflow-hidden rounded-[28px] px-5 py-4 transition-all duration-300 hover:scale-[1.02]
               ${
                 isMe
                   ? "bg-gradient-to-br from-cyan-500/30 to-sky-700/40 border border-cyan-300/20 backdrop-blur-xl shadow-[0_0_25px_rgba(34,211,238,0.18)] text-white"
                   : "bg-white/5 border border-white/10 backdrop-blur-xl text-white"
               }`}>
-                {/* group name  */}
+                {/*    name  */}
               {
-
+                !isMe && mess.sender?.name && (
+                  <p className="text-cyan-300 text-xs font-medium mb-2">{mess.sender.name}</p>
+                )
               }
               {/* image */}
               {
-                
+                 mess.image && (
+                  <img
+  src={`http://localhost:9090/${mess.image}`}
+  className="w-full max-w-[320px] max-h-[320px] object-cover rounded-2xl mb-3"
+/>
+                 )
               }
+              {/* text */}
+              {
+                mess.content && (
+                  <p className="leading-7 text-[15px]">{mess.content}</p>
+                )
+              }
+
+              {/* footer */}
+              <div className="flex justify-end items-center gap-2 mt-3">
+                <span className="text-[11px] text-slate-300">{new Date(mess.createdAt).toLocaleTimeString([],{
+                  hour : "2-digit",
+                  minute : "2-digit"
+                })}</span>
+                {isMe && (
+                  <span className="text-[11px] text-cyan-300">{mess.seen ? "✓✓" : "✓"}</span>
+                )}
+              </div>
             </div>
+            
         </div>
       )
     })}
+    <div ref={messageEndRef}></div>
     </div>
   </div>
   )
