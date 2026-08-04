@@ -215,8 +215,8 @@ const page = () => {
               />
             </>
           ) : (
-            <div>
-              <div>
+            <div className="flex flex-1 items-center justify-center px-8">
+              <div className="w-full max-w-xl rounded-[36px] border border-cyan-400/20 bg-[#08131F]/55 backdrop-blur-2xl p-10 shadow-[0_0_40px_rgba(0,0,0,0.45)]">
                 {/* logo */}
                 <img src="/wave-logo.png" alt="ZenChat" />
                 {/* heading */}
