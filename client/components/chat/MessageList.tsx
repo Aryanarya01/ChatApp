@@ -59,7 +59,14 @@ const MessageList = ({ message, me, messageEndRef }: MessageListProps) => {
                   ? "bg-gradient-to-br from-cyan-500/30 to-sky-700/40 border border-cyan-300/20 backdrop-blur-xl shadow-[0_0_25px_rgba(34,211,238,0.18)] text-white"
                   : "bg-white/5 border border-white/10 backdrop-blur-xl text-white"
               }`}>
-              
+                {/* group name  */}
+              {
+
+              }
+              {/* image */}
+              {
+                
+              }
             </div>
         </div>
       )
