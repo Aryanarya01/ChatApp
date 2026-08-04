@@ -220,6 +220,8 @@ const page = () => {
                   {/* logo */}
                   <img   src="/wave-logo.png"
       alt="ZenChat" />
+      {/* heading */}
+      <h1>Welcome to <span>ZenChat</span></h1>
                 </div>
               </div>
           )}
