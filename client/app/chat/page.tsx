@@ -215,35 +215,34 @@ const page = () => {
               />
             </>
           ) : (
+            <div>
               <div>
-                <div>
-                  {/* logo */}
-                  <img   src="/wave-logo.png"
-      alt="ZenChat" />
-      {/* heading */}
-      <h1>Welcome to <span>ZenChat</span></h1>
+                {/* logo */}
+                <img src="/wave-logo.png" alt="ZenChat" />
+                {/* heading */}
+                <h1>
+                  Welcome to <span>ZenChat</span>
+                </h1>
 
-      <p>Connect. Chat. Stay Calm.</p>
-      <div>
-        <div className="w-20 h-px bg-cyan-400/30"></div>
-         <div className="mx-4 text-cyan-400 text-xl">
-        🌊
-      </div>
-        <div className="w-20 h-px bg-cyan-400/30"></div>
-      </div>
-      <p>
-         A peaceful place to connect with your friends,
-      build meaningful conversations and enjoy a
-      distraction-free messaging experience.
-      </p>
-      <div>
-        <button> Select a Conversation</button>
-      </div>
-        <p className="mt-8 text-center text-sm text-slate-500">
-      🔒 Your privacy is our priority
-    </p>
+                <p>Connect. Chat. Stay Calm.</p>
+                <div>
+                  <div className="w-20 h-px bg-cyan-400/30"></div>
+                  <div className="mx-4 text-cyan-400 text-xl">🌊</div>
+                  <div className="w-20 h-px bg-cyan-400/30"></div>
                 </div>
+                <p>
+                  A peaceful place to connect with your friends, build
+                  meaningful conversations and enjoy a distraction-free
+                  messaging experience.
+                </p>
+                <div>
+                  <button> Select a Conversation</button>
+                </div>
+                <p className="mt-8 text-center text-sm text-slate-500">
+                  🔒 Your privacy is our priority
+                </p>
               </div>
+            </div>
           )}
           {openProfileModel && (
             <ProfileModal
