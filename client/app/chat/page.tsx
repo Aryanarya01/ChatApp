@@ -215,11 +215,13 @@ const page = () => {
               />
             </>
           ) : (
-            <div className="flex flex-1 items-center justify-center">
-              <h2 className="text-2xl text-slate-300 font-medium">
-                🌊 Select a conversation to start chatting
-              </h2>
-            </div>
+              <div>
+                <div>
+                  {/* logo */}
+                  <img   src="/wave-logo.png"
+      alt="ZenChat" />
+                </div>
+              </div>
           )}
           {openProfileModel && (
             <ProfileModal
