@@ -35,7 +35,7 @@ const GroupInfoModal = ({
     selectedConversation.groupAdmin?._id || selectedConversation.groupAdmin;
 
   const isAdmin = AdminId.toString() === me._id.toString();
-
+    
   const handleLeaveGroup = async () => {
     try {
       const { data } = await clientServer.patch(
@@ -70,13 +70,22 @@ const GroupInfoModal = ({
       console.log(err)
     }
   }
-
+  console.log("sc",selectedConversation)
   console.log("AdminId:", AdminId);
   console.log("Me:", me._id);
   console.log("isAdmin:", isAdmin);
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center">
       <div className="bg-white p-5 rounded w-96">
+        {/* header */}
+        <div>
+          <h2>Group Info</h2>
+          <button>✕</button>
+        </div>
+
+        {/* image */}
+        <img src="" alt="" />
+
         {editingName ? (
           <> 
           <input
