@@ -93,11 +93,11 @@ const GroupInfoModal = ({
             {editingName ? (
               <>
                 <input
-                className="w-full"
+                className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white outline-none focus:border-cyan-400"
                   value={groupName}
                   onChange={(e) => setGroupName(e.target.value)}
                 />
-                <button onClick={handleRenameGroup}>Save Changes</button>
+                <button className="mt-4 w-full rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 py-3 text-white font-semibold" onClick={handleRenameGroup}>Save Changes</button>
               </>
             ) : (
               <>
