@@ -120,7 +120,7 @@ const GroupInfoModal = ({
                 >
                   <div className="flex items-center gap-3">
                     {/* img */}
-                    
+                      <img src={user.profilePicture || "/avatar.png"} alt=""  className="w-11 h-11 rounded-full object-cover"/>
                     <div>
                       {/* name */}
                         <p className="text-white font-medium">
@@ -131,7 +131,7 @@ const GroupInfoModal = ({
                       {user.username}
                     </p>
                     </div>
-                    
+///////
                   </div>
 
                   {AdminId.toString() === user._id.toString() && (
