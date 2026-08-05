@@ -35,7 +35,7 @@ const GroupInfoModal = ({
     selectedConversation.groupAdmin?._id || selectedConversation.groupAdmin;
 
   const isAdmin = AdminId.toString() === me._id.toString();
-    
+
   const handleLeaveGroup = async () => {
     try {
       const { data } = await clientServer.patch(
@@ -47,102 +47,100 @@ const GroupInfoModal = ({
       console.log(data);
       await fetchConversations();
 
-      setSelectedConversation(null),
-       setSelectedUser(null),
-        setOpen(false);
+      (setSelectedConversation(null), setSelectedUser(null), setOpen(false));
     } catch (err: any) {
       console.log(err);
     }
   };
 
-  const handleRenameGroup = async()=>{
-    try{
-      const {data} = await clientServer.patch("/conversation/group/rename",{
-        conversationId : selectedConversation._id,
-        groupName
+  const handleRenameGroup = async () => {
+    try {
+      const { data } = await clientServer.patch("/conversation/group/rename", {
+        conversationId: selectedConversation._id,
+        groupName,
       });
       console.log(data);
-      setGroupName(data.groupName)
-       await fetchConversations()
-      setEditingName(false)
-      
-    }catch(err:any){
-      console.log(err)
+      setGroupName(data.groupName);
+      await fetchConversations();
+      setEditingName(false);
+    } catch (err: any) {
+      console.log(err);
     }
-  }
-  console.log("sc",selectedConversation)
+  };
+  console.log("sc", selectedConversation);
   console.log("AdminId:", AdminId);
   console.log("Me:", me._id);
   console.log("isAdmin:", isAdmin);
   return (
     <>
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center">
-      <div className="bg-white p-5 rounded w-96">
-        {/* header */}
-        <div>
-          <h2>Group Info</h2>
-          <button>✕</button>
-        </div>
-
-        {/* image */}
-        <img src={selectedConversation.groupImage || "/group.png"} alt="groupImage" />
-
-    {/* group name */}
-        <div>
-          {editingName ? (
-            <>
-            <input
-              value={groupName}
-              onChange={(e) => setGroupName(e.target.value)}
-            />
-            <button onClick={handleRenameGroup}>Save Changes</button>
-            </>
-          ) : (
-             <>
-             <h2>{groupName}</h2>
-             <button onClick={()=>setEditingName(true)}>✏ Rename Group</button>
-             </>
-          )}
-        </div>
-
-        {/* member */}
-
-        <div> 
-        
-        <h3>Members</h3>
-       <div>
-        {selectedConversation.participants.map((user: any) => (
-          <div key={user._id}>
-            <div>
-              {/* img */}
-              <div>
-              {/* name */}
-
-              </div>
-
-            </div>
-            
-             
-            {AdminId.toString() === user._id.toString() && <span>(Admin)</span>}
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+        <div className="w-[500px] rounded-[30px] border border-cyan-400/20 bg-[#08131F]/90 backdrop-blur-2xl p-8 shadow-[0_0_50px_rgba(0,0,0,.45)]">
+          {/* header */}
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-white font-bold text-3xl">Group Info</h2>
+            <button className="text-2xl text-slate-400 hover:text-white" onClick={()=>setOpen(false)}>✕</button>
           </div>
-        ))}
-      </div>
-        </div>
-        {/* button */}
 
-        {isAdmin && (
+          {/* image */}
+          <img
+            src={selectedConversation.groupImage || "/group.png"}
+            className="w-28 h-28 rounded-full object-cover mx-auto ring-4 ring-cyan-400 shadow-[0_0_25px_rgba(34,211,238,.25)]"
+            alt="groupImage"
+          />
+
+          {/* group name */}
+          <div className="mt-6 text-center">
+            {editingName ? (
+              <>
+                <input
+                className="w-full"
+                  value={groupName}
+                  onChange={(e) => setGroupName(e.target.value)}
+                />
+                <button onClick={handleRenameGroup}>Save Changes</button>
+              </>
+            ) : (
+              <>
+                <h2>{groupName}</h2>
+                <button onClick={() => setEditingName(true)}>
+                  ✏ Rename Group
+                </button>
+              </>
+            )}
+          </div>
+
+          {/* member */}
+
           <div>
-            <button onClick={() => setOpenAddMember(true)}>Add Member</button>
-            <button onClick={() => setOpenRemoveMember(true)}>
-              Remove Member
-            </button>
+            <h3>Members</h3>
+            <div>
+              {selectedConversation.participants.map((user: any) => (
+                <div key={user._id}>
+                  <div>
+                    {/* img */}
+                    <div>{/* name */}</div>
+                  </div>
+
+                  {AdminId.toString() === user._id.toString() && (
+                    <span>(Admin)</span>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
-        )}
+          {/* button */}
 
+          {isAdmin && (
+            <div>
+              <button onClick={() => setOpenAddMember(true)}>Add Member</button>
+              <button onClick={() => setOpenRemoveMember(true)}>
+                Remove Member
+              </button>
+            </div>
+          )}
 
-
-        <button onClick={handleLeaveGroup}>Leave Group</button>
-         </div>
+          <button onClick={handleLeaveGroup}>Leave Group</button>
+        </div>
       </div>
       <AddMemberModal
         open={openAddMember}
