@@ -101,8 +101,8 @@ const GroupInfoModal = ({
               </>
             ) : (
               <>
-                <h2>{groupName}</h2>
-                <button onClick={() => setEditingName(true)}>
+                <h2 className="text-2xl font-semibold text-white">{groupName}</h2>
+                <button className="mt-3 text-cyan-400 hover:text-cyan-300" onClick={() => setEditingName(true)}>
                   ✏ Rename Group
                 </button>
               </>
@@ -111,14 +111,27 @@ const GroupInfoModal = ({
 
           {/* member */}
 
-          <div>
-            <h3>Members</h3>
-            <div>
+          <div className="mt-8">
+            <h3 className="mb-4 text-lg text-white font-semibold">Members ({selectedConversation.participants.length})</h3>
+            <div className="space-y-3 max-h-52 overflow-y-auto">
               {selectedConversation.participants.map((user: any) => (
-                <div key={user._id}>
-                  <div>
+                <div key={user._id}
+                  className="flex items-center justify-between rounded-2xl bg-white/5 border p-3 border-white/10"
+                >
+                  <div className="flex items-center gap-3">
                     {/* img */}
-                    <div>{/* name */}</div>
+                    
+                    <div>
+                      {/* name */}
+                        <p className="text-white font-medium">
+                      {user.name}
+                    </p>
+
+                    <p className="text-xs text-slate-400">
+                      {user.username}
+                    </p>
+                    </div>
+                    
                   </div>
 
                   {AdminId.toString() === user._id.toString() && (
