@@ -37,14 +37,14 @@ const ProfileModal = ({ me, open, setOpen,setMe }: ProfileModalProps) => {
     <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center backdrop-blur-sm">
       <div className=" relative w-[430px] rounded-[30px] border border-cyan-400/20 bg-[#08131F]/90 backdrop-blur-2xl p-8 shadow-[0_0_50px_rgba(0,0,0,0.45)] ">
         <button className="absolute top-5 right-5 text-slate-400 hover:text-white text-2xl transition" onClick={()=>setOpen(false)}>✕</button>
-        <h2>My Profile</h2>
-        <p>Manage your Zen profile</p>
+        <h2 className="font-bold text-center text-white text-3xl">My Profile</h2>
+        <p className="text-center text-slate-400 mt-2">Manage your Zen profile</p>
 {/* profile */}
-        <div>
+        <div className="flex flex-col items-center mt-8">
           <img
             src={me?.profilePicture || "/avatar.png"}
             alt="Profile"
-            className="w-24 h-24 rounded-full object-cover mx-auto"
+            className="w-36 h-36 rounded-full object-cover ring-4 ring-cyan-400 shadow-[0_0_30px_rgba(34,211,238,0.35)]"
           />
             <h3 className="text-center mt-3 font-semibold">{me?.name}</h3>
         <p className="text-center text-gray-500">{me?.email}</p>
