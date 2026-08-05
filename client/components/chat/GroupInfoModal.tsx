@@ -75,6 +75,7 @@ const GroupInfoModal = ({
   console.log("Me:", me._id);
   console.log("isAdmin:", isAdmin);
   return (
+    <>
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center">
       <div className="bg-white p-5 rounded w-96">
         {/* header */}
@@ -84,42 +85,64 @@ const GroupInfoModal = ({
         </div>
 
         {/* image */}
-        <img src="" alt="" />
+        <img src={selectedConversation.groupImage || "/group.png"} alt="groupImage" />
 
-        {editingName ? (
-          <> 
-          <input
-            value={groupName}
-            onChange={(e) => setGroupName(e.target.value)}
-          />
-          <button onClick={handleRenameGroup}>Save</button>
-          </>
-        ) : (
-           <>
-           <h2>{groupName}</h2>
-           <button onClick={()=>setEditingName(true)}>Rename</button>
-           </>
-        )}
+    {/* group name */}
+        <div>
+          {editingName ? (
+            <>
+            <input
+              value={groupName}
+              onChange={(e) => setGroupName(e.target.value)}
+            />
+            <button onClick={handleRenameGroup}>Save Changes</button>
+            </>
+          ) : (
+             <>
+             <h2>{groupName}</h2>
+             <button onClick={()=>setEditingName(true)}>✏ Rename Group</button>
+             </>
+          )}
+        </div>
+
+        {/* member */}
+
+        <div> 
         
         <h3>Members</h3>
+       <div>
         {selectedConversation.participants.map((user: any) => (
           <div key={user._id}>
-            {user.name}
+            <div>
+              {/* img */}
+              <div>
+              {/* name */}
+
+              </div>
+
+            </div>
+            
+             
             {AdminId.toString() === user._id.toString() && <span>(Admin)</span>}
           </div>
         ))}
+      </div>
+        </div>
+        {/* button */}
 
         {isAdmin && (
-          <>
+          <div>
             <button onClick={() => setOpenAddMember(true)}>Add Member</button>
             <button onClick={() => setOpenRemoveMember(true)}>
               Remove Member
             </button>
-          </>
+          </div>
         )}
 
+
+
         <button onClick={handleLeaveGroup}>Leave Group</button>
-        <button onClick={() => setOpen(false)}>Close</button>
+         </div>
       </div>
       <AddMemberModal
         open={openAddMember}
@@ -134,7 +157,7 @@ const GroupInfoModal = ({
         selectedConversation={selectedConversation}
         fetchConversations={fetchConversations}
       />
-    </div>
+    </>
   );
 };
 
