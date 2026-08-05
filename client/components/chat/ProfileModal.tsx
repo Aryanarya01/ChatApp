@@ -36,6 +36,7 @@ const ProfileModal = ({ me, open, setOpen,setMe }: ProfileModalProps) => {
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center">
       <div className="bg-white p-5 rounded w-96">
+        <button></button>
         <h2>My Profile</h2>
         <img
           src={me?.profilePicture || "/avatar.png"}
