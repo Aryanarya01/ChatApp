@@ -59,8 +59,8 @@ const ProfileModal = ({ me, open, setOpen, setMe }: ProfileModalProps) => {
         </div>
         {/* upload */}
         <div className="mt-8">
-          <input  
-           className="w-full text-sm text-slate-300 file:bg-cyan-500
+          <input
+            className="w-full text-sm text-slate-300 file:bg-cyan-500
           file:text-white
           file:border-0
           file:px-4
@@ -76,7 +76,10 @@ const ProfileModal = ({ me, open, setOpen, setMe }: ProfileModalProps) => {
               }
             }}
           />
-          <button className="w-full mt-5 rounded-xl bg-gradient-to-r from-cyan-500 to to-blue-600 py-3 font-semibold text-white transition hover:scale-[1.02]" onClick={handleUploadImage}>
+          <button
+            className="w-full mt-5 rounded-xl bg-gradient-to-r from-cyan-500 to to-blue-600 py-3 font-semibold text-white transition hover:scale-[1.02]"
+            onClick={handleUploadImage}
+          >
             Upload New Picture
           </button>
         </div>
