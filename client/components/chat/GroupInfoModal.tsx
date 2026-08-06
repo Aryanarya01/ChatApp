@@ -151,7 +151,7 @@ const GroupInfoModal = ({
             </div>
           )}
 
-          <button onClick={handleLeaveGroup}>Leave Group</button>
+          <button className="mt-5 w-full rounded-xl border border-red-400/30 bg-red-500/10 py-3 text-red-300 font-semibold hover:bg-red-500/20 transition" onClick={handleLeaveGroup}>Leave Group</button>
         </div>
       </div>
       <AddMemberModal
