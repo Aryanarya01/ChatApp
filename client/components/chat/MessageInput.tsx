@@ -22,12 +22,31 @@ const MessageInput = ({
   image
 }: MessageInputProps) => {
   return (
-    <div className="border-t p-4 flex gap-2">
-      <input type="file" onChange={(e)=>{
+    <div className="border-t border-white/10 px-6 py-4 backdrop-blur-xl bg-[#08131F]/90">
+      {/* image */}
+      {
+        image && (
+          <div>
+            <img src={URL.createObjectURL(image)} alt="Preview" />
+            <button onClick={()=>setImage(null)}>✕</button>
+          </div>
+        )
+      }
+
+      {/* input row */}
+      <div>
+        <label htmlFor="">📎 
+         <input type="file" onChange={(e)=>{
         if(e.target.files?.[0]){
           setImage(e.target.files[0])
         }
       }} />
+      </label>
+      
+{/* input */}
+
+      </div>
+      
       <input
         className="flex-1 border rounded p-2"
         placeholder="Type message..."
