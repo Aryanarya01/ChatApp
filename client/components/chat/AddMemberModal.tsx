@@ -69,7 +69,7 @@ const AddMemberModal = ({
                 </p>
               </div>
             </div>
-              <button className="rounded-xl bg-cyan-500" onClick={()=>handelAddMember(user._id)}>Add</button>
+              <button className="rounded-xl bg-cyan-500 text-white hover:bg-cyan-400 transition px-4 py-2" onClick={()=>handelAddMember(user._id)}>Add</button>
           </div>
         ))}
         </div>
