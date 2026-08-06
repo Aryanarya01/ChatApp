@@ -145,7 +145,7 @@ const GroupInfoModal = ({
           {isAdmin && (
             <div className="grid grid-cols-2 gap-3 mt-8">
               <button className="rounded-xl bg-cyan-500 hover:bg-cyan-400 py-3 text-white font-semibold transition" onClick={() => setOpenAddMember(true)}>Add Member</button>
-              <button className="rounded-xl bg-red-500/20 border border-red-400/30 py-3 text-red-300 font-semibold" onClick={() => setOpenRemoveMember(true)}>
+              <button className="rounded-xl bg-red-500/20 border border-red-400/30 py-3 text-red-300 font-semibold hover:bg-red-500/30 transition" onClick={() => setOpenRemoveMember(true)}>
                 Remove Member
               </button>
             </div>
