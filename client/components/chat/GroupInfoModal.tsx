@@ -131,7 +131,6 @@ const GroupInfoModal = ({
                       {user.username}
                     </p>
                     </div>
-///////
                   </div>
 
                   {AdminId.toString() === user._id.toString() && (
