@@ -134,7 +134,7 @@ const GroupInfoModal = ({
                   </div>
 
                   {AdminId.toString() === user._id.toString() && (
-                    <span>(Admin)</span>
+                    <span className="px-3 py-1 rounded-full text-xs bg-cyan-500/20 text-cyan-300">Admin</span>
                   )}
                 </div>
               ))}
@@ -143,8 +143,8 @@ const GroupInfoModal = ({
           {/* button */}
 
           {isAdmin && (
-            <div>
-              <button onClick={() => setOpenAddMember(true)}>Add Member</button>
+            <div className="grid grid-cols-2 gap-3 mt-8">
+              <button className="rounded-xl bg-cyan-500 hover:bg-cyan-400 py-3 text-white font-semibold transition" onClick={() => setOpenAddMember(true)}>Add Member</button>
               <button onClick={() => setOpenRemoveMember(true)}>
                 Remove Member
               </button>
