@@ -27,7 +27,7 @@ const MessageInput = ({
       {
         image && (
           <div>
-            <img src={URL.createObjectURL(image)} alt="Preview" />
+            <img className="" src={URL.createObjectURL(image)} alt="Preview" />
             <button onClick={()=>setImage(null)}>✕</button>
           </div>
         )
@@ -43,9 +43,9 @@ const MessageInput = ({
       }} />
       </label>
       
-{/* input */}
+{/* message input */}
 
-      </div>
+       
       
       <input
         className="flex-1 border rounded p-2"
@@ -73,6 +73,7 @@ const MessageInput = ({
       >
         Send
       </button>
+    </div>
     </div>
   );
 };
