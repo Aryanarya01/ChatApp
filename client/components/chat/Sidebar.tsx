@@ -27,7 +27,7 @@ const Sidebar = ({
 }: SidebarProps) => {
   const [search, setSearch] = useState("");
   const [filteredUsers, setFilteredUsers] = useState([]);
-  
+
   return (
     <>
       <div className="w-[340px] bg-[#08131F]/95 backdrop-blur-xl border-r border-white/10 flex flex-col">
@@ -49,6 +49,8 @@ const Sidebar = ({
           {/* search */}
           <input
             type="text"
+            value={search}
+            onChange={(e)=>setSearch(e.target.value)}
             placeholder="Search chats..."
             className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 outline-none focus:border-cyan-400"
           />
