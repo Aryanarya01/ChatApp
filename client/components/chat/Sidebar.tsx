@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 interface SidebarProps {
   conversation: any[];
@@ -25,6 +25,8 @@ const Sidebar = ({
   openProfileModel,
   setOpenProfileModel,
 }: SidebarProps) => {
+  const [search, setSearch] = useState("");
+
   return (
     <>
       <div className="w-[340px] bg-[#08131F]/95 backdrop-blur-xl border-r border-white/10 flex flex-col">
@@ -43,6 +45,7 @@ const Sidebar = ({
           </div>
         </div>
         <div className="px-4 py-4">
+          {/* search */}
           <input
             type="text"
             placeholder="Search chats..."
