@@ -71,20 +71,7 @@ const page = () => {
     }
   };
 
-  const handelUserClick = async (user: any) => {
-    try {
-      const { data } = await clientServer.post("/conversation/create", {
-        recieverId: user._id,
-      });
-
-      setSelectedUser(user);
-      setSelectedConversation(data);
-      console.log(data);
-    } catch (err: any) {
-      console.log(err.response?.data);
-    }
-  };
-
+ 
   useEffect(() => {
     messageEndRef.current?.scrollIntoView({
       behavior: "smooth",
