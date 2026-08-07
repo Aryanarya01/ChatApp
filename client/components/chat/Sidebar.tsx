@@ -35,6 +35,10 @@ const Sidebar = ({
         setFilteredUsers([]);
         return;
       }
+      const result = users.filter((user:any)=>
+        user.name.toLowerCase().includes(search.toLocaleLowerCase())
+      );
+      setFilteredUsers(result)
     },[search,users])
 
   return (
