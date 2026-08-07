@@ -153,6 +153,7 @@ const page = () => {
       {/* Sidebar */}
       <Sidebar
         conversation={conversation}
+        users={users}
         me={me}
         onlineUsers={onlineUsers}
         selectedConversation={selectedConversation}

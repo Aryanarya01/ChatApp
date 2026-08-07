@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface SidebarProps {
   conversation: any[];
@@ -11,9 +11,11 @@ interface SidebarProps {
   setOpenGroupModal: React.Dispatch<React.SetStateAction<boolean>>;
   openProfileModel: boolean;
   setOpenProfileModel: React.Dispatch<React.SetStateAction<boolean>>;
+  users : any[]
 }
 
 const Sidebar = ({
+  users,
   conversation,
   me,
   onlineUsers,
@@ -27,6 +29,13 @@ const Sidebar = ({
 }: SidebarProps) => {
   const [search, setSearch] = useState("");
   const [filteredUsers, setFilteredUsers] = useState([]);
+
+    useEffect(()=>{
+      if(!search.trim()){
+        setFilteredUsers([]);
+        return;
+      }
+    },[search,users])
 
   return (
     <>
