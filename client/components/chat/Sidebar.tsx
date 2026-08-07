@@ -26,7 +26,8 @@ const Sidebar = ({
   setOpenProfileModel,
 }: SidebarProps) => {
   const [search, setSearch] = useState("");
-
+  const [filteredUsers, setFilteredUsers] = useState([]);
+  
   return (
     <>
       <div className="w-[340px] bg-[#08131F]/95 backdrop-blur-xl border-r border-white/10 flex flex-col">
