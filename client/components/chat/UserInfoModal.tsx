@@ -5,9 +5,14 @@ interface UserInfoModalProps{
      
 }
 
-const UserInfoModal = () => {
+const UserInfoModal = ({open,setOpen}:UserInfoModalProps) => {
+  if(!open){
+    return null;
+  }
   return (
-    <div>UserInfoModal</div>
+    <>
+      
+    </>
   )
 }
 
