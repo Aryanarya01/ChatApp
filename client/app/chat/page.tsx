@@ -6,6 +6,7 @@ import MessageInput from "@/components/chat/MessageInput";
 import MessageList from "@/components/chat/MessageList";
 import ProfileModal from "@/components/chat/ProfileModal";
 import Sidebar from "@/components/chat/Sidebar";
+import UserInfoModal from "@/components/chat/UserInfoModal";
 import clientServer from "@/lib/axios";
 import { socket } from "@/lib/socket";
 import { useEffect, useRef, useState } from "react";
@@ -25,7 +26,6 @@ const page = () => {
   const [openGroupInfo, setOpenGroupInfo] = useState(false);
   const [openProfileModel, setOpenProfileModel] = useState(false);
   const [openUserInfoModal, setOpenUserInfoModal] = useState(false);
-  
   const messageEndRef = useRef<HTMLDivElement>(null);
 
   const typingTimeout = useRef<NodeJS.Timeout | null>(null);
@@ -203,6 +203,12 @@ const page = () => {
                 setSelectedConversation={setSelectedConversation}
                 setSelectedUser={setSelectedUser}
               />
+              {/* userInfoModal */}
+              <UserInfoModal 
+                open={openUserInfoModal}
+                setOpen={setOpenUserInfoModal}
+              />
+
             </>
           ) : (
             <div className="flex flex-1 items-center justify-center px-8">
