@@ -44,7 +44,7 @@ const ChatHeader = ({
             {selectedConversation?.isGroup || selectedConversation && (
               <>
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_10px_#34d399]"></span>
-                <span className="text-sm text-slate-400 b">
+                <span className="text-sm text-slate-400">
                   {isTyping ? "Typing" : "Online"}
                 </span>
               </>
