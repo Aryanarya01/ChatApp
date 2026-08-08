@@ -11,7 +11,15 @@ const UserInfoModal = ({open,setOpen}:UserInfoModalProps) => {
   }
   return (
     <>
-      
+        <div>
+          <div>
+            <div>
+              <h2>User Info</h2>
+              <button>✕</button>
+            </div>
+            
+          </div>
+        </div>
     </>
   )
 }
