@@ -10,16 +10,18 @@ export const createConversation = async (req: AuthRequest, res: Response) => {
       participants: {
         $all: [req.user!._id, recieverId],
       },
-      isGroup : false
-    }).populate("participants","name username email profilePicture");
+      isGroup: false,
+    }).populate("participants", "name username email profilePicture");
     if (existingConversation) {
       return res.status(200).json(existingConversation);
     }
     const conversation = await Conversation.create({
       participants: [req.user!._id, recieverId],
-      isGroup : false,
+      isGroup: false,
     });
-    const populatedConversation = await Conversation.findById(conversation._id).populate("participants","name username email password")
+    const populatedConversation = await Conversation.findById(
+      conversation._id,
+    ).populate("participants", "name username email password");
     return res.status(201).json(conversation);
   } catch (err) {
     return res.status(500).json({ message: "Server Error" });
@@ -106,7 +108,7 @@ export const createGroup = async (req: AuthRequest, res: Response) => {
     return res.status(500).json({ message: "Server Error!" });
   }
 };
-  
+
 export const addMemberToGroup = async (req: AuthRequest, res: Response) => {
   try {
     const { conversationId, userId } = req.body;
@@ -119,7 +121,9 @@ export const addMemberToGroup = async (req: AuthRequest, res: Response) => {
         .status(403)
         .json({ message: "Only group admin can add members" });
     }
-    const alreadyMember = group.participants.some((id)=>id.toString()=== userId);
+    const alreadyMember = group.participants.some(
+      (id) => id.toString() === userId,
+    );
     if (alreadyMember) {
       return res.status(400).json({ message: "User already in the group!" });
     }
@@ -209,7 +213,7 @@ export const renameGroup = async (req: AuthRequest, res: Response) => {
     const updatedGroup = await Conversation.findById(group._id)
       .populate("participants", "name username profilePicture")
       .populate("groupAdmin", "name username profilePicture");
-      return res.status(200).json(updatedGroup);
+    return res.status(200).json(updatedGroup);
   } catch (err) {
     return res.status(500).json({ message: "Server Error!" });
   }
