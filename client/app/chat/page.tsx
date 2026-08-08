@@ -24,7 +24,8 @@ const page = () => {
   const [openGroupModal, setOpenGroupModal] = useState(false);
   const [openGroupInfo, setOpenGroupInfo] = useState(false);
   const [openProfileModel, setOpenProfileModel] = useState(false);
-
+  const [openUserInfoModal, setOpenUserInfoModal] = useState(false);
+  
   const messageEndRef = useRef<HTMLDivElement>(null);
 
   const typingTimeout = useRef<NodeJS.Timeout | null>(null);
