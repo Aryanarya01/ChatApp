@@ -10,12 +10,14 @@ export const createConversation = async (req: AuthRequest, res: Response) => {
       participants: {
         $all: [req.user!._id, recieverId],
       },
-    });
+      isGroup : false
+    }).populate("participants","name username email profilePicture");
     if (existingConversation) {
       return res.status(200).json(existingConversation);
     }
     const conversation = await Conversation.create({
       participants: [req.user!._id, recieverId],
+      isGroup : false;
     });
 
     return res.status(201).json(conversation);
