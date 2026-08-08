@@ -5,6 +5,7 @@ interface chatHeaderProps {
   isTyping: Boolean;
   selectedConversation: any;
   setOpenGroupInfo: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpenUserInfoModal : React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const ChatHeader = ({
@@ -12,6 +13,7 @@ const ChatHeader = ({
   isTyping,
   selectedConversation,
   setOpenGroupInfo,
+  setOpenUserInfoModal
 }: chatHeaderProps) => {
   return (
     <div className="h-20 border-b border-white/10 bg-white/5 backdrop-blur-md px-6 flex items-center justify-between">
@@ -71,6 +73,8 @@ const ChatHeader = ({
           onClick={() => {
             if (selectedConversation?.isGroup) {
               setOpenGroupInfo(true);
+            }else{
+              setOpenUserInfoModal(true);
             }
           }}
         >

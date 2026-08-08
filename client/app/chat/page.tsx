@@ -173,6 +173,7 @@ const page = () => {
                 isTyping={isTyping}
                 selectedConversation={selectedConversation}
                 setOpenGroupInfo={setOpenGroupInfo}
+                setOpenUserInfoModal={setOpenUserInfoModal}
               />
 
               {/* message List */}
