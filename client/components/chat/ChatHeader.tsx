@@ -41,14 +41,15 @@ const ChatHeader = ({
           </h2>
 
           <div className="flex items-center gap-2 mt-1">
-            {selectedConversation?.isGroup || selectedConversation && (
-              <>
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_10px_#34d399]"></span>
-                <span className="text-sm text-slate-400">
-                  {isTyping ? "Typing" : "Online"}
-                </span>
-              </>
-            )}
+            {selectedConversation?.isGroup ||
+              (selectedConversation && (
+                <>
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_10px_#34d399]"></span>
+                  <span className="text-sm text-slate-400">
+                    {isTyping ? "Typing" : "Online"}
+                  </span>
+                </>
+              ))}
             {selectedConversation?.isGroup && (
               <span className="text-sm text-slate-400">Group Conversation</span>
             )}
@@ -65,10 +66,11 @@ const ChatHeader = ({
         <button className="w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 transition text-xl">
           🎥
         </button>
-        <button className="w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 transition text-xl"
-          onClick={()=>{
-            if(selectedConversation?.isGroup){
-              setOpenGroupInfo(true)
+        <button
+          className="w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 transition text-xl"
+          onClick={() => {
+            if (selectedConversation?.isGroup) {
+              setOpenGroupInfo(true);
             }
           }}
         >
