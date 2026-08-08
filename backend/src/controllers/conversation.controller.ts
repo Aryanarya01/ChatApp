@@ -17,9 +17,9 @@ export const createConversation = async (req: AuthRequest, res: Response) => {
     }
     const conversation = await Conversation.create({
       participants: [req.user!._id, recieverId],
-      isGroup : false;
+      isGroup : false,
     });
-
+    const populatedConversation = await Conversation.findById(conversation._id).populate("participants","name username email password")
     return res.status(201).json(conversation);
   } catch (err) {
     return res.status(500).json({ message: "Server Error" });
