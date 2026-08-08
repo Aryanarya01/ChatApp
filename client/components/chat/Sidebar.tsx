@@ -1,3 +1,4 @@
+import clientServer from "@/lib/axios";
 import React, { useEffect, useState } from "react";
 
 interface SidebarProps {
@@ -11,7 +12,8 @@ interface SidebarProps {
   setOpenGroupModal: React.Dispatch<React.SetStateAction<boolean>>;
   openProfileModel: boolean;
   setOpenProfileModel: React.Dispatch<React.SetStateAction<boolean>>;
-  users : any[]
+  users: any[];
+  fetchConversations: () => void;
 }
 
 const Sidebar = ({
@@ -26,20 +28,37 @@ const Sidebar = ({
   setOpenGroupModal,
   openProfileModel,
   setOpenProfileModel,
+  fetchConversations,
 }: SidebarProps) => {
   const [search, setSearch] = useState("");
   const [filteredUsers, setFilteredUsers] = useState([]);
 
-    useEffect(()=>{
-      if(!search.trim()){
-        setFilteredUsers([]);
-        return;
-      }
-      const result = users.filter((user:any)=>
-        user.name.toLowerCase().includes(search.toLocaleLowerCase())
-      );
-      setFilteredUsers(result)
-    },[search,users])
+  const handelUserClick = async (user: any) => {
+    try {
+      const { data } = await clientServer.post("/conversation/create", {
+        recieverId: user._id,
+      });
+
+      setSelectedUser(user);
+      setSelectedConversation(data);
+      fetchConversations();
+      setSearch("");
+      console.log(data);
+    } catch (err: any) {
+      console.log(err.response?.data);
+    }
+  };
+
+  useEffect(() => {
+    if (!search.trim()) {
+      setFilteredUsers([]);
+      return;
+    }
+    const result = users.filter((user: any) =>
+      user.name.toLowerCase().includes(search.toLocaleLowerCase()),
+    );
+    setFilteredUsers(result);
+  }, [search, users]);
 
   return (
     <>
@@ -63,7 +82,7 @@ const Sidebar = ({
           <input
             type="text"
             value={search}
-            onChange={(e)=>setSearch(e.target.value)}
+            onChange={(e) => setSearch(e.target.value)}
             placeholder="Search chats..."
             className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 outline-none focus:border-cyan-400"
           />
@@ -87,55 +106,74 @@ const Sidebar = ({
 
         <div className="border-b border-white/10 mx-4 mb-4"></div>
         <div className="flex-1 overflow-y-auto px-3 pb-4">
-          {/* conversation List */}
-          {conversation.map((conv: any) => {
-            const otherUser = conv.participants.find(
-              (p: any) => p._id !== me?._id,
-            );
-            return (
-              <div
-                key={conv._id}
-                className={`p-4 cursor-pointer mb-2 rounded-2xl transition-all hover:scale-[1.02] duration-300 ${
-                  selectedConversation?._id === conv._id
-                    ? "bg-white/10 border border-cyan-400/40 shadow-[0_0_20px_rgba(34,211,238,0.18)]"
-                    : "hover:bg-white/5 border border-transparent"
-                }`}
-              >
+          {search.trim()
+            ? filteredUsers.map((user: any) => (
                 <div
-                  onClick={() => {
-                    setSelectedConversation(conv);
-                    if (conv.isGroup) {
-                      setSelectedUser(null);
-                    } else {
-                      setSelectedUser(otherUser);
-                    }
-                  }}
-                  className="flex items-center justify-between"
+                  key={user._id}
+                  onClick={() => handelUserClick(user)}
+                  className="p-4 mb-2 rounded-2xl bg-white/5 hover:bg-white/10 cursor-pointer transition"
                 >
                   <div className="flex items-center gap-3">
                     <img
-                      className={`w-12 h-12 rounded-full object-cover transition
-${
-  selectedConversation?._id === conv._id
-    ? "ring-2 ring-cyan-400"
-    : "ring-2 ring-white/10"
-}`}
-                      src={
-                        conv.isGroup
-                          ? conv.groupProfilePicture || "/group.png"
-                          : otherUser?.profilePicture || "/avatar.png"
-                      }
-                      alt=""
+                      src={user.profilePicture || "/avatar.png"}
+                      className="w-12 h-12 rounded-full object-cover"
                     />
 
                     <div>
-                      <h4 className="font-semibold text-white">
-                        {conv.isGroup ? conv.groupName : otherUser?.name}
-                      </h4>
+                      <h4 className="text-white font-semibold">{user.name}</h4>
+                      <p className="text-sm text-slate-400">@{user.username}</p>
+                    </div>
+                  </div>
+                </div>
+              ))
+            : //  conversation list
+              conversation.map((conv: any) => {
+                const otherUser = conv.participants.find(
+                  (p: any) => p._id !== me?._id,
+                );
+                return (
+                  <div
+                    key={conv._id}
+                    className={`p-4 cursor-pointer mb-2 rounded-2xl transition-all hover:scale-[1.02] duration-300 ${
+                      selectedConversation?._id === conv._id
+                        ? "bg-white/10 border border-cyan-400/40 shadow-[0_0_20px_rgba(34,211,238,0.18)]"
+                        : "hover:bg-white/5 border border-transparent"
+                    }`}
+                  >
+                    <div
+                      onClick={() => {
+                        setSelectedConversation(conv);
+                        if (conv.isGroup) {
+                          setSelectedUser(null);
+                        } else {
+                          setSelectedUser(otherUser);
+                        }
+                      }}
+                      className="flex items-center justify-between"
+                    >
+                      <div className="flex items-center gap-3">
+                        <img
+                          className={`w-12 h-12 rounded-full object-cover transition
+                          ${
+                            selectedConversation?._id === conv._id
+                              ? "ring-2 ring-cyan-400"
+                              : "ring-2 ring-white/10"
+                          }`}
+                          src={
+                            conv.isGroup
+                              ? conv.groupProfilePicture || "/group.png"
+                              : otherUser?.profilePicture || "/avatar.png"
+                          }
+                          alt=""
+                        />
 
+                        <div>
+                          <h4 className="font-semibold text-white">
+                            {conv.isGroup ? conv.groupName : otherUser?.name}
+                          </h4>
 
-                      {/* online */}
-                      {/* <div className="flex items-center gap-2 mt-1">
+                          {/* online */}
+                          {/* <div className="flex items-center gap-2 mt-1">
                         {!conv.isGroup &&
                           onlineUsers.includes(otherUser?._id) && (
                             <span className="w-2.5 h-2.5 rounded-full bg-green-500"></span>
@@ -144,46 +182,48 @@ ${
                           {conv.isGroup ? "Group" : "Online"}
                         </span>
                       </div> */}
-<div className="flex items-center gap-2 mt-1">
-  {!conv.isGroup && (
-    <>
-      <span
-        className={`w-2.5 h-2.5 rounded-full ${
-          onlineUsers.includes(otherUser?._id)
-            ? "bg-emerald-400 shadow-[0_0_10px_#34d399]"
-            : "bg-gray-500"
-        }`}
-      ></span>
+                          <div className="flex items-center gap-2 mt-1">
+                            {!conv.isGroup && (
+                              <>
+                                <span
+                                  className={`w-2.5 h-2.5 rounded-full ${
+                                    onlineUsers.includes(otherUser?._id)
+                                      ? "bg-emerald-400 shadow-[0_0_10px_#34d399]"
+                                      : "bg-gray-500"
+                                  }`}
+                                ></span>
 
-      <span className="text-xs text-slate-400">
-        {onlineUsers.includes(otherUser?._id) ? "Online" : "Offline"}
-      </span>
-    </>
-  )}
+                                <span className="text-xs text-slate-400">
+                                  {onlineUsers.includes(otherUser?._id)
+                                    ? "Online"
+                                    : "Offline"}
+                                </span>
+                              </>
+                            )}
 
-  {conv.isGroup && (
-    <span className="text-xs text-slate-400">Group</span>
-  )}
-</div>
+                            {conv.isGroup && (
+                              <span className="text-xs text-slate-400">
+                                Group
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      </div>
 
-                      
+                      {/* right */}
+                      {conv.unreadCount > 0 && (
+                        <span className="min-w-6 h-6 rounded-full bg-cyan-500 text-xs flex items-center justify-center text-white">
+                          {conv.unreadCount}
+                        </span>
+                      )}
                     </div>
+
+                    <p className="text-sm text-slate-400 mt-2 truncate pl-[60px]">
+                      {conv.lastMessage?.content || "No messages"}
+                    </p>
                   </div>
-
-                  {/* right */}
-                  {conv.unreadCount > 0 && (
-                    <span className="min-w-6 h-6 rounded-full bg-cyan-500 text-xs flex items-center justify-center text-white">
-                      {conv.unreadCount}
-                    </span>
-                  )}
-                </div>
-
-                <p className="text-sm text-slate-400 mt-2 truncate pl-[60px]">
-                  {conv.lastMessage?.content || "No messages"}
-                </p>
-              </div>
-            );
-          })}
+                );
+              })}
         </div>
       </div>
     </>

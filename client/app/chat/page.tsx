@@ -150,6 +150,7 @@ const page = () => {
         setOpenGroupModal={setOpenGroupModal}
         openProfileModel={openProfileModel}
         setOpenProfileModel={setOpenProfileModel}
+        fetchConversations={fetchConversations}
       />
       {openGroupModal && (
         <CreateGroupModal
