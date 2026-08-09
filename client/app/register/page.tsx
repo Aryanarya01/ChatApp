@@ -82,7 +82,10 @@ const page = () => {
             className="mt-2 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 outline-none focus:border-cyan-400 transition"
           />
         </div>
-        <button type="submit" className="w-full rounded-xl bg-gradient-to-r from-cyan-500 to-sky-600 py-3 font-semibold text-white hover:scale-[1.02] transition-all shadow-[0_0_20px_rgba(34,211,238,0.2)]">
+        <button
+          type="submit"
+          className="w-full rounded-xl bg-gradient-to-r from-cyan-500 to-sky-600 py-3 font-semibold text-white hover:scale-[1.02] transition-all shadow-[0_0_20px_rgba(34,211,238,0.2)]"
+        >
           Create Account
         </button>
       </form>
