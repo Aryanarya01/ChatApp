@@ -33,7 +33,7 @@ const ProfileModal = ({ me, open, setOpen, setMe }: ProfileModalProps) => {
 
   const handleLogout = async()=>{
     try{
-
+      await clientServer.post("/auth/logout");
     }catch(err:any){
       console.log(err)
     }
