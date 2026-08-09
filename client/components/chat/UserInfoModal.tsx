@@ -13,9 +13,9 @@ const UserInfoModal = ({open,setOpen}:UserInfoModalProps) => {
     <>
         <div>
           <div>
-            <div>
-              <h2 className='min-h-screen'>User Info</h2>
-              <button onClick={()=>setOpen(false)}>✕</button>
+            <div className='min-h-screen'>
+              <h2>User Info</h2>
+              <button className='bg-green-600' onClick={()=>setOpen(false)}>✕</button>
             </div>
 
           </div>
