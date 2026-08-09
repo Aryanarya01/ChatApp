@@ -42,6 +42,7 @@ const page = () => {
         <div className="mb-4">
           <label className="text-sm text-slate-300">Name</label>
           <input
+            placeholder="Enter your name"
             type="text"
             name="name"
             onChange={handelChange}
@@ -52,6 +53,7 @@ const page = () => {
         <div className="mb-4">
           <label className="text-sm text-slate-300">Username</label>
           <input
+            placeholder="Enter your username"
             type="text"
             name="username"
             onChange={handelChange}
@@ -62,6 +64,7 @@ const page = () => {
         <div className="mb-4">
           <label className="text-sm text-slate-300">Email</label>
           <input
+            placeholder="Enter your email"
             type="email"
             name="email"
             onChange={handelChange}
@@ -72,13 +75,14 @@ const page = () => {
         <div className="mb-6">
           <label className="text-sm text-slate-300">Password</label>
           <input
+            placeholder="Enter your password"
             type="password"
             name="password"
             onChange={handelChange}
             className="mt-2 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 outline-none focus:border-cyan-400 transition"
           />
         </div>
-        <button type="submit" className="">
+        <button type="submit" className="w-full rounded-xl bg-gradient-to-r from-cyan-500 to-sky-600 py-3 font-semibold text-white hover:scale-[1.02] transition-all shadow-[0_0_20px_rgba(34,211,238,0.2)]">
           Create Account
         </button>
       </form>
