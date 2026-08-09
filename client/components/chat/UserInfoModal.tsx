@@ -17,8 +17,9 @@ const UserInfoModal = ({open,setOpen,  selectedUser}:UserInfoModalProps) => {
               <h2>User Info</h2>
               <button className='bg-green-600' onClick={()=>setOpen(false)}>✕</button>
             </div>
-
+          {/* image */}
           <img src={selectedUser.profilePicture} alt="Profile" />
+          
           </div>
         </div>
     </>
