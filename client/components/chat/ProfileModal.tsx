@@ -31,6 +31,14 @@ const ProfileModal = ({ me, open, setOpen, setMe }: ProfileModalProps) => {
     }
   };
 
+  const handleLogout = async()=>{
+    try{
+
+    }catch(err:any){
+      console.log(err)
+    }
+  }
+
   if (!open) return null;
   return (
     <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center backdrop-blur-sm">
@@ -85,12 +93,12 @@ const ProfileModal = ({ me, open, setOpen, setMe }: ProfileModalProps) => {
         </div>
         {/* divider */}
         <div className="my-8 h-px bg-white/10"></div>
-        {/* close btn */}
+        {/* Logout btn */}
         <button
           className="w-full rounded-xl border border-red-400/30 bg-red-500/10 py-3 font-semibold text-red-300 transition hover:bg-red-500/20 "
           onClick={() => setOpen(false)}
         >
-          Close
+          Logout
         </button>
       </div>
     </div>
