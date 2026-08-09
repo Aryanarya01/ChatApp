@@ -39,22 +39,22 @@ const page = () => {
       {/* name */}
       <div className="mb-4">
         <label className="text-sm text-slate-300">Name</label>
-        <input type="text" name="name" onChange={handelChange} className="mt-2 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white" />
+        <input type="text" name="name" onChange={handelChange} className="mt-2 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 outline-none focus:border-cyan-400 transition" />
       </div>
       {/* username */}
       <div className="mb-4">
         <label className="text-sm text-slate-300">Username</label>
-        <input type="text" name="username" onChange={handelChange} className="mt-2 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white" />
+        <input type="text" name="username" onChange={handelChange} className="mt-2 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 outline-none focus:border-cyan-400 transition" />
       </div>
       {/* email*/}
       <div className="mb-4">
         <label className="text-sm text-slate-300">Email</label>
-        <input type="email" name="email" onChange={handelChange} className="mt-2 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white" />
+        <input type="email" name="email" onChange={handelChange} className="mt-2 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 outline-none focus:border-cyan-400 transition" />
       </div>
       {/* password */}
       <div className="mb-6">
         <label className="text-sm text-slate-300">Password</label>
-        <input type="password" name="password" onChange={handelChange} className="mt-2 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white" />
+        <input type="password" name="password" onChange={handelChange} className="mt-2 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 outline-none focus:border-cyan-400 transition" />
       </div>
       <button type="submit" className="">Create Account</button>
       </form>
