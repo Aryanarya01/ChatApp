@@ -5,7 +5,8 @@ interface chatHeaderProps {
   isTyping: Boolean;
   selectedConversation: any;
   setOpenGroupInfo: React.Dispatch<React.SetStateAction<boolean>>;
-  setOpenUserInfoModal : React.Dispatch<React.SetStateAction<boolean>>
+  setOpenUserInfoModal : React.Dispatch<React.SetStateAction<boolean>>;
+  onlineUsers: string[];
 }
 
 const ChatHeader = ({
@@ -13,6 +14,7 @@ const ChatHeader = ({
   isTyping,
   selectedConversation,
   setOpenGroupInfo,
+  onlineUsers,
   setOpenUserInfoModal
 }: chatHeaderProps) => {
   return (
@@ -49,9 +51,13 @@ const ChatHeader = ({
               (selectedConversation && (
                 <>
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_10px_#34d399]"></span>
-                  <span className="text-sm text-slate-400">
-                    {isTyping ? "Typing" : "Online"}
-                  </span>
+                 <span className="text-sm text-slate-400">
+  {isTyping
+    ? "Typing..."
+    : onlineUsers.includes(selectedUser?._id)
+      ? "Online"
+      : "Offline"}
+</span>
                 </>
               ))}
             {selectedConversation?.isGroup && (

@@ -174,6 +174,7 @@ const page = () => {
                 selectedConversation={selectedConversation}
                 setOpenGroupInfo={setOpenGroupInfo}
                 setOpenUserInfoModal={setOpenUserInfoModal}
+                 onlineUsers={onlineUsers}
               />
 
               {/* message List */}
