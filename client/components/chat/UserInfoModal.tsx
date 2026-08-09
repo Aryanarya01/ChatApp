@@ -14,10 +14,10 @@ const UserInfoModal = ({open,setOpen}:UserInfoModalProps) => {
         <div>
           <div>
             <div>
-              <h2>User Info</h2>
-              <button>✕</button>
+              <h2 className='min-h-screen'>User Info</h2>
+              <button onClick={()=>setOpen(false)}>✕</button>
             </div>
-            
+
           </div>
         </div>
     </>
