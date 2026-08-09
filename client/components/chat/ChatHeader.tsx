@@ -23,6 +23,8 @@ const ChatHeader = ({
         onClick={() => {
           if (selectedConversation?.isGroup) {
             setOpenGroupInfo(true);
+          }else{
+            setOpenUserInfoModal(true)
           }
         }}
       >
