@@ -25,41 +25,42 @@ const page = () => {
       console.log(err);
     }
   };
-  return (
+   return(
     <div>
+      <div></div>
+      <div></div>
       <form onSubmit={handelSubmit}>
-        <input
-          type="text"
-          placeholder="Enter your name"
-          name="name"
-          onChange={handelChange}
-        />
-        <br />
-        <input
-          type="username"
-          placeholder="Enter your username"
-          name="username"
-          onChange={handelChange}
-        />
-        <br />
-        <input
-          type="email"
-          placeholder="Enter your email"
-          name="email"
-          onChange={handelChange}
-        />
-        <br />
-        <input
-          type="password"
-          placeholder="Enter your password"
-          name="password"
-          onChange={handelChange}
-        />
-        <br />
-        <button type="submit">Register</button>
+
+      {/* title */}
+      <div>
+        <h1>ZenChat</h1>
+        <p>Create your account</p>
+      </div>
+      {/* name */}
+      <div>
+        <label htmlFor="">Name</label>
+        <input type="text" />
+      </div>
+      {/* username */}
+      <div>
+        <label htmlFor="">Username</label>
+        <input type="text" name="" id="" />
+      </div>
+      {/* email*/}
+      <div>
+        <label htmlFor="">Email</label>
+        <input type="text" />
+      </div>
+      {/* password */}
+      <div>
+        <label htmlFor="">Password</label>
+        <input type="text" name="" id="" />
+      </div>
+      <button>Create Account</button>
       </form>
+
     </div>
-  );
+   )
 };
 
 export default page;
