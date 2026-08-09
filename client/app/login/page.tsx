@@ -59,7 +59,12 @@ const page = () => {
             onChange={handelChange}
           />
         </div>
-        <button className="w-full rounded-xl bg-gradient-to-r from-cyan-500 to-sky-600 py-3 text-white font-semibold hover:scale-[1.02] transition-all shadow-[0_0_20px_rgba(34,211,238,0.2)]" type="submit">Login</button>
+        <button
+          className="w-full rounded-xl bg-gradient-to-r from-cyan-500 to-sky-600 py-3 text-white font-semibold hover:scale-[1.02] transition-all shadow-[0_0_20px_rgba(34,211,238,0.2)]"
+          type="submit"
+        >
+          Login
+        </button>
       </form>
     </div>
   );
