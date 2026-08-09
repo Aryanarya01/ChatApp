@@ -19,7 +19,13 @@ const UserInfoModal = ({open,setOpen,  selectedUser}:UserInfoModalProps) => {
             </div>
           {/* image */}
           <img src={selectedUser.profilePicture} alt="Profile" />
-          
+
+            {/* name */}
+            <div>
+              <h2>{selectedUser.name}</h2>
+               <p className="text-slate-400">{selectedUser?.email}</p>
+               <p>{selectedUser?.username}</p>
+            </div>
           </div>
         </div>
     </>
