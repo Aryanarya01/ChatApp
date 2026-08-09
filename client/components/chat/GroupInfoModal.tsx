@@ -78,7 +78,7 @@ const GroupInfoModal = ({
           {/* header */}
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-white font-bold text-3xl">Group Info</h2>
-            <button className="text-2xl text-slate-400 hover:text-white" onClick={()=>setOpen(false)}>✕</button>
+            <button className="text-2xl text-slate-400 hover:text-white transition" onClick={()=>setOpen(false)}>✕</button>
           </div>
 
           {/* image */}
