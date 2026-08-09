@@ -208,6 +208,7 @@ const page = () => {
               <UserInfoModal 
                 open={openUserInfoModal}
                 setOpen={setOpenUserInfoModal}
+                 selectedUser={selectedUser}
               />
 
             </>
