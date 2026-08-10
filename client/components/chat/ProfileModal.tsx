@@ -1,6 +1,6 @@
 import clientServer from "@/lib/axios";
 import { useRouter } from "next/navigation";
- 
+
 import React, { useState } from "react";
 
 interface ProfileModalProps {
@@ -11,7 +11,7 @@ interface ProfileModalProps {
 }
 
 const ProfileModal = ({ me, open, setOpen, setMe }: ProfileModalProps) => {
-  const router = useRouter()
+  const router = useRouter();
   const [image, setImage] = useState<File | null>(null);
 
   const handleUploadImage = async () => {
@@ -34,14 +34,14 @@ const ProfileModal = ({ me, open, setOpen, setMe }: ProfileModalProps) => {
     }
   };
 
-  const handleLogout = async()=>{
-    try{
+  const handleLogout = async () => {
+    try {
       await clientServer.post("/auth/logout");
-      router.push("/login")
-    }catch(err:any){
-      console.log(err.response?.data || err)
+      router.push("/login");
+    } catch (err: any) {
+      console.log(err.response?.data || err);
     }
-  }
+  };
 
   if (!open) return null;
   return (
