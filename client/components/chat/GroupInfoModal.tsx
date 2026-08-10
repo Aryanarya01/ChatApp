@@ -78,7 +78,12 @@ const GroupInfoModal = ({
           {/* header */}
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-white font-bold text-3xl">Group Info</h2>
-            <button className="text-2xl text-slate-400 hover:text-white transition" onClick={()=>setOpen(false)}>✕</button>
+            <button
+              className="text-2xl text-slate-400 hover:text-white transition"
+              onClick={() => setOpen(false)}
+            >
+              ✕
+            </button>
           </div>
 
           {/* image */}
@@ -93,16 +98,26 @@ const GroupInfoModal = ({
             {editingName ? (
               <>
                 <input
-                className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white outline-none focus:border-cyan-400"
+                  className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white outline-none focus:border-cyan-400"
                   value={groupName}
                   onChange={(e) => setGroupName(e.target.value)}
                 />
-                <button className="mt-4 w-full rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 py-3 text-white font-semibold" onClick={handleRenameGroup}>Save Changes</button>
+                <button
+                  className="mt-4 w-full rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 py-3 text-white font-semibold"
+                  onClick={handleRenameGroup}
+                >
+                  Save Changes
+                </button>
               </>
             ) : (
               <>
-                <h2 className="text-2xl font-semibold text-white">{groupName}</h2>
-                <button className="mt-3 text-cyan-400 hover:text-cyan-300" onClick={() => setEditingName(true)}>
+                <h2 className="text-2xl font-semibold text-white">
+                  {groupName}
+                </h2>
+                <button
+                  className="mt-3 text-cyan-400 hover:text-cyan-300"
+                  onClick={() => setEditingName(true)}
+                >
                   ✏ Rename Group
                 </button>
               </>
@@ -112,29 +127,34 @@ const GroupInfoModal = ({
           {/* member */}
 
           <div className="mt-8">
-            <h3 className="mb-4 text-lg text-white font-semibold">Members ({selectedConversation.participants.length})</h3>
+            <h3 className="mb-4 text-lg text-white font-semibold">
+              Members ({selectedConversation.participants.length})
+            </h3>
             <div className="space-y-3 max-h-52 overflow-y-auto">
               {selectedConversation.participants.map((user: any) => (
-                <div key={user._id}
+                <div
+                  key={user._id}
                   className="flex items-center justify-between rounded-2xl bg-white/5 border p-3 border-white/10"
                 >
                   <div className="flex items-center gap-3">
                     {/* img */}
-                      <img src={user.profilePicture || "/avatar.png"} alt=""  className="w-11 h-11 rounded-full object-cover"/>
+                    <img
+                      src={user.profilePicture || "/avatar.png"}
+                      alt=""
+                      className="w-11 h-11 rounded-full object-cover"
+                    />
                     <div>
                       {/* name */}
-                        <p className="text-white font-medium">
-                      {user.name}
-                    </p>
+                      <p className="text-white font-medium">{user.name}</p>
 
-                    <p className="text-xs text-slate-400">
-                      {user.username}
-                    </p>
+                      <p className="text-xs text-slate-400">{user.username}</p>
                     </div>
                   </div>
 
                   {AdminId.toString() === user._id.toString() && (
-                    <span className="px-3 py-1 rounded-full text-xs bg-cyan-500/20 text-cyan-300">Admin</span>
+                    <span className="px-3 py-1 rounded-full text-xs bg-cyan-500/20 text-cyan-300">
+                      Admin
+                    </span>
                   )}
                 </div>
               ))}
@@ -144,14 +164,27 @@ const GroupInfoModal = ({
 
           {isAdmin && (
             <div className="grid grid-cols-2 gap-3 mt-8">
-              <button className="rounded-xl bg-cyan-500 hover:bg-cyan-400 py-3 text-white font-semibold transition" onClick={() => setOpenAddMember(true)}>Add Member</button>
-              <button className="rounded-xl bg-red-500/20 border border-red-400/30 py-3 text-red-300 font-semibold hover:bg-red-500/30 transition" onClick={() => setOpenRemoveMember(true)}>
+              <button
+                className="rounded-xl bg-cyan-500 hover:bg-cyan-400 py-3 text-white font-semibold transition"
+                onClick={() => setOpenAddMember(true)}
+              >
+                Add Member
+              </button>
+              <button
+                className="rounded-xl bg-red-500/20 border border-red-400/30 py-3 text-red-300 font-semibold hover:bg-red-500/30 transition"
+                onClick={() => setOpenRemoveMember(true)}
+              >
                 Remove Member
               </button>
             </div>
           )}
 
-          <button className="mt-5 w-full rounded-xl border border-red-400/30 bg-red-500/10 py-3 text-red-300 font-semibold hover:bg-red-500/20 transition" onClick={handleLeaveGroup}>Leave Group</button>
+          <button
+            className="mt-5 w-full rounded-xl border border-red-400/30 bg-red-500/10 py-3 text-red-300 font-semibold hover:bg-red-500/20 transition"
+            onClick={handleLeaveGroup}
+          >
+            Leave Group
+          </button>
         </div>
       </div>
       <AddMemberModal
