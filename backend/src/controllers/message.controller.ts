@@ -63,8 +63,14 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
       const sockteId = onlineUser.get(participant.toString());
       if (sockteId) {
         io.to(sockteId).emit("newMessage", populatedMessage);
+        io.to(sockteId).emit("newNotification",{
+          conversationId,
+          sender : req.user!._id,
+          message : populatedMessage
+        })
       }
     }
+
     return res.status(201).json(populatedMessage);
   } catch (err: any) {
     console.log(err);
