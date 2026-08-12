@@ -135,6 +135,10 @@ const page = () => {
     };
   }, []);
 
+    useEffect(()=>{
+
+    },[])
+
   return (
     <div className="flex h-screen bg-[#071320] overflow-hidden">
       {/* Sidebar */}
