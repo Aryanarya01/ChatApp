@@ -27,6 +27,9 @@ const page = () => {
   const [openGroupInfo, setOpenGroupInfo] = useState(false);
   const [openProfileModel, setOpenProfileModel] = useState(false);
   const [openUserInfoModal, setOpenUserInfoModal] = useState(false);
+  const [notification,setNotification] = useState<any[]>([])
+
+
   const messageEndRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const typingTimeout = useRef<NodeJS.Timeout | null>(null);
@@ -114,6 +117,9 @@ const page = () => {
         socket.on("newMessage", (newMessage) => {
           setMessage((prev) => [...prev, newMessage]);
         });
+        socket.on("newNotification",(notification)=>{
+          setNotification((prev)=>[notification,...prev]);
+        })
         socket.on("onlineUsers", (users) => {
           setonlineUsers(users);
         });
@@ -130,6 +136,7 @@ const page = () => {
     connectSockets();
     return () => {
       socket.off("newMessage");
+      socket.off("newNotification")
       socket.off("onlineUsers");
       socket.off("typing");
       socket.off("stopTyping");
