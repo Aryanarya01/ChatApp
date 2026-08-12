@@ -23,6 +23,7 @@ const page = () => {
     try {
       const { data } = await clientServer.post("/auth/register", formData);
       console.log(data);
+      router.push("/chat")
     } catch (err) {
       console.log(err);
     }
