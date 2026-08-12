@@ -2,8 +2,8 @@ import type { Document } from "mongoose";
 import mongoose from "mongoose";
 
 interface IMessage extends Document {
-  sender: mongoose.Schema.Types.ObjectId;
-  conversation: mongoose.Schema.Types.ObjectId;
+  sender: mongoose.Types.ObjectId;
+  conversation: mongoose.Types.ObjectId;
   content: string;
   seen: boolean;
   image: string;
