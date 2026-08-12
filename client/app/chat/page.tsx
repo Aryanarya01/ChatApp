@@ -9,6 +9,7 @@ import Sidebar from "@/components/chat/Sidebar";
 import UserInfoModal from "@/components/chat/UserInfoModal";
 import clientServer from "@/lib/axios";
 import { socket } from "@/lib/socket";
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 const page = () => {
@@ -27,7 +28,7 @@ const page = () => {
   const [openProfileModel, setOpenProfileModel] = useState(false);
   const [openUserInfoModal, setOpenUserInfoModal] = useState(false);
   const messageEndRef = useRef<HTMLDivElement>(null);
-
+  const router = useRouter();
   const typingTimeout = useRef<NodeJS.Timeout | null>(null);
   const getMe = async () => {
     try {
@@ -36,6 +37,7 @@ const page = () => {
       console.log(data);
     } catch (err) {
       console.log(err);
+      router.push("/login")
     }
   };
   const fetchUsers = async () => {
@@ -134,10 +136,6 @@ const page = () => {
       socket.disconnect();
     };
   }, []);
-
-    useEffect(()=>{
-
-    },[])
 
   return (
     <div className="flex h-screen bg-[#071320] overflow-hidden">
