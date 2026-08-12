@@ -18,5 +18,24 @@ const notificationSchema = new mongoose.Schema({
         ref : "Conversation",
         required : true,
     },
-    
-})
+    message : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "Message",
+        required : true,
+    },
+    type : {
+        type : String,
+        enum : ["message"],
+        default : "message",
+    },
+    read : {
+        type : Boolean,
+        default : false,
+    },
+},{
+    timestamps : true,
+});
+
+
+const Notification = mongoose.model("Notification",notificationSchema);
+export default Notification;
