@@ -64,8 +64,8 @@ const page = () => {
             Login
           </button>
         </form>
-         <div>
-          <p>Don't Have an Account?<span>Sign Up</span></p>
+         <div className="mt-8 flex justify-center items-center">
+          <p className="text-sm text-slate-300 mt-4 cursor-pointer">Don't Have an Account? <span className="text-cyan-400" onClick={()=>{router.push("/register")}}>Sign Up</span></p>
         </div>
       </div>
     </div>
