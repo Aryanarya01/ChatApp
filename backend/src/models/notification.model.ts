@@ -1,6 +1,13 @@
-import mongoose from "mongoose";
+import mongoose, { Document } from "mongoose";
 
-
+interface INotification extends Document{
+    reciever : mongoose.Schema.Types.ObjectId,
+    sender : mongoose.Schema.Types.ObjectId,
+    conversation : mongoose.Schema.Types.ObjectId,
+    message : mongoose.Schema.Types.ObjectId,
+    type : "message",
+    read : boolean,
+}
 
 const notificationSchema = new mongoose.Schema({
     reciever : {
