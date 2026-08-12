@@ -6,6 +6,7 @@ import { onlineUser } from "../sockets/socketHandler.js";
 import { getIO } from "../sockets/sockets.js";
 import cloudinary from "../lib/cloudinary.js";
 import fs from "fs";
+import Notification from "../models/notification.model.js";
 
 export const sendMessage = async (req: AuthRequest, res: Response) => {
   try {
@@ -34,6 +35,18 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
       image,
       messageType,
     });
+    for(const participant of conversation.participants){
+      if(participant.toString() === req.user!._id.toString()){
+        continue;
+      }
+      await Notification.create({
+        reciever : participant,
+        sender : req.user!._id,
+        conversation : conversationId,
+        message : message._id,
+        type : "message",
+      })
+    }
     const populatedMessage = await Message.findById(message._id).populate(
       "sender",
       "name username profilePicture",

@@ -4,7 +4,7 @@ interface INotification extends Document {
   reciever: mongoose.Schema.Types.ObjectId;
   sender: mongoose.Schema.Types.ObjectId;
   conversation: mongoose.Schema.Types.ObjectId;
-  message: mongoose.Schema.Types.ObjectId;
+  message: mongoose.Types.ObjectId;
   type: "message";
   read: boolean;
 }
