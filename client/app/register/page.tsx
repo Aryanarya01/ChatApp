@@ -1,8 +1,10 @@
 "use client";
 import clientServer from "@/lib/axios";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const page = () => {
+  const router = useRouter()
   const [formData, setFormData] = useState({
     name: "",
     username: "",
@@ -29,8 +31,8 @@ const page = () => {
     <div className="min-h-screen flex items-center justify-center bg-[#071320] relative overflow-hidden">
       <div className="absolute w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl -top-20 -left-20"></div>
       <div className="absolute w-96 h-96 bg-sky-500/10 rounded-full blur-3xl -bottom-20 -right-20"></div>
+      <div className="relative z-10 w-[420px] rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-2xl p-8 shadow-[0_0_40px_rgba(0,0,0,0.4)]">
       <form
-        className="relative z-10 w-[420px] rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-2xl p-8 shadow-[0_0_40px_rgba(0,0,0,0.4)]"
         onSubmit={handelSubmit}
       >
         {/* title */}
@@ -89,6 +91,10 @@ const page = () => {
           Create Account
         </button>
       </form>
+      <div className="mt-8 flex justify-center items-center">
+          <p className="text-sm text-slate-300 mt-4 cursor-pointer">Already Have an Account? <span className="text-cyan-400" onClick={()=>{router.push("/login")}}>Sign In</span></p>
+        </div>
+      </div>
     </div>
   );
 };
