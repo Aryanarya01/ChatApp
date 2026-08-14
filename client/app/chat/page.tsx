@@ -27,7 +27,7 @@ const page = () => {
   const [openGroupInfo, setOpenGroupInfo] = useState(false);
   const [openProfileModel, setOpenProfileModel] = useState(false);
   const [openUserInfoModal, setOpenUserInfoModal] = useState(false);
-  const [notification,setNotification] = useState<any[]>([])
+  
 
 
   const messageEndRef = useRef<HTMLDivElement>(null);
@@ -118,7 +118,11 @@ const page = () => {
           setMessage((prev) => [...prev, newMessage]);
         });
         socket.on("newNotification",(notification)=>{
-          setNotification((prev)=>[notification,...prev]);
+          setConversation((prev)=>prev.map((conv)=>
+            conv._id === notification.conversationId ? {
+              ...conv, unreadCount : conv.unreadCount + 1
+            } : conv
+          ));
         })
         socket.on("onlineUsers", (users) => {
           setonlineUsers(users);
@@ -144,10 +148,6 @@ const page = () => {
     };
   }, []);
 
-
-
-
-  
 
   return (
     <div className="flex h-screen bg-[#071320] overflow-hidden">
