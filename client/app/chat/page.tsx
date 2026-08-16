@@ -117,14 +117,14 @@ const page = () => {
         socket.on("newMessage", (newMessage) => {
           setMessage((prev) => [...prev, newMessage]);
         });
-                        socket.on("newNotification",(notification)=>{
-                    setConversation((prev)=>prev.map((conv)=>
-                      conv._id === notification.conversationId ? {
-                        ...conv, 
-                        unreadCount : conv.unreadCount + 1
-                      } : conv
-                    ));
-                  })
+                    socket.on("newNotification",(notification)=>{
+                setConversation((prev)=>prev.map((conv)=>
+                  conv._id === notification.conversationId ? {
+                    ...conv, 
+                    unreadCount : conv.unreadCount + 1
+                  } : conv
+                ));
+              })
         socket.on("onlineUsers", (users) => {
           setonlineUsers(users);
         });
