@@ -2,12 +2,12 @@ import type { Document } from "mongoose";
 import mongoose from "mongoose";
 
 interface IConversation extends Document {
-  participants: mongoose.Schema.Types.ObjectId[];
+  participants: mongoose.Types.ObjectId[];
   isGroup: boolean;
   groupName: string;
   groupImage: string;
-  groupAdmin: mongoose.Schema.Types.ObjectId;
-  lastMessage: mongoose.Schema.Types.ObjectId;
+  groupAdmin: mongoose.Types.ObjectId;
+  lastMessage: mongoose.Types.ObjectId;
 }
 
 const consversationSchema = new mongoose.Schema(
