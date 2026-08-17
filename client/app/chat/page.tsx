@@ -27,8 +27,6 @@ const page = () => {
   const [openGroupInfo, setOpenGroupInfo] = useState(false);
   const [openProfileModel, setOpenProfileModel] = useState(false);
   const [openUserInfoModal, setOpenUserInfoModal] = useState(false);
-  
-
 
   const messageEndRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
@@ -40,7 +38,7 @@ const page = () => {
       console.log(data);
     } catch (err) {
       console.log(err);
-      router.push("/login")
+      router.push("/login");
     }
   };
   const fetchUsers = async () => {
@@ -97,13 +95,13 @@ const page = () => {
 
         await clientServer.patch(`/messages/seen/${selectedConversation._id}`);
 
-        setConversation((prev)=>
-          prev.map((conv)=>
-            conv._id === selectedConversation._id ? 
-            {...conv, unreadCount : 0} :
-            conv
-          )
-        )
+        setConversation((prev) =>
+          prev.map((conv) =>
+            conv._id === selectedConversation._id
+              ? { ...conv, unreadCount: 0 }
+              : conv,
+          ),
+        );
       } catch (err: any) {
         console.log(err.response?.data);
       }
@@ -125,14 +123,18 @@ const page = () => {
         socket.on("newMessage", (newMessage) => {
           setMessage((prev) => [...prev, newMessage]);
         });
-                    socket.on("newNotification",(notification)=>{
-                setConversation((prev)=>prev.map((conv)=>
-                  conv._id === notification.conversationId ? {
-                    ...conv, 
-                    unreadCount : conv.unreadCount + 1
-                  } : conv
-                ));
-              })
+        socket.on("newNotification", (notification) => {
+          setConversation((prev) =>
+            prev.map((conv) =>
+              conv._id === notification.conversationId
+                ? {
+                    ...conv,
+                    unreadCount: conv.unreadCount + 1,
+                  }
+                : conv,
+            ),
+          );
+        });
         socket.on("onlineUsers", (users) => {
           setonlineUsers(users);
         });
@@ -149,14 +151,13 @@ const page = () => {
     connectSockets();
     return () => {
       socket.off("newMessage");
-      socket.off("newNotification")
+      socket.off("newNotification");
       socket.off("onlineUsers");
       socket.off("typing");
       socket.off("stopTyping");
       socket.disconnect();
     };
   }, []);
-
 
   return (
     <div className="flex h-screen bg-[#071320] overflow-hidden">
