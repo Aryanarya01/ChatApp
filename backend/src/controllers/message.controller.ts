@@ -7,7 +7,7 @@ import { getIO } from "../sockets/sockets.js";
 import cloudinary from "../lib/cloudinary.js";
 import fs from "fs";
 import Notification from "../models/notification.model.js";
-import { onlineUser } from "../sockets/socketHandler.js";
+
 export const sendMessage = async (req: AuthRequest, res: Response) => {
   try {
     const { conversationId, content } = req.body;
@@ -109,6 +109,22 @@ export const markAsSeen = async (req: AuthRequest, res: Response) => {
         },
       },
     );
+    const conversation = await Conversation.findById(conversationId);
+    if(conversation){
+      const io = getIO();
+      for(const participant of conversation.participants){
+        if(participant.toString() === req.user!._id.toString()){
+          continue;
+        }
+        const sockteId = onlineUser.get(participant.toString());
+        if(sockteId){
+          io.to(sockteId).emit("messageSeen",{
+            conversationId
+          })
+        }
+      }
+    }
+    return res
     console.log("conversationId : ", conversationId);
     console.log("user :", req.user!._id);
     return res.status(200).json({ message: "Message marked as seen" });
