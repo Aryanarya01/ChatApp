@@ -96,6 +96,14 @@ const page = () => {
         setMessage(data);
 
         await clientServer.patch(`/messages/seen/${selectedConversation._id}`);
+
+        setConversation((prev)=>
+          prev.map((conv)=>
+            conv._id === selectedConversation._id ? 
+            {...conv, unreadCount : 0} :
+            conv
+          )
+        )
       } catch (err: any) {
         console.log(err.response?.data);
       }
