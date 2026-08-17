@@ -35,17 +35,17 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
       image,
       messageType,
     });
-    for(const participant of conversation.participants){
-      if(participant.toString() === req.user!._id.toString()){
+    for (const participant of conversation.participants) {
+      if (participant.toString() === req.user!._id.toString()) {
         continue;
       }
       await Notification.create({
-        reciever : participant,
-        sender : req.user!._id,
-        conversation : conversationId,
-        message : message._id,
-        type : "message",
-      })
+        reciever: participant,
+        sender: req.user!._id,
+        conversation: conversationId,
+        message: message._id,
+        type: "message",
+      });
     }
     const populatedMessage = await Message.findById(message._id).populate(
       "sender",
@@ -63,11 +63,11 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
       const sockteId = onlineUser.get(participant.toString());
       if (sockteId) {
         io.to(sockteId).emit("newMessage", populatedMessage);
-        io.to(sockteId).emit("newNotification",{
+        io.to(sockteId).emit("newNotification", {
           conversationId,
-          sender : req.user!._id,
-          message : populatedMessage
-        })
+          sender: req.user!._id,
+          message: populatedMessage,
+        });
       }
     }
 
@@ -110,21 +110,21 @@ export const markAsSeen = async (req: AuthRequest, res: Response) => {
       },
     );
     const conversation = await Conversation.findById(conversationId);
-    if(conversation){
+    if (conversation) {
       const io = getIO();
-      for(const participant of conversation.participants){
-        if(participant.toString() === req.user!._id.toString()){
+      for (const participant of conversation.participants) {
+        if (participant.toString() === req.user!._id.toString()) {
           continue;
         }
         const sockteId = onlineUser.get(participant.toString());
-        if(sockteId){
-          io.to(sockteId).emit("messageSeen",{
-            conversationId
-          })
+        if (sockteId) {
+          io.to(sockteId).emit("messageSeen", {
+            conversationId,
+          });
         }
       }
     }
-    return res.status(200).json({message : "Message marked as seen"})
+    return res.status(200).json({ message: "Message marked as seen" });
     console.log("conversationId : ", conversationId);
     console.log("user :", req.user!._id);
     return res.status(200).json({ message: "Message marked as seen" });
