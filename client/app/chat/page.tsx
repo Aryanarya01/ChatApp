@@ -144,15 +144,15 @@ const page = () => {
         socket.on("stopTyping", () => {
           setIsTyping(false);
         });
-        socket.on("messageSeen",({conversationId})=>{
-          setMessage((prev)=>
-            prev.map((mess)=>
-              mess.conversation === conversationId ? 
-              {...mess, seen : true} : 
-              mess
-            )
-          )
-        })
+        socket.on("messageSeen", ({ conversationId }) => {
+          setMessage((prev) =>
+            prev.map((mess) =>
+              mess.conversation === conversationId
+                ? { ...mess, seen: true }
+                : mess,
+            ),
+          );
+        });
       } catch (err) {
         console.log(err);
       }
