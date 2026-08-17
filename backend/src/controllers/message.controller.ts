@@ -7,7 +7,7 @@ import { getIO } from "../sockets/sockets.js";
 import cloudinary from "../lib/cloudinary.js";
 import fs from "fs";
 import Notification from "../models/notification.model.js";
-
+import { onlineUser } from "../sockets/socketHandler.js";
 export const sendMessage = async (req: AuthRequest, res: Response) => {
   try {
     const { conversationId, content } = req.body;
