@@ -164,6 +164,7 @@ const page = () => {
       socket.off("onlineUsers");
       socket.off("typing");
       socket.off("stopTyping");
+      socket.off("messageSeen");
       socket.disconnect();
     };
   }, []);
