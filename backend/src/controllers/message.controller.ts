@@ -124,7 +124,7 @@ export const markAsSeen = async (req: AuthRequest, res: Response) => {
         }
       }
     }
-    return res
+    return res.status(200).json({message : "Message marked as seen"})
     console.log("conversationId : ", conversationId);
     console.log("user :", req.user!._id);
     return res.status(200).json({ message: "Message marked as seen" });
