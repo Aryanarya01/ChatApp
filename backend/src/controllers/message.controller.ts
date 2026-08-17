@@ -7,6 +7,7 @@ import { getIO } from "../sockets/sockets.js";
 import cloudinary from "../lib/cloudinary.js";
 import fs from "fs";
 import Notification from "../models/notification.model.js";
+import mongoose from "mongoose";
 
 export const sendMessage = async (req: AuthRequest, res: Response) => {
   try {
@@ -82,6 +83,15 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
 export const getMessage = async (req: AuthRequest, res: Response) => {
   try {
     const { conversationId } = req.params;
+       if (
+      !conversationId ||
+      typeof conversationId !== "string" ||
+      !mongoose.Types.ObjectId.isValid(conversationId)
+    ) {
+      return res.status(400).json({
+        message: "Invalid conversation ID",
+      });
+    }
     const message = await Message.find({
       conversation: conversationId,
     })
@@ -97,6 +107,15 @@ export const getMessage = async (req: AuthRequest, res: Response) => {
 export const markAsSeen = async (req: AuthRequest, res: Response) => {
   try {
     const { conversationId } = req.params;
+      if (
+      !conversationId ||
+      typeof conversationId !== "string" ||
+      !mongoose.Types.ObjectId.isValid(conversationId)
+    ) {
+      return res.status(400).json({
+        message: "Invalid conversation ID",
+      });
+    }
     await Message.updateMany(
       {
         conversation: conversationId,
