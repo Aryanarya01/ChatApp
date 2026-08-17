@@ -21,7 +21,7 @@ const page = () => {
   const [content, setContent] = useState("");
   const [onlineUsers, setonlineUsers] = useState<string[]>([]);
   const [isTyping, setIsTyping] = useState(false);
-  const [conversation, setConversation] = useState([]);
+  const [conversation, setConversation] = useState<any[]>([]);
   const [image, setImage] = useState<File | null>(null);
   const [openGroupModal, setOpenGroupModal] = useState(false);
   const [openGroupInfo, setOpenGroupInfo] = useState(false);

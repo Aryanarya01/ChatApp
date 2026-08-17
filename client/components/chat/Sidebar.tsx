@@ -31,7 +31,7 @@ const Sidebar = ({
   fetchConversations,
 }: SidebarProps) => {
   const [search, setSearch] = useState("");
-  const [filteredUsers, setFilteredUsers] = useState([]);
+  const [filteredUsers, setFilteredUsers] = useState<any[]>([]);
 
   const handelUserClick = async (user: any) => {
     try {
