@@ -1,2 +1,2 @@
 Small features to implement....
-# chat opened recieve msg
+# chat opened recieve msg problem
