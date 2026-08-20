@@ -1,4 +1,4 @@
-Small features to implement....
+
 # working ->  chat opened recieve msg problem
 # 💬 ZenChat
 
