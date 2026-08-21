@@ -8,7 +8,7 @@ import cloudinary from "../lib/cloudinary.js";
 import fs from "fs";
 import Notification from "../models/notification.model.js";
 import mongoose from "mongoose";
-
+import streamifier from "streamifier"
 export const sendMessage = async (req: AuthRequest, res: Response) => {
   try {
     const { conversationId, content } = req.body;
@@ -19,10 +19,10 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
 
     let image = "";
     let messageType: "text" | "image" = "text";
-    if (req.file) {
-      image = req.file.path;
-      messageType = "image";
-    }
+
+
+
+   if(req.file)
 
     if (!content && !req.file) {
       return res.status(400).json({
