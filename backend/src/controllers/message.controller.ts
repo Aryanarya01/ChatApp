@@ -9,6 +9,7 @@ import fs from "fs";
 import Notification from "../models/notification.model.js";
 import mongoose from "mongoose";
 import streamifier from "streamifier"
+import { resolve } from "dns";
 export const sendMessage = async (req: AuthRequest, res: Response) => {
   try {
     const { conversationId, content } = req.body;
@@ -22,7 +23,20 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
 
 
 
-   if(req.file)
+   if(req.file){
+    const result:any = await new Promise((resolve,reject)=>{
+      const stream = cloudinary.uploader.upload_stream(
+        {folder : "ZenChat"},
+        (error, result)=>{
+          if(error){
+            reject(error)
+          }else{
+            resolve(result);
+          }
+        }
+      )
+    })
+   }
 
     if (!content && !req.file) {
       return res.status(400).json({
