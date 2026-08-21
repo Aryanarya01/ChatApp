@@ -34,8 +34,11 @@ export const sendMessage = async (req: AuthRequest, res: Response) => {
             resolve(result);
           }
         }
-      )
-    })
+      );
+      streamifier.createReadStream(req.file!.buffer).pipe(stream);
+    });
+    image = result.secure_url;
+    messageType = "image";
    }
 
     if (!content && !req.file) {
