@@ -8,8 +8,8 @@ import cloudinary from "../lib/cloudinary.js";
 import fs from "fs";
 import Notification from "../models/notification.model.js";
 import mongoose from "mongoose";
-import streamifier from "streamifier"
-import { resolve } from "dns";
+import streamifier from "streamifier";
+ 
 export const sendMessage = async (req: AuthRequest, res: Response) => {
   try {
     const { conversationId, content } = req.body;
