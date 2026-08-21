@@ -74,7 +74,7 @@ const MessageList = ({ message, me, messageEndRef }: MessageListProps) => {
                 {/* image */}
                 {mess.image && (
                   <img
-                    src={`http://localhost:9090/${mess.image}`}
+                   src={mess.image}
                     className="w-full max-w-[320px] max-h-[320px] object-cover rounded-2xl mb-3"
                   />
                 )}
